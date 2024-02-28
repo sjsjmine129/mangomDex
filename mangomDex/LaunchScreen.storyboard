@@ -17,21 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ejs-os-HC0">
-                                <rect key="frame" x="-6" y="418" width="150" height="192"/>
+                                <rect key="frame" x="-6" y="478" width="150" height="192"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="192" id="LHd-Rr-TTo"/>
                                     <constraint firstAttribute="width" constant="150" id="ZVs-Cz-vAe"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="i2x-JE-UGD">
-                                <rect key="frame" x="30" y="199" width="306" height="139"/>
+                                <rect key="frame" x="30" y="259" width="306" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="Hfg-he-ywO"/>
                                     <constraint firstAttribute="width" constant="306" id="ixL-4P-PNx"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right.png" translatesAutoresizingMaskIntoConstraints="NO" id="s7c-Sd-mKH">
-                                <rect key="frame" x="166" y="568" width="234" height="161"/>
+                                <rect key="frame" x="166" y="628" width="234" height="161"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="161" id="6IR-DC-Wll"/>
                                     <constraint firstAttribute="width" constant="234" id="HWi-0a-dKe"/>
@@ -46,7 +46,7 @@
                             <constraint firstItem="i2x-JE-UGD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Ytt-Rz-wcM"/>
                             <constraint firstAttribute="trailing" secondItem="s7c-Sd-mKH" secondAttribute="trailing" constant="-7" id="ZcQ-Md-2d1"/>
                             <constraint firstItem="Ejs-os-HC0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-6" id="dqg-Nr-izP"/>
-                            <constraint firstItem="i2x-JE-UGD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="140" id="iT9-fy-K5b"/>
+                            <constraint firstItem="i2x-JE-UGD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="iT9-fy-K5b"/>
                         </constraints>
                     </view>
                 </viewController>
