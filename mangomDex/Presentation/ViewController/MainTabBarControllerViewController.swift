@@ -15,8 +15,7 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
         self.delegate = self
     }
     
-
-    //
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -33,25 +32,18 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
         settingTab.tabBarItem = settingTabBarItem
         
         self.viewControllers = [productTab, stickerTab, settingTab]
-        self.selectedIndex = 1
+        self.selectedIndex = 0
         
         customizeTabBar()
     }
     
+    
     func customizeTabBar() {
-
         // Change background color
-        self.tabBar.backgroundColor = .white
-        self.tabBar.barTintColor = .systemCyan
-        
-        // Change selected item color
-        self.tabBar.tintColor = .black
-        
-        // Change unselected item color
-        self.tabBar.unselectedItemTintColor = .gray
+        self.tabBar.backgroundColor = UIColor(named: "ham_white")
         
         // Change tab bar item font and font size
-        if let font = UIFont(name: "Helvetica", size: 12) {
+        if let font = UIFont(name: "HUDdiu150", size: 12) {
             UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
     }
