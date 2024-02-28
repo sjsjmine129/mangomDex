@@ -39,19 +39,6 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
     }
     
     func customizeTabBar() {
-        
-        // Auto layout, variables, and unit scale are not yet supported
-//        var view = UIView()
-//        view.frame = CGRect(x: 0, y: 0, width: 393, height: 50)
-//        view.layer.backgroundColor = UIColor(red: 0.961, green: 0.953, blue: 0.98, alpha: 1).cgColor
-//
-//        var parent = self.view!
-//        parent.addSubview(view)
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.widthAnchor.constraint(equalToConstant: 393).isActive = true
-//        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 0).isActive = true
-//        view.topAnchor.constraint(equalTo: parent.topAnchor, constant: 802).isActive = true
 
         // Change background color
         self.tabBar.backgroundColor = .white
