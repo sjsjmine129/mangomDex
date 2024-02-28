@@ -21,13 +21,7 @@ class StickerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for family in UIFont.familyNames {
-          print(family)
 
-          for sub in UIFont.fontNames(forFamilyName: family) {
-            print("====> \(sub)")
-          }
-        }
         self.view.backgroundColor = .systemRed
         
         self.view.addSubview(nameLbl)

@@ -54,14 +54,14 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
 //        view.topAnchor.constraint(equalTo: parent.topAnchor, constant: 802).isActive = true
 
         // Change background color
-        self.tabBar.backgroundColor = .systemGray
+        self.tabBar.backgroundColor = .white
         self.tabBar.barTintColor = .systemCyan
         
         // Change selected item color
-        self.tabBar.tintColor = UIColor.white
+        self.tabBar.tintColor = .black
         
         // Change unselected item color
-        self.tabBar.unselectedItemTintColor = UIColor.gray
+        self.tabBar.unselectedItemTintColor = .gray
         
         // Change tab bar item font and font size
         if let font = UIFont(name: "Helvetica", size: 12) {

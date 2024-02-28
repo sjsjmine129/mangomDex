@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +39,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" name="mag_clothes"/>
                         <constraints>
                             <constraint firstItem="s7c-Sd-mKH" firstAttribute="top" secondItem="i2x-JE-UGD" secondAttribute="bottom" constant="230" id="8yh-gh-h2S"/>
                             <constraint firstItem="Ejs-os-HC0" firstAttribute="top" secondItem="i2x-JE-UGD" secondAttribute="bottom" constant="80" id="PkM-7p-HbG"/>
@@ -59,8 +59,8 @@
         <image name="left.png" width="447" height="537"/>
         <image name="right.png" width="664.5" height="432"/>
         <image name="title.png" width="306" height="139"/>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="mag_clothes">
+            <color red="0.70196078431372544" green="0.84705882352941175" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
