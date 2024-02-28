@@ -28,7 +28,7 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
         let stickerTabBarItem = UITabBarItem(title: "띠부씰", image: UIImage(systemName: "square.grid.3x3"), tag: 1)
         stickerTab.tabBarItem = stickerTabBarItem
         
-        let settingTab =  UINavigationController(rootViewController: StickerViewController())
+        let settingTab =  UINavigationController(rootViewController: SettingViewController())
         let settingTabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape"), tag: 2)
         settingTab.tabBarItem = settingTabBarItem
         
