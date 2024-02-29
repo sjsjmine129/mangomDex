@@ -18,11 +18,17 @@ class StickerViewController: UIViewController {
         lbl.text = "망그러진"
         return lbl
     }()
+    
+    // MARK - LifeCycle
+    override func loadView() {
+        super.loadView()
+        setNavigationBar()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .systemRed
+        self.view.backgroundColor = UIColor(named: Color.mag_clothes.rawValue)
         
         self.view.addSubview(nameLbl)
         NSLayoutConstraint.activate([
@@ -30,6 +36,24 @@ class StickerViewController: UIViewController {
         ])
     }
 
-
 }
 
+private extension StickerViewController{
+    //set navigation Bar UI of sticker tab
+    func setNavigationBar(){
+        
+        let title = UILabel()
+        title.text = "망그러진 띠부씰 도감"
+        title.font = UIFont(name: "HUDdiu150", size: 30)
+        title.textColor = UIColor(named: Color.text_black.rawValue)
+        
+        let barButton = UIBarButtonItem(customView: title)
+        
+        navigationItem.leftBarButtonItem = barButton
+        
+        self.navigationController?.navigationBar.frame.size.height = 50
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        
+        
+    }
+}

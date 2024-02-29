@@ -25,6 +25,7 @@ class ProductViewController: UIViewController {
 
 
 private extension ProductViewController{
+    //set navigation Bar UI of product tab
     func setNavigationBar(){
         
         let title = UILabel()
