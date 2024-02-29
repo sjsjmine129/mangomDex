@@ -92,6 +92,7 @@
 		57DD5EC82B8F23E400A6CAAA /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E7F2B8F23E400A6CAAA /* 1.jpg */; };
 		57DD5EC92B8F23E400A6CAAA /* 52.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E802B8F23E400A6CAAA /* 52.jpg */; };
 		57DD5ECA2B8F23E400A6CAAA /* 46.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E812B8F23E400A6CAAA /* 46.jpg */; };
+		57DD5ED42B906F1700A6CAAA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD5ED32B906F1700A6CAAA /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +183,7 @@
 		57DD5E7F2B8F23E400A6CAAA /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		57DD5E802B8F23E400A6CAAA /* 52.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 52.jpg; sourceTree = "<group>"; };
 		57DD5E812B8F23E400A6CAAA /* 46.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 46.jpg; sourceTree = "<group>"; };
+		57DD5ED32B906F1700A6CAAA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 		57AE19442B8E16C9008F1033 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				57DD5ED32B906F1700A6CAAA /* Color.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 			files = (
 				57AE194B2B8E1E77008F1033 /* StickerViewController.swift in Sources */,
 				57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */,
+				57DD5ED42B906F1700A6CAAA /* Color.swift in Sources */,
 				57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */,
 				57AE192F2B8E1374008F1033 /* SceneDelegate.swift in Sources */,
 				57AE19492B8E1CA9008F1033 /* MainTabBarControllerViewController.swift in Sources */,
