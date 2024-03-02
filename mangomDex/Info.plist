@@ -6,6 +6,7 @@
 	<array>
 		<string>HUDdiu150.otf</string>
 		<string>Pretendard-Medium.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
