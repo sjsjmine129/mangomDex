@@ -18,7 +18,7 @@ class ProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(named: Color.mag_clothes.rawValue)
+        self.view.backgroundColor = UIColor(resource: .magClothes)
     }
     
 }
@@ -31,7 +31,7 @@ private extension ProductViewController{
         let title = UILabel()
         title.text = "망그러진 상품"
         title.font = UIFont(name: "HUDdiu150", size: 30)
-        title.textColor = UIColor(named: Color.text_black.rawValue)
+        title.textColor = UIColor(resource: .textBlack)
         
         let barButton = UIBarButtonItem(customView: title)
         
