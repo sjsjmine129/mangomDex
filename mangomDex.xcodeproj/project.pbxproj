@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		578723702B940CF40038DA4D /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787236F2B940CF40038DA4D /* SettingButton.swift */; };
 		57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE192C2B8E1374008F1033 /* AppDelegate.swift */; };
 		57AE192F2B8E1374008F1033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE192E2B8E1374008F1033 /* SceneDelegate.swift */; };
 		57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE19302B8E1374008F1033 /* ProductViewController.swift */; };
@@ -99,6 +100,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5787236F2B940CF40038DA4D /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		57AE19292B8E1374008F1033 /* mangomDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mangomDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AE192C2B8E1374008F1033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57AE192E2B8E1374008F1033 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		57AE19472B8E1A98008F1033 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5787236F2B940CF40038DA4D /* SettingButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578723702B940CF40038DA4D /* SettingButton.swift in Sources */,
 				57AE194B2B8E1E77008F1033 /* StickerViewController.swift in Sources */,
 				57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */,
 				57DD5ED42B906F1700A6CAAA /* Color.swift in Sources */,
