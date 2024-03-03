@@ -70,43 +70,12 @@ class SettingViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var btnBug: UIButton = {
-        
-        // make UI
-        var configuration = UIButton.Configuration.plain()
-        
-        var titleContainer = AttributeContainer()
-        titleContainer.font = UIFont(name: "Pretendard-SemiBold", size: 15)
-        titleContainer.foregroundColor = UIColor(resource: .textBlack)
-        
-        configuration.attributedTitle = AttributedString("버그 신고 및 문의", attributes: titleContainer)
-        //        configuration.background.backgroundColor = .red
-        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 12, bottom: 8, trailing: 12)
-        
-        let btn = UIButton(configuration: configuration)
-        btn.addTarget(self, action: #selector(test), for: .touchUpInside)
-        return btn
-    }()
-    
-    private lazy var btnInsta: UIButton = {
-       
-        var configuration = UIButton.Configuration.plain()
-        
-        var titleContainer = AttributeContainer()
-        titleContainer.font = UIFont(name: "Pretendard-SemiBold", size: 15)
-        titleContainer.foregroundColor = UIColor(resource: .textBlack)
-        
-        configuration.attributedTitle = AttributedString("망그러진 곰 인스타 바로가기", attributes: titleContainer)
-        //        configuration.background.backgroundColor = .red
-        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 12, bottom: 8, trailing: 12)
-        
-        let btn = UIButton(configuration: configuration)
-        
-        btn.addTarget(self, action: #selector(test), for: .touchUpInside)
-        return btn
-    }()
-    
-    
+    private lazy var btnBug = SettingButton(title: "버그 신고 및 문의", action: #selector(test) )
+    private lazy var btnInsta = SettingButton(title: "망그러진 곰 인스타 바로가기", action: #selector(test) )
+    private lazy var btnFadeStyle = SettingButton(title: "모으지 않은 띠부씰 흐리게 표시", action: #selector(test) )
+    private lazy var btnCollecNum = SettingButton(title: "모은 개수 표시하기", action: #selector(test) )
+    private lazy var btnReset = SettingButton(title: "수집 정보 초기화", action: #selector(test) )
+
     private lazy var imgVwAppIcon: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
@@ -116,6 +85,47 @@ class SettingViewController: UIViewController {
         
         return img
     }()
+    
+    private lazy var switchFade: UISwitch = {
+        let sw = UISwitch()
+        sw.translatesAutoresizingMaskIntoConstraints = false
+        sw.onTintColor = UIColor(resource: .magBody)
+        let scale = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        sw.transform = scale
+        return sw
+    }()
+    
+    private lazy var switchNum: UISwitch = {
+        let sw = UISwitch()
+        sw.translatesAutoresizingMaskIntoConstraints = false
+        sw.onTintColor = UIColor(resource: .magBody)
+        let scale = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        sw.transform = scale
+        return sw
+    }()
+    
+    private lazy var stButtonSwitchFade: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 0
+        stackView.distribution = .equalCentering
+
+        return stackView
+    }()
+    
+    private lazy var stButtonSwitchNum: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 0
+        stackView.distribution = .equalCentering
+
+        return stackView
+    }()
+
     
     // MARK - LifeCycle
     override func loadView() {
@@ -164,6 +174,17 @@ private extension SettingViewController{
         stSettingButtons.addArrangedSubview(btnBug)
         stSettingButtons.addArrangedSubview(btnInsta)
         
+        stSettingButtons.addArrangedSubview(stButtonSwitchFade)
+        stButtonSwitchFade.addArrangedSubview(btnFadeStyle)
+        stButtonSwitchFade.addArrangedSubview(switchFade)
+        
+        stSettingButtons.addArrangedSubview(stButtonSwitchNum)
+        stButtonSwitchNum.addArrangedSubview(btnCollecNum)
+        stButtonSwitchNum.addArrangedSubview(switchNum)
+        
+        stSettingButtons.addArrangedSubview(btnReset)
+
+        
         NSLayoutConstraint.activate([
             //VwPad
             VwPad.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
@@ -191,10 +212,12 @@ private extension SettingViewController{
             stSettingButtons.topAnchor.constraint(equalTo: self.VwPad.bottomAnchor, constant: 15),
             stSettingButtons.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             stSettingButtons.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            //            //btnBug
-            //            btnBug.heightAnchor.constraint(equalToConstant: 34),
-            //            //btnInsta
-            //            btnInsta.heightAnchor.constraint(equalToConstant: 34),
+            //stButtonSwitchFade
+            stButtonSwitchFade.leadingAnchor.constraint(equalTo: stSettingButtons.leadingAnchor),
+            stButtonSwitchFade.trailingAnchor.constraint(equalTo: stSettingButtons.trailingAnchor),
+            //stButtonSwitchNum
+            stButtonSwitchNum.leadingAnchor.constraint(equalTo: stSettingButtons.leadingAnchor),
+            stButtonSwitchNum.trailingAnchor.constraint(equalTo: stSettingButtons.trailingAnchor),
         ])
         
     }
