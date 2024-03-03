@@ -32,7 +32,7 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
         settingTab.tabBarItem = settingTabBarItem
         
         self.viewControllers = [productTab, stickerTab, settingTab]
-        self.selectedIndex = 2
+        self.selectedIndex = 0
         
         customizeTabBar()
     }
