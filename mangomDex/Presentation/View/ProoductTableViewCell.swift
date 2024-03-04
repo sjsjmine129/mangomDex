@@ -29,6 +29,14 @@ class ProoductTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    private lazy var imgVwProduct: UIImageView = {
+        let imgV = UIImageView()
+        imgV.translatesAutoresizingMaskIntoConstraints = false
+        imgV.layer.cornerRadius = 10
+        
+        return imgV
+    }()
+    
     private var product: Product?
     
     override func layoutSubviews() {
@@ -58,8 +66,10 @@ class ProoductTableViewCell: UITableViewCell {
         self.contentView.addSubview(containerVw)
         
         lblProductName.text = item.name
+        imgVwProduct.image = UIImage(named: "\(item.name).jpeg")
         
         containerVw.addSubview(lblProductName)
+        containerVw.addSubview(imgVwProduct)
         
         
         NSLayoutConstraint.activate([
@@ -67,9 +77,14 @@ class ProoductTableViewCell: UITableViewCell {
             containerVw.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant:  -8),
             containerVw.leadingAnchor.constraint(equalTo:  self.contentView.leadingAnchor, constant: 8),
             containerVw.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: -8),
-            
+            //lblProductName
             lblProductName.topAnchor.constraint(equalTo: containerVw.topAnchor),
             lblProductName.bottomAnchor.constraint(equalTo: containerVw.bottomAnchor),
+            //imgVwProduct
+            imgVwProduct.topAnchor.constraint(equalTo: containerVw.topAnchor, constant: 15),
+            imgVwProduct.bottomAnchor.constraint(equalTo: containerVw.bottomAnchor, constant: 15),
+            imgVwProduct.leadingAnchor.constraint(equalTo: containerVw.leadingAnchor, constant: 15),
+//            imgVwProduct.heightAnchor.constraint(equalTo: cont, multiplier: 100),
         ])
         
     }
