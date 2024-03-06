@@ -183,7 +183,6 @@ private extension SettingViewController{
         stButtonSwitchNum.addArrangedSubview(switchNum)
         
         stSettingButtons.addArrangedSubview(btnReset)
-
         
         NSLayoutConstraint.activate([
             //VwPad
