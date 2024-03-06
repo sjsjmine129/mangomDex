@@ -34,6 +34,7 @@
 		57D3F1412B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F13A2B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg */; };
 		57D3F1422B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F13B2B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg */; };
 		57D3F1442B986FF20044D50A /* 망곰이의딸기샌드.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1432B986FF20044D50A /* 망곰이의딸기샌드.jpeg */; };
+		57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3F1452B98AB570044D50A /* ProductButton.swift */; };
 		57DD5E822B8F23E400A6CAAA /* 63.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E392B8F23E400A6CAAA /* 63.jpg */; };
 		57DD5E832B8F23E400A6CAAA /* 62.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E3A2B8F23E400A6CAAA /* 62.jpg */; };
 		57DD5E842B8F23E400A6CAAA /* 60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E3B2B8F23E400A6CAAA /* 60.jpg */; };
@@ -139,6 +140,7 @@
 		57D3F13A2B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이딸기마카롱.jpeg"; sourceTree = "<group>"; };
 		57D3F13B2B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰치즈감자베이글.jpeg"; sourceTree = "<group>"; };
 		57D3F1432B986FF20044D50A /* 망곰이의딸기샌드.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이의딸기샌드.jpeg"; sourceTree = "<group>"; };
+		57D3F1452B98AB570044D50A /* ProductButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductButton.swift; sourceTree = "<group>"; };
 		57DD5E392B8F23E400A6CAAA /* 63.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 63.jpg; sourceTree = "<group>"; };
 		57DD5E3A2B8F23E400A6CAAA /* 62.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 62.jpg; sourceTree = "<group>"; };
 		57DD5E3B2B8F23E400A6CAAA /* 60.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 60.jpg; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				5787236F2B940CF40038DA4D /* SettingButton.swift */,
 				578723752B94644E0038DA4D /* ProoductTableViewCell.swift */,
+				57D3F1452B98AB570044D50A /* ProductButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,8 +335,8 @@
 		57AE19572B8E2D28008F1033 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				57D3F1302B95AAE00044D50A /* Product */,
 				57C780E72B90D0E500C00317 /* icon.png */,
+				57D3F1302B95AAE00044D50A /* Product */,
 				57DD5E382B8F23E400A6CAAA /* StickerImg */,
 				57DD5ECD2B8F2AF600A6CAAA /* LaunchImg */,
 			);
@@ -609,6 +612,7 @@
 				57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */,
 				57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */,
 				578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */,
+				57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */,
 				57AE192F2B8E1374008F1033 /* SceneDelegate.swift in Sources */,
 				578723762B94644E0038DA4D /* ProoductTableViewCell.swift in Sources */,
 				57AE19492B8E1CA9008F1033 /* MainTabBarControllerViewController.swift in Sources */,

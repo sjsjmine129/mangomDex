@@ -1,35 +1,39 @@
 //
-//  SettingButton.swift
+//  ProductButton.swift
 //  mangomDex
 //
-//  Created by 엄승주 on 3/3/24.
+//  Created by 엄승주 on 3/6/24.
 //
 
 import Foundation
 import UIKit
 
-class SettingButton: UIButton{
+class ProductButton: UIButton{
     
-    init(title: String, action: Selector) {
+    var cuApplink : String?
+    
+    init(title: String) {
         super.init(frame: .zero)
         
         // make UI
         var configuration = UIButton.Configuration.plain()
         
         var titleContainer = AttributeContainer()
-        titleContainer.font = UIFont(name: "Pretendard-SemiBold", size: 15)
+        titleContainer.font = UIFont(name: "HUDdiu150", size: 15)
         titleContainer.foregroundColor = UIColor(resource: .textBlack)
         
         configuration.attributedTitle = AttributedString(title, attributes: titleContainer)
-        //configuration.background.backgroundColor = .gray
-        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 12, bottom: 8, trailing: 12)
-        
+        configuration.background.backgroundColor = .magMouth
+
         self.configuration = configuration
-        self.addTarget(nil, action: action, for: .touchUpInside)
-        
+        self.addTarget(nil, action: #selector(navigationCuApp), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func navigationCuApp(){
+        print("\(cuApplink)")
     }
 }
