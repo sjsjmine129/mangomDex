@@ -49,7 +49,7 @@ private extension ProductViewController{
         let barButton = UIBarButtonItem(customView: title)
         
         navigationItem.leftBarButtonItem = barButton
-
+        self.navigationController?.navigationBar.barTintColor = .magClothes
         self.navigationController?.navigationBar.frame.size.height = 50
         self.navigationController?.navigationBar.backgroundColor = .clear
     }

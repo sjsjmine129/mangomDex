@@ -27,13 +27,13 @@
 		57C780EA2B921A9F00C00317 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */; };
 		57C780EC2B934C2D00C00317 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */; };
 		57D3F1332B95AB290044D50A /* 망곰초코딸기샌드.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1312B95AB290044D50A /* 망곰초코딸기샌드.jpeg */; };
-		57D3F13C2B95EF3C0044D50A /* 망곰이의딸기샌드.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1352B95EF3C0044D50A /* 망곰이의딸기샌드.jpeg */; };
 		57D3F13D2B95EF3C0044D50A /* 망곰바질토마토베이글.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1362B95EF3C0044D50A /* 망곰바질토마토베이글.jpeg */; };
 		57D3F13E2B95EF3C0044D50A /* 망곰이의행운버거.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1372B95EF3C0044D50A /* 망곰이의행운버거.jpeg */; };
 		57D3F13F2B95EF3C0044D50A /* 망곰이의꿀호떡버거.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1382B95EF3C0044D50A /* 망곰이의꿀호떡버거.jpeg */; };
 		57D3F1402B95EF3C0044D50A /* 망곰이초코마카롱.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1392B95EF3C0044D50A /* 망곰이초코마카롱.jpeg */; };
 		57D3F1412B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F13A2B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg */; };
 		57D3F1422B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F13B2B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg */; };
+		57D3F1442B986FF20044D50A /* 망곰이의딸기샌드.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57D3F1432B986FF20044D50A /* 망곰이의딸기샌드.jpeg */; };
 		57DD5E822B8F23E400A6CAAA /* 63.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E392B8F23E400A6CAAA /* 63.jpg */; };
 		57DD5E832B8F23E400A6CAAA /* 62.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E3A2B8F23E400A6CAAA /* 62.jpg */; };
 		57DD5E842B8F23E400A6CAAA /* 60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E3B2B8F23E400A6CAAA /* 60.jpg */; };
@@ -132,13 +132,13 @@
 		57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		57D3F1312B95AB290044D50A /* 망곰초코딸기샌드.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰초코딸기샌드.jpeg"; sourceTree = "<group>"; };
-		57D3F1352B95EF3C0044D50A /* 망곰이의딸기샌드.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "망곰이의딸기샌드.jpeg"; path = "../../../../../망곰이의딸기샌드.jpeg"; sourceTree = "<group>"; };
 		57D3F1362B95EF3C0044D50A /* 망곰바질토마토베이글.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰바질토마토베이글.jpeg"; sourceTree = "<group>"; };
 		57D3F1372B95EF3C0044D50A /* 망곰이의행운버거.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이의행운버거.jpeg"; sourceTree = "<group>"; };
 		57D3F1382B95EF3C0044D50A /* 망곰이의꿀호떡버거.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이의꿀호떡버거.jpeg"; sourceTree = "<group>"; };
 		57D3F1392B95EF3C0044D50A /* 망곰이초코마카롱.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이초코마카롱.jpeg"; sourceTree = "<group>"; };
 		57D3F13A2B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이딸기마카롱.jpeg"; sourceTree = "<group>"; };
 		57D3F13B2B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰치즈감자베이글.jpeg"; sourceTree = "<group>"; };
+		57D3F1432B986FF20044D50A /* 망곰이의딸기샌드.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰이의딸기샌드.jpeg"; sourceTree = "<group>"; };
 		57DD5E392B8F23E400A6CAAA /* 63.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 63.jpg; sourceTree = "<group>"; };
 		57DD5E3A2B8F23E400A6CAAA /* 62.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 62.jpg; sourceTree = "<group>"; };
 		57DD5E3B2B8F23E400A6CAAA /* 60.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 60.jpg; sourceTree = "<group>"; };
@@ -343,10 +343,10 @@
 		57D3F1302B95AAE00044D50A /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				57D3F1432B986FF20044D50A /* 망곰이의딸기샌드.jpeg */,
 				57D3F1362B95EF3C0044D50A /* 망곰바질토마토베이글.jpeg */,
 				57D3F13A2B95EF3C0044D50A /* 망곰이딸기마카롱.jpeg */,
 				57D3F1382B95EF3C0044D50A /* 망곰이의꿀호떡버거.jpeg */,
-				57D3F1352B95EF3C0044D50A /* 망곰이의딸기샌드.jpeg */,
 				57D3F1372B95EF3C0044D50A /* 망곰이의행운버거.jpeg */,
 				57D3F1392B95EF3C0044D50A /* 망곰이초코마카롱.jpeg */,
 				57D3F13B2B95EF3C0044D50A /* 망곰치즈감자베이글.jpeg */,
@@ -547,7 +547,6 @@
 				57DD5E9E2B8F23E400A6CAAA /* 10.jpg in Resources */,
 				57C780E82B90D0E500C00317 /* icon.png in Resources */,
 				57DD5E9A2B8F23E400A6CAAA /* 12.jpg in Resources */,
-				57D3F13C2B95EF3C0044D50A /* 망곰이의딸기샌드.jpeg in Resources */,
 				57DD5EB62B8F23E400A6CAAA /* 57.jpg in Resources */,
 				57DD5E832B8F23E400A6CAAA /* 62.jpg in Resources */,
 				57DD5E952B8F23E400A6CAAA /* 28.jpg in Resources */,
@@ -576,6 +575,7 @@
 				57DD5EA42B8F23E400A6CAAA /* 36.jpg in Resources */,
 				57DD5EA72B8F23E400A6CAAA /* 37.jpg in Resources */,
 				57DD5EAC2B8F23E400A6CAAA /* 18.jpg in Resources */,
+				57D3F1442B986FF20044D50A /* 망곰이의딸기샌드.jpeg in Resources */,
 				57DD5EBA2B8F23E400A6CAAA /* 41.jpg in Resources */,
 				57DD5EB82B8F23E400A6CAAA /* 55.jpg in Resources */,
 				57DD5EBD2B8F23E400A6CAAA /* 40.jpg in Resources */,
