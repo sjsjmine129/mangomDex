@@ -17,6 +17,7 @@ class ProductViewController: UIViewController {
         tv.separatorStyle = .none
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tv.register(ProoductTableViewCell.self, forCellReuseIdentifier: ProoductTableViewCell.cellId)
+        tv.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         return tv
     }()
