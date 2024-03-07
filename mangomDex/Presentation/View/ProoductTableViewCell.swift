@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProductTableCellDelegate: AnyObject{
+    func didTapButton(for CUlink: String?)
+}
+
 class ProoductTableViewCell: UITableViewCell {
     
     static let cellId = "ProductTableViewCell"
@@ -29,7 +33,7 @@ class ProoductTableViewCell: UITableViewCell {
     private lazy var lblProductName: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = UIFont(name: "HUDdiu150", size: 22)
+        lbl.font = UIFont(name: "HUDdiu150", size: 20)
         lbl.textColor = UIColor(resource: .textBlack)
         lbl.textAlignment = .center
         
@@ -39,7 +43,7 @@ class ProoductTableViewCell: UITableViewCell {
     private lazy var lblProductPrice: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = UIFont(name: "HUDdiu150", size: 20)
+        lbl.font = UIFont(name: "HUDdiu150", size: 15)
         lbl.textColor = UIColor(resource: .magBorder)
         lbl.textAlignment = .center
         
@@ -106,7 +110,7 @@ class ProoductTableViewCell: UITableViewCell {
     }()
     
     
-    
+    private weak var delegate: ProductTableCellDelegate?
     private var product: Product?
     
     // MARK: - Life Cycle
@@ -120,6 +124,7 @@ class ProoductTableViewCell: UITableViewCell {
         
         // remove data
         self.product = nil
+        self.delegate = nil
         
         //delete ui of not seen
         self.containerVw.subviews.forEach {$0.removeFromSuperview()}
@@ -127,13 +132,19 @@ class ProoductTableViewCell: UITableViewCell {
     
     
     // MARK: - make UI of cell
-    func cellConfigure(with item: Product){
+    func cellConfigure(with item: Product, delegate: ProductTableCellDelegate){
+        
         self.product = item
+        self.delegate = delegate
         
         containerVw.backgroundColor = UIColor(resource: .magBody)
         
         self.contentView.backgroundColor = .magClothes
         self.contentView.addSubview(containerVw)
+        
+        btnProductFind.addTarget(self, action: #selector(didTapFind), for: .touchUpInside)
+        btnProductDetail.addTarget(self, action: #selector(didTapDetail), for: .touchUpInside)
+        
         
         imgVwProduct.image = UIImage(named: "\(item.name).jpeg")
         lblProductName.text = item.name
@@ -152,6 +163,7 @@ class ProoductTableViewCell: UITableViewCell {
         
         stProductButtons.addArrangedSubview(btnProductDetail)
         stProductButtons.addArrangedSubview(btnProductFind)
+        
         
         NSLayoutConstraint.activate([
             //containerVw
@@ -185,6 +197,20 @@ class ProoductTableViewCell: UITableViewCell {
             stProductButtons.trailingAnchor.constraint(equalTo: containerVw.trailingAnchor, constant: -8),
         ])
         
+    }
+    
+    //send product data to ViewconTrollers function
+    @objc func didTapFind(){
+        if let product = product{
+            delegate?.didTapButton(for: product.findLink)
+        }
+    }
+    
+    //send product data to ViewconTrollers function
+    @objc func didTapDetail(){
+        if let product = product{
+            delegate?.didTapButton(for: product.productLink)
+        }
     }
     
 }

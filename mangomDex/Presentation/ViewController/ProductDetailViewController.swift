@@ -12,6 +12,7 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .magClothes
         // Do any additional setup after loading the view.
     }
     

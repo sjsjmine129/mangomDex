@@ -81,8 +81,20 @@ extension ProductViewController: UITableViewDataSource{
         let product = productViewModel.products[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ProoductTableViewCell.cellId , for: indexPath) as! ProoductTableViewCell
-        cell.cellConfigure(with: product)
+        cell.cellConfigure(with: product, delegate: self)
         return cell
+    }
+    
+}
+
+extension ProductViewController: ProductTableCellDelegate{
+    func didTapButton(for CUlink: String?) {
+        print(CUlink ?? "none")
+        
+        if let navigationController = self.navigationController {
+            let nextPage = ProductDetailViewController()
+            navigationController.pushViewController(nextPage, animated: true)
+        }
     }
     
 }

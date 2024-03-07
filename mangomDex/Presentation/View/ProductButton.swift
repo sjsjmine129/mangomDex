@@ -26,14 +26,10 @@ class ProductButton: UIButton{
         configuration.background.backgroundColor = .magMouth
 
         self.configuration = configuration
-        self.addTarget(nil, action: #selector(navigationCuApp), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func navigationCuApp(){
-        print("\(cuApplink)")
-    }
 }
