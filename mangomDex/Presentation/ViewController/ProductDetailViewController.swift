@@ -6,25 +6,99 @@
 //
 
 import UIKit
+import WebKit
 
-class ProductDetailViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .magClothes
-        // Do any additional setup after loading the view.
+class ProductDetailViewController: UIViewController, WKNavigationDelegate {
+    
+    private lazy var webView: WKWebView = {
+        let wV = WKWebView(frame: UIScreen.main.bounds)
+        wV.translatesAutoresizingMaskIntoConstraints = false
+        wV.navigationDelegate = self
+        
+        // Load a webpage
+        if let url = URL(string: "https://pocketcu.co.kr/product/detail/2023120035518?cateTyp=") {
+            let request = URLRequest(url: url)
+            wV.load(request)
+        }
+        
+        return wV
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+    private lazy var btnGobackHidden: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = .clear
+        btn.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+        view.backgroundColor = .hamWhite
+        
+        navigationController?.navigationBar.barStyle = .default
+        
+        view.addSubview(webView)
+        view.addSubview(activityIndicator)
+        view.addSubview(btnGobackHidden)
+        
+        NSLayoutConstraint.activate([
+            //webView
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            //btnGobackHidden
+            btnGobackHidden.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            btnGobackHidden.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            btnGobackHidden.heightAnchor.constraint(equalToConstant: 40),
+            btnGobackHidden.widthAnchor.constraint(equalToConstant: 40),
+            //activityIndicator
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
-    */
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
+    // Implement WKNavigationDelegate method to handle navigation
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .backForward {
+            if webView.canGoBack {
+                webView.goBack()
+                decisionHandler(.cancel)
+                return
+            }
+        }
+        decisionHandler(.allow)
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+         activityIndicator.startAnimating()
+     }
+     
+     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+         activityIndicator.stopAnimating()
+     }
+    
 }
