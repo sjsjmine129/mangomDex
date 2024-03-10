@@ -93,6 +93,7 @@ extension ProductViewController: ProductTableCellDelegate{
         
         if let navigationController = self.navigationController {
             let nextPage = ProductDetailViewController()
+            nextPage.CUlinkData = CUlink
             navigationController.pushViewController(nextPage, animated: true)
         }
     }

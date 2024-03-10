@@ -20,11 +20,11 @@ class ProoductTableViewCell: UITableViewCell {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = 14
-        vw.layer.shadowColor = UIColor.gray.cgColor
-        vw.layer.shadowOpacity = 0.8
-        vw.layer.shadowRadius = 4
-        vw.layer.shadowOffset = CGSize(width: 2, height: 2)
-        vw.layer.shadowPath = nil
+        //        vw.layer.shadowColor = UIColor.gray.cgColor
+        //        vw.layer.shadowOpacity = 0.8
+        //        vw.layer.shadowRadius = 4
+        //        vw.layer.shadowOffset = CGSize(width: 2, height: 2)
+        //        vw.layer.shadowPath = nil
         
         return vw
     }()
@@ -163,6 +163,13 @@ class ProoductTableViewCell: UITableViewCell {
         
         stProductButtons.addArrangedSubview(btnProductDetail)
         stProductButtons.addArrangedSubview(btnProductFind)
+        
+        if item.findLink == nil {
+            btnProductFind.isHidden = true
+        }
+        if item.productLink == nil {
+            btnProductDetail.isHidden = true
+        }
         
         
         NSLayoutConstraint.activate([

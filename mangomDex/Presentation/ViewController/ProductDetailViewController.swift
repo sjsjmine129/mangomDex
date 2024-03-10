@@ -10,13 +10,15 @@ import WebKit
 
 class ProductDetailViewController: UIViewController, WKNavigationDelegate {
     
+    var CUlinkData: String?
+    
     private lazy var webView: WKWebView = {
         let wV = WKWebView(frame: UIScreen.main.bounds)
         wV.translatesAutoresizingMaskIntoConstraints = false
         wV.navigationDelegate = self
         
         // Load a webpage
-        if let url = URL(string: "https://pocketcu.co.kr/product/detail/2023120035518?cateTyp=") {
+        if let cuLinkData = CUlinkData, let url = URL(string: cuLinkData) {
             let request = URLRequest(url: url)
             wV.load(request)
         }
@@ -49,7 +51,6 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .hamWhite
         
         navigationController?.navigationBar.barStyle = .default
@@ -75,12 +76,21 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
         ])
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
+}
+
+// MARK: - webView setting
+extension ProductDetailViewController{
     // Implement WKNavigationDelegate method to handle navigation
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.navigationType == .backForward {
@@ -94,11 +104,14 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-         activityIndicator.startAnimating()
-     }
-     
-     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-         activityIndicator.stopAnimating()
-     }
+        activityIndicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+    }
+}
+
+extension ProductDetailViewController: UIGestureRecognizerDelegate{
     
 }
