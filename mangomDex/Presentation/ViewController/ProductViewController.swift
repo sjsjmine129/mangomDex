@@ -44,7 +44,7 @@ private extension ProductViewController{
     func setNavigationBar(){
         let title = UILabel()
         title.text = "망그러진 상품"
-        title.font = UIFont(name: "HUDdiu150", size: 30)
+        title.font = UIFont(name: "HUDdiu150", size: 25)
         title.textColor = UIColor(resource: .textBlack)
         
         let barButton = UIBarButtonItem(customView: title)
