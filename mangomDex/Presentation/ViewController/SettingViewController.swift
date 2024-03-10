@@ -9,6 +9,8 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+    private lazy var settingViewModel = SettingViewModel()
+    
     private lazy var VwPad: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
@@ -70,12 +72,12 @@ class SettingViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var btnBug = SettingButton(title: "버그 신고 및 문의", action: #selector(test) )
+    private lazy var btnBug = SettingButton(title: "버그 신고 및 문의", action: #selector(openKakaoInquire) )
     private lazy var btnInsta = SettingButton(title: "망그러진 곰 인스타 바로가기", action: #selector(openInstagram) )
     private lazy var btnFadeStyle = SettingButton(title: "모으지 않은 띠부씰 흐리게 표시", action: #selector(test) )
     private lazy var btnCollecNum = SettingButton(title: "모은 개수 표시하기", action: #selector(test) )
     private lazy var btnReset = SettingButton(title: "수집 정보 초기화", action: #selector(test) )
-
+    
     private lazy var imgVwAppIcon: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
@@ -151,7 +153,7 @@ private extension SettingViewController{
         
         let title = UILabel()
         title.text = "망그러진 설정"
-        title.font = UIFont(name: "HUDdiu150", size: 30)
+        title.font = UIFont(name: "HUDdiu150", size: 25)
         title.textColor = UIColor(resource: .textBlack)
         
         let barButton = UIBarButtonItem(customView: title)
@@ -228,14 +230,11 @@ private extension SettingViewController{
     }
     
     @objc func openInstagram(_ button:UIButton){
-        let instagramURL = URL(string: "instagram://user?username=yurang_official")!
-        
-        if UIApplication.shared.canOpenURL(instagramURL) {
-            UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
-        } else {
-            let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
-            UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
-        }
+        settingViewModel.openInstagram()
+    }
+    
+    @objc func openKakaoInquire(_ button:UIButton){
+        settingViewModel.openKakaoInquire()
     }
 }
 

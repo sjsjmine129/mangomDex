@@ -109,6 +109,7 @@
 		57DD5EC82B8F23E400A6CAAA /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E7F2B8F23E400A6CAAA /* 1.jpg */; };
 		57DD5EC92B8F23E400A6CAAA /* 52.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E802B8F23E400A6CAAA /* 52.jpg */; };
 		57DD5ECA2B8F23E400A6CAAA /* 46.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E812B8F23E400A6CAAA /* 46.jpg */; };
+		57E51F2C2B9DE64E0089EDEB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F2B2B9DE64E0089EDEB /* SettingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -216,6 +217,7 @@
 		57DD5E7F2B8F23E400A6CAAA /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		57DD5E802B8F23E400A6CAAA /* 52.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 52.jpg; sourceTree = "<group>"; };
 		57DD5E812B8F23E400A6CAAA /* 46.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 46.jpg; sourceTree = "<group>"; };
+		57E51F2B2B9DE64E0089EDEB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				578723732B9462F50038DA4D /* ProductViewModel.swift */,
+				57E51F2B2B9DE64E0089EDEB /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				578723702B940CF40038DA4D /* SettingButton.swift in Sources */,
 				578723722B945D670038DA4D /* Product.swift in Sources */,
 				57AE194B2B8E1E77008F1033 /* StickerViewController.swift in Sources */,
+				57E51F2C2B9DE64E0089EDEB /* SettingViewModel.swift in Sources */,
 				57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */,
 				57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */,
 				579B0F102B9A05FA00125D83 /* ProductDetailViewController.swift in Sources */,
