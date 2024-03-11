@@ -11,6 +11,7 @@ protocol ProductTableCellDelegate: AnyObject{
     func didTapButton(for CUlink: String?)
 }
 
+
 class ProoductTableViewCell: UITableViewCell {
     
     static let cellId = "ProductTableViewCell"

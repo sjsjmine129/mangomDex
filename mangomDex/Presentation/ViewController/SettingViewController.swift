@@ -162,6 +162,7 @@ private extension SettingViewController{
         
         self.navigationController?.navigationBar.frame.size.height = 50
         self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.barTintColor = .magClothes
     }
     
     func setUI(){
