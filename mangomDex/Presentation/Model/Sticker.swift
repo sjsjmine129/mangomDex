@@ -14,6 +14,7 @@ class Sticker{
     let season: Int
     let name: String
     let color: UIColor
+    var image: UIImage?
     var instaLink: String?
     var kakaoLink: String?
     
@@ -27,6 +28,7 @@ class Sticker{
         self.name = info.name
         self.color = info.color
         self.number = number
+        self.image = UIImage(named: "\(self.id).jpg")
         
         switch id {
         case 1...20 :
@@ -37,8 +39,6 @@ class Sticker{
             season = 0
         }
     }
-    
-    
     
 }
 
