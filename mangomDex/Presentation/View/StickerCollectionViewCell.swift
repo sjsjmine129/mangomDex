@@ -13,10 +13,16 @@ class StickerCollectionViewCell: UICollectionViewCell {
     private var sticker: Sticker?
     
     // MARK: - UI
-    private lazy var containerVw: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        return vw
+    private lazy var vwContainer: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+            btn.addGestureRecognizer(longPressRecognizer)
+        
+        return btn
     }()
     
     private let imgVwsticker: UIImageView = {
@@ -39,34 +45,46 @@ class StickerCollectionViewCell: UICollectionViewCell {
         self.imgVwsticker.image = nil
         
         //delete ui of not seen
-        //        self.containerVw.subviews.forEach {$0.removeFromSuperview()}
+        //        self.vwContainer.subviews.forEach {$0.removeFromSuperview()}
     }
     
     // MARK: - make UI of cell
     func cellConfigure(with item: Sticker){
         
-        self.contentView.addSubview(containerVw)
+        self.contentView.addSubview(vwContainer)
         
         contentView.addSubview(imgVwsticker)
         imgVwsticker.image = item.image
         imgVwsticker.contentMode = .scaleAspectFit
         
-        if item.number == 0 {
+        if item.number == 0 && StickerViewModel.fadeMode {
             imgVwsticker.alpha = 0.5
         }
 
         NSLayoutConstraint.activate([
-            //containerVw
-            containerVw.topAnchor.constraint(equalTo:  self.contentView.topAnchor, constant: 0),
-            containerVw.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant:  0),
-            containerVw.leadingAnchor.constraint(equalTo:  self.contentView.leadingAnchor, constant:0),
-            containerVw.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: 0),
+            //vwContainer
+            vwContainer.topAnchor.constraint(equalTo:  self.contentView.topAnchor, constant: 0),
+            vwContainer.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant:  0),
+            vwContainer.leadingAnchor.constraint(equalTo:  self.contentView.leadingAnchor, constant:0),
+            vwContainer.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: 0),
             //imgVwsticker
-            imgVwsticker.topAnchor.constraint(equalTo:  containerVw.topAnchor, constant: 0),
-            imgVwsticker.bottomAnchor.constraint(equalTo:  containerVw.bottomAnchor, constant:  0),
-            imgVwsticker.leadingAnchor.constraint(equalTo:  containerVw.leadingAnchor, constant: 0),
-            imgVwsticker.trailingAnchor.constraint(equalTo:  containerVw.trailingAnchor, constant: 0),
+            imgVwsticker.topAnchor.constraint(equalTo:  vwContainer.topAnchor, constant: 0),
+            imgVwsticker.bottomAnchor.constraint(equalTo:  vwContainer.bottomAnchor, constant:  0),
+            imgVwsticker.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 0),
+            imgVwsticker.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: 0),
         ])
+    }
+    
+    @objc private func handleTap(_ sender: UIButton) {
+        // Handle regular tap
+        print("Button tapped!")
+    }
+    
+    @objc private func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            // Handle long press
+            print("Long press detected!")
+        }
     }
     
 }

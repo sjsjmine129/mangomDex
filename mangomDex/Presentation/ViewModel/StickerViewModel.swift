@@ -9,6 +9,9 @@ import Foundation
 
 class StickerViewModel{
     
+    static var fadeMode = true
+    static var numberMode = false
+    
     private(set) var stickers: [Sticker] = []
     
     init() {
