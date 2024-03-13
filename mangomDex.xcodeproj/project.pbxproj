@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26FFB2C669177BF2AC1B09AE /* Pods_mangomDex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */; };
 		578723702B940CF40038DA4D /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787236F2B940CF40038DA4D /* SettingButton.swift */; };
 		578723722B945D670038DA4D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723712B945D670038DA4D /* Product.swift */; };
 		578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723732B9462F50038DA4D /* ProductViewModel.swift */; };
@@ -117,6 +118,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A5EB9A9CBC96E60B8A12309 /* Pods-mangomDex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangomDex.debug.xcconfig"; path = "Target Support Files/Pods-mangomDex/Pods-mangomDex.debug.xcconfig"; sourceTree = "<group>"; };
+		1AF91682C44D421378FCB47E /* Pods-mangomDex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangomDex.release.xcconfig"; path = "Target Support Files/Pods-mangomDex/Pods-mangomDex.release.xcconfig"; sourceTree = "<group>"; };
+		3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mangomDex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5787236F2B940CF40038DA4D /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		578723712B945D670038DA4D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		578723732B9462F50038DA4D /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
@@ -233,17 +237,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FFB2C669177BF2AC1B09AE /* Pods_mangomDex.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		206BCFCED18C501377B2B6AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A5EB9A9CBC96E60B8A12309 /* Pods-mangomDex.debug.xcconfig */,
+				1AF91682C44D421378FCB47E /* Pods-mangomDex.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3E6A83E0C579470132AED13C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		57AE19202B8E1374008F1033 = {
 			isa = PBXGroup;
 			children = (
 				57AE192B2B8E1374008F1033 /* mangomDex */,
 				57AE192A2B8E1374008F1033 /* Products */,
+				206BCFCED18C501377B2B6AC /* Pods */,
+				3E6A83E0C579470132AED13C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,8 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				5787236F2B940CF40038DA4D /* SettingButton.swift */,
-				578723752B94644E0038DA4D /* ProoductTableViewCell.swift */,
 				57D3F1452B98AB570044D50A /* ProductButton.swift */,
+				578723752B94644E0038DA4D /* ProoductTableViewCell.swift */,
 				57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */,
 				57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */,
 			);
@@ -473,9 +497,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57AE193D2B8E1376008F1033 /* Build configuration list for PBXNativeTarget "mangomDex" */;
 			buildPhases = (
+				597F683B8B3554B0376FE91A /* [CP] Check Pods Manifest.lock */,
 				57AE19252B8E1374008F1033 /* Sources */,
 				57AE19262B8E1374008F1033 /* Frameworks */,
 				57AE19272B8E1374008F1033 /* Resources */,
+				57E7E169287525159428780C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -619,6 +645,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		57E7E169287525159428780C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mangomDex/Pods-mangomDex-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mangomDex/Pods-mangomDex-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mangomDex/Pods-mangomDex-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		597F683B8B3554B0376FE91A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mangomDex-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		57AE19252B8E1374008F1033 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -684,7 +752,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -747,7 +815,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -768,6 +836,7 @@
 		};
 		57AE193E2B8E1376008F1033 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A5EB9A9CBC96E60B8A12309 /* Pods-mangomDex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -795,6 +864,7 @@
 		};
 		57AE193F2B8E1376008F1033 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AF91682C44D421378FCB47E /* Pods-mangomDex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
