@@ -78,6 +78,14 @@ class StickerViewController: UIViewController {
         
         dd.selectionAction = { [unowned self] (index: Int, item: String) in
             lblDropdownTitle.text = item
+            
+//            self.stickers = stickerViewModel.filteredStickers(condition: <#T##StickerFilter#>)
+            if let filter = StickerFilter(rawValue: item) {
+                self.stickers = stickerViewModel.filteredStickers(condition: filter)
+                gridFlowLayout.collectionView?.reloadData()
+            } else {
+            }
+            
             gridFlowLayout.collectionView?.reloadData()
         }
         
@@ -85,11 +93,13 @@ class StickerViewController: UIViewController {
     }()
     
     private lazy var stickerViewModel = StickerViewModel()
+    lazy var stickers : [Sticker] = []
     
     // MARK - LifeCycle
     override func loadView() {
         super.loadView()
         setNavigationBar()
+        self.stickers = stickerViewModel.filteredStickers(condition: .all)
     }
     
     override func viewDidLoad() {
@@ -127,11 +137,11 @@ class StickerViewController: UIViewController {
 // MARK: - set data of grid
 extension StickerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.stickerViewModel.stickers.count
+        self.stickers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sticker = stickerViewModel.stickers[indexPath.row]
+        let sticker = self.stickers[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
         

@@ -25,6 +25,7 @@
 		57AE195A2B8E2D4E008F1033 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AE19582B8E2D4E008F1033 /* left.png */; };
 		57AE195B2B8E2D4E008F1033 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AE19592B8E2D4E008F1033 /* right.png */; };
 		57AE195D2B8E2F8F008F1033 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AE195C2B8E2F8F008F1033 /* title.png */; };
+		57AECEDC2BA16FFD00C2D99B /* StickerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AECEDB2BA16FFD00C2D99B /* StickerFilter.swift */; };
 		57C780E82B90D0E500C00317 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C780E72B90D0E500C00317 /* icon.png */; };
 		57C780EA2B921A9F00C00317 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */; };
 		57C780EC2B934C2D00C00317 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */; };
@@ -140,6 +141,7 @@
 		57AE19582B8E2D4E008F1033 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		57AE19592B8E2D4E008F1033 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		57AE195C2B8E2F8F008F1033 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		57AECEDB2BA16FFD00C2D99B /* StickerFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerFilter.swift; sourceTree = "<group>"; };
 		57C780E72B90D0E500C00317 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				578723712B945D670038DA4D /* Product.swift */,
 				57E51F2D2B9DECF00089EDEB /* Sticker.swift */,
+				57AECEDB2BA16FFD00C2D99B /* StickerFilter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */,
 				57E51F302B9E8CA70089EDEB /* StickerViewModel.swift in Sources */,
 				57E51F322B9E8EF40089EDEB /* StickerCollectionViewCell.swift in Sources */,
+				57AECEDC2BA16FFD00C2D99B /* StickerFilter.swift in Sources */,
 				57E51F2E2B9DECF00089EDEB /* Sticker.swift in Sources */,
 				57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */,
 				579B0F102B9A05FA00125D83 /* ProductDetailViewController.swift in Sources */,
