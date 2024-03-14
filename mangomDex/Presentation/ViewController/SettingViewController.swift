@@ -68,10 +68,10 @@ class SettingViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 0
-
+        
         return stackView
     }()
-
+    
     private lazy var btnBug = SettingButton(title: "버그 신고 및 문의", action: #selector(openKakaoInquire) )
     private lazy var btnInsta = SettingButton(title: "망그러진 곰 인스타 바로가기", action: #selector(openInstagram) )
     private lazy var btnFadeStyle = SettingButton(title: "모으지 않은 띠부씰 흐리게 표시", action: #selector(test) )
@@ -94,6 +94,8 @@ class SettingViewController: UIViewController {
         sw.onTintColor = UIColor(resource: .magBody)
         let scale = CGAffineTransform(scaleX: 0.8, y: 0.8)
         sw.transform = scale
+        sw.addTarget(self, action: #selector(fadeSwitchValueChanged(_:)), for: .valueChanged)
+        
         return sw
     }()
     
@@ -103,6 +105,8 @@ class SettingViewController: UIViewController {
         sw.onTintColor = UIColor(resource: .magBody)
         let scale = CGAffineTransform(scaleX: 0.8, y: 0.8)
         sw.transform = scale
+        sw.addTarget(self, action: #selector(numSwitchValueChanged(_:)), for: .valueChanged)
+        
         return sw
     }()
     
@@ -113,7 +117,7 @@ class SettingViewController: UIViewController {
         stackView.alignment = .center
         stackView.spacing = 0
         stackView.distribution = .equalCentering
-
+        
         return stackView
     }()
     
@@ -124,23 +128,23 @@ class SettingViewController: UIViewController {
         stackView.alignment = .center
         stackView.spacing = 0
         stackView.distribution = .equalCentering
-
+        
         return stackView
     }()
-
+    
     
     // MARK - LifeCycle
     override func loadView() {
         super.loadView()
         setNavigationBar()
-        setUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(resource: .magClothes)
-        // Do any additional setup after loading the view.
+        
+        setUI()
     }
     
 }
@@ -186,6 +190,11 @@ private extension SettingViewController{
         stButtonSwitchNum.addArrangedSubview(switchNum)
         
         stSettingButtons.addArrangedSubview(btnReset)
+        
+        let setting = settingViewModel.checkSetting()
+        switchFade.isOn = setting.fadeMode
+        switchNum.isOn = setting.numMode
+        
         
         NSLayoutConstraint.activate([
             //VwPad
@@ -236,6 +245,14 @@ private extension SettingViewController{
     
     @objc func openKakaoInquire(_ button:UIButton){
         settingViewModel.openKakaoInquire()
+    }
+    
+    @objc func fadeSwitchValueChanged(_ sender: UISwitch) {
+        settingViewModel.fadeSwitchValueChanged(sender: sender)
+    }
+    
+    @objc func numSwitchValueChanged(_ sender: UISwitch) {
+        settingViewModel.numSwitchValueChanged(sender: sender)
     }
 }
 
