@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class StickerViewController: UIViewController {
     
@@ -13,7 +14,7 @@ class StickerViewController: UIViewController {
         let layout = GridCollectionViewFlowLayout()
         layout.cellSpacing = 4
         layout.numberOfColumns = 4
-        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0) 
+        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         return layout
     }()
     
@@ -30,12 +31,75 @@ class StickerViewController: UIViewController {
         return view
     }()
     
+    private let lblDropdownTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "HUDdiu150", size: 15)
+        label.textColor = UIColor(resource: .textBlack)
+        return label
+    }()
+    
+    private let imgVwDropDown: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var btnDropdown: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addSubview(lblDropdownTitle)
+        btn.addSubview(imgVwDropDown)
+        
+        if let image = UIImage(systemName: "chevron.down")?.withTintColor(.textBlack, renderingMode: .alwaysOriginal) {
+            imgVwDropDown.image = image
+        }
+        
+        lblDropdownTitle.text = "전체 보기"
+        
+        btn.addTarget(self, action: #selector(showDropdown), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    private lazy var ddFilter = {
+        var dd = DropDown()
+        
+        dd.dataSource = ["전체 보기", "모은 띠부씰", "없는 띠부씰", "띠부씰 시즌1", "띠부씰 시즌2"]
+        dd.anchorView = btnDropdown
+        dd.textFont = UIFont(name: "HUDdiu150", size: 15) ?? UIFont.systemFont(ofSize: 15)
+        dd.backgroundColor = .magBody
+        dd.selectionBackgroundColor = .magMouth
+        DropDown.startListeningToKeyboard()
+        dd.cornerRadius = 5
+        dd.bottomOffset = CGPoint(x: -5, y: 45)
+        dd.selectRow(at: 0)
+        dd.cellHeight = 35
+        
+        dd.selectionAction = { [unowned self] (index: Int, item: String) in
+            lblDropdownTitle.text = item
+            
+//            self.stickers = stickerViewModel.filteredStickers(condition: <#T##StickerFilter#>)
+            if let filter = StickerFilter(rawValue: item) {
+                self.stickers = stickerViewModel.filteredStickers(condition: filter)
+                gridFlowLayout.collectionView?.reloadData()
+            } else {
+            }
+            
+            gridFlowLayout.collectionView?.reloadData()
+        }
+        
+        return dd
+    }()
+    
     private lazy var stickerViewModel = StickerViewModel()
+    lazy var stickers : [Sticker] = []
     
     // MARK - LifeCycle
     override func loadView() {
         super.loadView()
         setNavigationBar()
+        self.stickers = stickerViewModel.filteredStickers(condition: .all)
     }
     
     override func viewDidLoad() {
@@ -51,6 +115,16 @@ class StickerViewController: UIViewController {
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            //lblDropdownTitle
+            lblDropdownTitle.trailingAnchor.constraint(equalTo: btnDropdown.trailingAnchor),
+            lblDropdownTitle.bottomAnchor.constraint(equalTo: btnDropdown.bottomAnchor),
+            //imgVwDropDown
+            imgVwDropDown.trailingAnchor.constraint(equalTo: lblDropdownTitle.leadingAnchor, constant: -5),
+            imgVwDropDown.bottomAnchor.constraint(equalTo: btnDropdown.bottomAnchor),
+            imgVwDropDown.leadingAnchor.constraint(equalTo: btnDropdown.leadingAnchor, constant: 0),
+            imgVwDropDown.heightAnchor.constraint(equalToConstant: 15),
+            imgVwDropDown.widthAnchor.constraint(equalToConstant: 15)
+            
         ])
         
         self.collectionView.dataSource = self
@@ -63,10 +137,11 @@ class StickerViewController: UIViewController {
 // MARK: - set data of grid
 extension StickerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.stickerViewModel.stickers.count
+        self.stickers.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sticker = stickerViewModel.stickers[indexPath.row]
+        let sticker = self.stickers[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
         
@@ -102,13 +177,20 @@ private extension StickerViewController{
         title.font = UIFont(name: "HUDdiu150", size: 25)
         title.textColor = UIColor(resource: .textBlack )
         
-        let barButton = UIBarButtonItem(customView: title)
+        let leftBarBtn = UIBarButtonItem(customView: title)
+        let rightBarBtn = UIBarButtonItem(customView: btnDropdown)
         
-        navigationItem.leftBarButtonItem = barButton
+        navigationItem.leftBarButtonItem = leftBarBtn
+        navigationItem.rightBarButtonItem = rightBarBtn
         
         self.navigationController?.navigationBar.frame.size.height = 50
         self.navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.navigationBar.barTintColor = .magClothes
-        
+    }
+}
+
+extension StickerViewController{
+    @objc func showDropdown(){
+        ddFilter.show()
     }
 }
