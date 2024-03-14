@@ -8,7 +8,7 @@
 import Foundation
 
 class StickerViewModel{
-    
+
     static var fadeMode = true
     static var numberMode = false
     
@@ -18,7 +18,6 @@ class StickerViewModel{
         for i in 1...73{
             stickers.append(Sticker(id: i))
         }
-        
     }
     
     func filteredStickers(condition:StickerFilter)->[Sticker]{
