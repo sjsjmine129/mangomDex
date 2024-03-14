@@ -21,4 +21,30 @@ class StickerViewModel{
         
     }
     
+    func filteredStickers(condition:StickerFilter)->[Sticker]{
+        var retStickers: [Sticker] = []
+        
+        switch condition{
+        case .all :
+            return stickers
+        case .collected:
+            for i in stickers{
+                if i.number > 0 {
+                    retStickers.append(i)
+                }
+            }
+        case .noncollected:
+            for i in stickers{
+                if i.number == 0 {
+                    retStickers.append(i)
+                }
+            }
+        case .season1:
+            retStickers = Array(stickers[0...19])
+        case .season2:
+            retStickers = Array(stickers[20...72])
+        }
+        return retStickers
+    }
+    
 }
