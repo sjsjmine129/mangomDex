@@ -78,13 +78,20 @@ class StickerViewController: UIViewController {
         dd.selectRow(at: 0)
         dd.cellHeight = 35
         
+        // when select lisr
         dd.selectionAction = { [unowned self] (index: Int, item: String) in
             lblDropdownTitle.text = item
             
             if let filter = StickerFilter(rawValue: item) {
                 self.stickers = stickerViewModel.filteredStickers(condition: filter)
                 gridFlowLayout.collectionView?.reloadData()
+                
+                self.changeImgVwDropDown(name: "chevron.down")
             } else {}
+        }
+        
+        dd.cancelAction = { [weak self] in
+            self?.changeImgVwDropDown(name: "chevron.down")
         }
         
         return dd
@@ -191,11 +198,21 @@ private extension StickerViewController{
     }
 }
 
+// MARK: - otherFunc
+extension StickerViewController{
+    func changeImgVwDropDown(name: String){
+        if let image = UIImage(systemName: name)?.withTintColor(.textBlack, renderingMode: .alwaysOriginal) {
+            self.imgVwDropDown.image = image
+        }
+    }
+}
+
 // MARK: - objc
 extension StickerViewController{
     // show DropDown
     @objc func showDropdown(){
         ddFilter.show()
+        changeImgVwDropDown(name: "chevron.up")
     }
 
     //reload grid
