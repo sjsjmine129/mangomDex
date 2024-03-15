@@ -8,9 +8,8 @@
 import Foundation
 
 class StickerViewModel{
-
-    static var fadeMode = true
-    static var numberMode = false
+    
+    let defaults = UserDefaults.standard
     
     private(set) var stickers: [Sticker] = []
     
@@ -20,6 +19,7 @@ class StickerViewModel{
         }
     }
     
+    // function taht filter sticker
     func filteredStickers(condition:StickerFilter)->[Sticker]{
         var retStickers: [Sticker] = []
         
@@ -44,6 +44,30 @@ class StickerViewModel{
             retStickers = Array(stickers[20...72])
         }
         return retStickers
+    }
+    
+    // function check settings
+    func checkSetting() -> (fadeMode: Bool, numMode: Bool){
+        let fadeStyle = defaults.object(forKey: "fadeStyle")
+        var fade = false
+        let numStyle = defaults.object(forKey: "numStyle")
+        var num = false
+        
+        if fadeStyle == nil {
+            defaults.set(true, forKey: "fadeStyle")
+            fade = true
+        }
+        else{
+            if let temp = fadeStyle, temp as! Bool == true{
+                fade = true
+            }
+        }
+        
+        if let temp = numStyle, temp as! Bool == true{
+            num = true
+        }
+        
+        return (fade, num)
     }
     
 }

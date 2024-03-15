@@ -74,7 +74,7 @@ class SettingViewController: UIViewController {
     
     private lazy var btnBug = SettingButton(title: "버그 신고 및 문의", action: #selector(openKakaoInquire) )
     private lazy var btnInsta = SettingButton(title: "망그러진 곰 인스타 바로가기", action: #selector(openInstagram) )
-    private lazy var btnFadeStyle = SettingButton(title: "모으지 않은 띠부씰 흐리게 표시", action: #selector(test) )
+    private lazy var btnFadeStyle = SettingButton(title: "없는 띠부씰 흐리게 표시", action: #selector(test) )
     private lazy var btnCollecNum = SettingButton(title: "모은 개수 표시하기", action: #selector(test) )
     private lazy var btnReset = SettingButton(title: "수집 정보 초기화", action: #selector(test) )
     
@@ -150,8 +150,9 @@ class SettingViewController: UIViewController {
 }
 
 
-// init page
+// MARK: - init page
 private extension SettingViewController{
+    
     //set navigation Bar UI of setting tab
     func setNavigationBar(){
         
@@ -234,6 +235,7 @@ private extension SettingViewController{
     }
 }
 
+// MARK: - objc
 private extension SettingViewController{
     @objc func test(_ button: UIButton){
         print("### \(button.titleLabel?.text!)")
@@ -249,10 +251,12 @@ private extension SettingViewController{
     
     @objc func fadeSwitchValueChanged(_ sender: UISwitch) {
         settingViewModel.fadeSwitchValueChanged(sender: sender)
+        settingViewModel.triggerReload()
     }
     
     @objc func numSwitchValueChanged(_ sender: UISwitch) {
         settingViewModel.numSwitchValueChanged(sender: sender)
+        settingViewModel.triggerReload()
     }
 }
 

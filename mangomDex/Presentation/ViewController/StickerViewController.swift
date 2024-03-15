@@ -8,8 +8,10 @@
 import UIKit
 import DropDown
 
+
 class StickerViewController: UIViewController {
     
+    // MARK: - UI component
     private let gridFlowLayout: GridCollectionViewFlowLayout = {
         let layout = GridCollectionViewFlowLayout()
         layout.cellSpacing = 4
@@ -79,14 +81,10 @@ class StickerViewController: UIViewController {
         dd.selectionAction = { [unowned self] (index: Int, item: String) in
             lblDropdownTitle.text = item
             
-//            self.stickers = stickerViewModel.filteredStickers(condition: <#T##StickerFilter#>)
             if let filter = StickerFilter(rawValue: item) {
                 self.stickers = stickerViewModel.filteredStickers(condition: filter)
                 gridFlowLayout.collectionView?.reloadData()
-            } else {
-            }
-            
-            gridFlowLayout.collectionView?.reloadData()
+            } else {}
         }
         
         return dd
@@ -98,6 +96,8 @@ class StickerViewController: UIViewController {
     // MARK - LifeCycle
     override func loadView() {
         super.loadView()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
+        
         setNavigationBar()
         self.stickers = stickerViewModel.filteredStickers(condition: .all)
     }
@@ -145,7 +145,9 @@ extension StickerViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
         
-        cell.cellConfigure(with: sticker)
+        let setting = stickerViewModel.checkSetting()
+        
+        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode)
         
         return cell
     }
@@ -189,8 +191,17 @@ private extension StickerViewController{
     }
 }
 
+// MARK: - objc
 extension StickerViewController{
+    // show DropDown
     @objc func showDropdown(){
         ddFilter.show()
     }
+
+    //reload grid
+    @objc func reloadDataInGridFlowLayout() {
+        gridFlowLayout.collectionView?.reloadData()
+    }
 }
+
+
