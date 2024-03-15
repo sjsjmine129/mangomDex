@@ -69,4 +69,9 @@ class SettingViewModel{
             defaults.set(false, forKey: "numStyle")
         }
     }
+    
+    // reload Sticker Grid
+    func triggerReload() {
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
+     }
 }

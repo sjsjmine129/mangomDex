@@ -25,11 +25,19 @@ class StickerCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
-    private let imgVwsticker: UIImageView = {
+    private var imgVwsticker: UIImageView = {
         let vw = UIImageView()
         vw.contentMode = .scaleAspectFill
         vw.translatesAutoresizingMaskIntoConstraints = false
         return vw
+    }()
+    
+    private var lblCollectNum: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "HUDdiu150", size: 15)
+        label.textColor = UIColor(resource: .textBlack)
+        return label
     }()
     
     // MARK: - Life Cycle
@@ -40,27 +48,35 @@ class StickerCollectionViewCell: UICollectionViewCell {
     //code for when cell is not seen reset the state
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        // remove data
-        self.imgVwsticker.image = nil
-        
-        //delete ui of not seen
-        //        self.vwContainer.subviews.forEach {$0.removeFromSuperview()}
+
+        self.vwContainer.subviews.forEach {$0.removeFromSuperview()}
     }
     
     // MARK: - make UI of cell
-    func cellConfigure(with item: Sticker){
+    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool){
         
         self.contentView.addSubview(vwContainer)
         
         contentView.addSubview(imgVwsticker)
+        contentView.addSubview(lblCollectNum)
+        
         imgVwsticker.image = item.image
         imgVwsticker.contentMode = .scaleAspectFit
         
-        if item.number == 0 && StickerViewModel.fadeMode {
-            imgVwsticker.alpha = 0.5
+        if numSetting {
+            lblCollectNum.text = "\(item.number)"
+            lblCollectNum.isHidden = false
+        }else{
+            lblCollectNum.isHidden = true
         }
-
+        
+        
+        if item.number == 0 && fadeSetting {
+            imgVwsticker.alpha = 0.5
+        }else{
+            imgVwsticker.alpha = 0.9
+        }
+        
         NSLayoutConstraint.activate([
             //vwContainer
             vwContainer.topAnchor.constraint(equalTo:  self.contentView.topAnchor, constant: 0),
@@ -72,6 +88,9 @@ class StickerCollectionViewCell: UICollectionViewCell {
             imgVwsticker.bottomAnchor.constraint(equalTo:  vwContainer.bottomAnchor, constant:  0),
             imgVwsticker.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 0),
             imgVwsticker.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: 0),
+            //lblCollectNum
+            lblCollectNum.bottomAnchor.constraint(equalTo:  vwContainer.bottomAnchor, constant: -2),
+            lblCollectNum.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 6),
         ])
     }
     

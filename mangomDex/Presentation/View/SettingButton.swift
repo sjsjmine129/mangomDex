@@ -22,7 +22,7 @@ class SettingButton: UIButton{
         
         configuration.attributedTitle = AttributedString(title, attributes: titleContainer)
         //configuration.background.backgroundColor = .gray
-        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 8, leading: 12, bottom: 8, trailing: 12)
+        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 12, bottom: 10, trailing: 12)
         
         self.configuration = configuration
         self.addTarget(nil, action: action, for: .touchUpInside)
