@@ -74,7 +74,6 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
     @objc private func handleTap(_ sender: UIButton) {
         // Handle regular tap
-        print("Button tapped!")
         BtnAction.btnActionSize(button: sender)
     }
     
