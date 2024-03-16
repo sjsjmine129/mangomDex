@@ -117,6 +117,8 @@
 		57E51F322B9E8EF40089EDEB /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */; };
 		57E51F342B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */; };
 		57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6816D2BA51CB800FE63C6 /* BtnAction.swift */; };
+		57F681712BA5AB5400FE63C6 /* falling.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F6816F2BA5AB5400FE63C6 /* falling.png */; };
+		57F681742BA5B16300FE63C6 /* all.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F681732BA5B16300FE63C6 /* all.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -234,6 +236,8 @@
 		57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		57F6816D2BA51CB800FE63C6 /* BtnAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnAction.swift; sourceTree = "<group>"; };
+		57F6816F2BA5AB5400FE63C6 /* falling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = falling.png; sourceTree = "<group>"; };
+		57F681732BA5B16300FE63C6 /* all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,7 +387,9 @@
 		57AE19572B8E2D28008F1033 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				57F681732BA5B16300FE63C6 /* all.png */,
 				57C780E72B90D0E500C00317 /* icon.png */,
+				57F6816F2BA5AB5400FE63C6 /* falling.png */,
 				57D3F1302B95AAE00044D50A /* Product */,
 				57DD5E382B8F23E400A6CAAA /* StickerImg */,
 				57DD5ECD2B8F2AF600A6CAAA /* LaunchImg */,
@@ -607,10 +613,12 @@
 				57DD5EC32B8F23E400A6CAAA /* 45.jpg in Resources */,
 				57DD5E872B8F23E400A6CAAA /* 61.jpg in Resources */,
 				57DD5EC52B8F23E400A6CAAA /* 51.jpg in Resources */,
+				57F681742BA5B16300FE63C6 /* all.png in Resources */,
 				57DD5EA62B8F23E400A6CAAA /* 23.jpg in Resources */,
 				57DD5EBB2B8F23E400A6CAAA /* 69.jpg in Resources */,
 				57DD5EB12B8F23E400A6CAAA /* 19.jpg in Resources */,
 				57DD5EC62B8F23E400A6CAAA /* 47.jpg in Resources */,
+				57F681712BA5AB5400FE63C6 /* falling.png in Resources */,
 				57DD5E8A2B8F23E400A6CAAA /* 65.jpg in Resources */,
 				57DD5E842B8F23E400A6CAAA /* 60.jpg in Resources */,
 				57DD5E962B8F23E400A6CAAA /* 29.jpg in Resources */,

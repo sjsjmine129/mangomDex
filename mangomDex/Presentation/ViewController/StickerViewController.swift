@@ -97,6 +97,23 @@ class StickerViewController: UIViewController {
         return dd
     }()
     
+    private lazy var imgVwNoSticker: UIImageView = {
+        var imgVw = UIImageView()
+        imgVw.translatesAutoresizingMaskIntoConstraints = false
+        imgVw.contentMode = .scaleAspectFit
+        return imgVw
+    }()
+    
+    private lazy var lblNoSticker: UILabel = {
+        var lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = UIFont(name: "HUDdiu150", size: 20)
+        lbl.textColor = UIColor(resource: .textBlack)
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    
     private lazy var stickerViewModel = StickerViewModel()
     lazy var stickers : [Sticker] = []
     
@@ -115,6 +132,8 @@ class StickerViewController: UIViewController {
         self.view.backgroundColor = UIColor(resource: .magClothes)
         
         self.view.addSubview(self.collectionView)
+        self.view.addSubview(imgVwNoSticker)
+        self.view.addSubview(lblNoSticker)
         
         NSLayoutConstraint.activate([
             //collectionView
@@ -130,8 +149,14 @@ class StickerViewController: UIViewController {
             imgVwDropDown.bottomAnchor.constraint(equalTo: btnDropdown.bottomAnchor),
             imgVwDropDown.leadingAnchor.constraint(equalTo: btnDropdown.leadingAnchor, constant: 0),
             imgVwDropDown.heightAnchor.constraint(equalToConstant: 15),
-            imgVwDropDown.widthAnchor.constraint(equalToConstant: 15)
-            
+            imgVwDropDown.widthAnchor.constraint(equalToConstant: 15),
+            //imgVwNoSticker
+            imgVwNoSticker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            imgVwNoSticker.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            imgVwNoSticker.widthAnchor.constraint(equalToConstant: 200),
+            //lblNoSticker
+            lblNoSticker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            lblNoSticker.topAnchor.constraint(equalTo: imgVwNoSticker.bottomAnchor, constant: 20),
         ])
         
         self.collectionView.dataSource = self
@@ -144,7 +169,25 @@ class StickerViewController: UIViewController {
 // MARK: - set data of grid
 extension StickerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.stickers.count
+        // show img
+        if self.stickers.count == 0 {
+            lblNoSticker.isHidden = false
+            imgVwNoSticker.isHidden = false
+            
+            if lblDropdownTitle.text == "모은 띠부씰"{
+                imgVwNoSticker.image = UIImage(named: "falling.png")
+                lblNoSticker.text = "아직 수집한 띠부씰이 없어요."
+                
+            }else if lblDropdownTitle.text == "없는 띠부씰"{
+                imgVwNoSticker.image = UIImage(named: "all.png")
+                lblNoSticker.text = "모든 띠부씰을 다 모았어요!"
+            }
+        }else{
+            lblNoSticker.isHidden = true
+            imgVwNoSticker.isHidden = true
+        }
+        
+        return self.stickers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

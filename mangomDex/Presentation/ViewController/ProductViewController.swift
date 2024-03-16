@@ -89,8 +89,6 @@ extension ProductViewController: UITableViewDataSource{
 
 extension ProductViewController: ProductTableCellDelegate{
     func didTapButton(for CUlink: String?) {
-        print(CUlink ?? "none")
-        
         if let navigationController = self.navigationController {
             let nextPage = ProductDetailViewController()
             nextPage.CUlinkData = CUlink
