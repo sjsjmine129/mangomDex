@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol StickerGirdCellDelegate: AnyObject{
+    func didTapSticker(for index: Int?)
+}
+
 class StickerCollectionViewCell: UICollectionViewCell {
     static let id = "StickerCollectionViewCell"
     
@@ -31,18 +35,22 @@ class StickerCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private weak var delegate: StickerGirdCellDelegate?
+    
     // MARK: - Life Cycle
     override func layoutSubviews() {
         super.layoutSubviews()
     }
     
     // MARK: - make UI of cell
-    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool){
+    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate){
+        self.delegate = delegate
         
         self.contentView.addSubview(btnSticker)
         
         contentView.addSubview(lblCollectNum)
         
+        btnSticker.tag = index
         btnSticker.setImage(item.image, for: .normal)
         btnSticker.imageView?.contentMode = .scaleAspectFit
         
@@ -75,6 +83,7 @@ class StickerCollectionViewCell: UICollectionViewCell {
     @objc private func handleTap(_ sender: UIButton) {
         // Handle regular tap
         BtnAction.btnActionSize(button: sender)
+        delegate?.didTapSticker(for: sender.tag)
     }
     
     @objc private func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {

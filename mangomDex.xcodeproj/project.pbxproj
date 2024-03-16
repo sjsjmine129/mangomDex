@@ -116,6 +116,9 @@
 		57E51F302B9E8CA70089EDEB /* StickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F2F2B9E8CA70089EDEB /* StickerViewModel.swift */; };
 		57E51F322B9E8EF40089EDEB /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */; };
 		57E51F342B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */; };
+		57E97F2C2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E97F2B2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift */; };
+		57E97F2E2BA5DD5C009CBEEB /* StickerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E97F2D2BA5DD5C009CBEEB /* StickerDetailViewController.swift */; };
+		57E97F302BA5EB65009CBEEB /* Helvetica Bold Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57E97F2F2BA5EB65009CBEEB /* Helvetica Bold Condensed.otf */; };
 		57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6816D2BA51CB800FE63C6 /* BtnAction.swift */; };
 		57F681712BA5AB5400FE63C6 /* falling.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F6816F2BA5AB5400FE63C6 /* falling.png */; };
 		57F681742BA5B16300FE63C6 /* all.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F681732BA5B16300FE63C6 /* all.png */; };
@@ -235,6 +238,9 @@
 		57E51F2F2B9E8CA70089EDEB /* StickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerViewModel.swift; sourceTree = "<group>"; };
 		57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		57E97F2B2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		57E97F2D2BA5DD5C009CBEEB /* StickerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerDetailViewController.swift; sourceTree = "<group>"; };
+		57E97F2F2BA5EB65009CBEEB /* Helvetica Bold Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Bold Condensed.otf"; sourceTree = "<group>"; };
 		57F6816D2BA51CB800FE63C6 /* BtnAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnAction.swift; sourceTree = "<group>"; };
 		57F6816F2BA5AB5400FE63C6 /* falling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = falling.png; sourceTree = "<group>"; };
 		57F681732BA5B16300FE63C6 /* all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all.png; sourceTree = "<group>"; };
@@ -333,11 +339,12 @@
 		57AE19452B8E16D0008F1033 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				57AE19482B8E1CA9008F1033 /* MainTabBarControllerViewController.swift */,
+				57AE194C2B8E2369008F1033 /* SettingViewController.swift */,
 				57AE19302B8E1374008F1033 /* ProductViewController.swift */,
 				579B0F0F2B9A05FA00125D83 /* ProductDetailViewController.swift */,
 				57AE194A2B8E1E77008F1033 /* StickerViewController.swift */,
-				57AE194C2B8E2369008F1033 /* SettingViewController.swift */,
-				57AE19482B8E1CA9008F1033 /* MainTabBarControllerViewController.swift */,
+				57E97F2D2BA5DD5C009CBEEB /* StickerDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -359,6 +366,7 @@
 				57D3F1452B98AB570044D50A /* ProductButton.swift */,
 				578723752B94644E0038DA4D /* ProoductTableViewCell.swift */,
 				57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */,
+				57E97F2B2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift */,
 				57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */,
 				57F6816D2BA51CB800FE63C6 /* BtnAction.swift */,
 			);
@@ -371,6 +379,7 @@
 				57AE19522B8E270E008F1033 /* HUDdiu150.otf */,
 				57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */,
 				57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */,
+				57E97F2F2BA5EB65009CBEEB /* Helvetica Bold Condensed.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -639,6 +648,7 @@
 				57D3F1442B986FF20044D50A /* 망곰이의딸기샌드.jpeg in Resources */,
 				57DD5EBA2B8F23E400A6CAAA /* 41.jpg in Resources */,
 				57DD5EB82B8F23E400A6CAAA /* 55.jpg in Resources */,
+				57E97F302BA5EB65009CBEEB /* Helvetica Bold Condensed.otf in Resources */,
 				57DD5EBD2B8F23E400A6CAAA /* 40.jpg in Resources */,
 				57DD5EAE2B8F23E400A6CAAA /* 30.jpg in Resources */,
 				57DD5E902B8F23E400A6CAAA /* 72.jpg in Resources */,
@@ -720,9 +730,11 @@
 				579B0F102B9A05FA00125D83 /* ProductDetailViewController.swift in Sources */,
 				578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */,
 				57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */,
+				57E97F2C2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift in Sources */,
 				57AE192F2B8E1374008F1033 /* SceneDelegate.swift in Sources */,
 				578723762B94644E0038DA4D /* ProoductTableViewCell.swift in Sources */,
 				57E51F342B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift in Sources */,
+				57E97F2E2BA5DD5C009CBEEB /* StickerDetailViewController.swift in Sources */,
 				57AE19492B8E1CA9008F1033 /* MainTabBarControllerViewController.swift in Sources */,
 				57AE194D2B8E2369008F1033 /* SettingViewController.swift in Sources */,
 			);

@@ -127,7 +127,7 @@ class StickerViewController: UIViewController {
     private lazy var stickerViewModel = StickerViewModel()
     lazy var stickers : [Sticker] = []
     
-    // MARK - LifeCycle
+    // MARK: - LifeCycle
     override func loadView() {
         super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
@@ -208,7 +208,7 @@ extension StickerViewController: UICollectionViewDataSource {
         
         let setting = stickerViewModel.checkSetting()
         
-        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode)
+        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode, index: indexPath.row, delegate: self )
         
         return cell
     }
@@ -277,3 +277,12 @@ extension StickerViewController{
 }
 
 
+// MARK: - delegation
+extension StickerViewController: StickerGirdCellDelegate{
+    func didTapSticker(for index: Int?) {
+        if let navigationController = self.navigationController {
+            let nextPage = StickerDetailViewController(viewModel: self.stickerViewModel, index: index ?? 0, stickers: self.stickers)
+            navigationController.pushViewController(nextPage, animated: true)
+        }
+    }
+}
