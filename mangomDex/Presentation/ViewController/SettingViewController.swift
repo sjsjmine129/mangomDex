@@ -239,13 +239,16 @@ private extension SettingViewController{
 private extension SettingViewController{
     @objc func test(_ button: UIButton){
         print("### \(button.titleLabel?.text!)")
+        BtnAction.btnActionAll(button: button)
     }
     
     @objc func openInstagram(_ button:UIButton){
+        BtnAction.btnActionAll(button: button)
         settingViewModel.openInstagram()
     }
     
     @objc func openKakaoInquire(_ button:UIButton){
+        BtnAction.btnActionAll(button: button)
         settingViewModel.openKakaoInquire()
     }
     
@@ -258,6 +261,7 @@ private extension SettingViewController{
         settingViewModel.numSwitchValueChanged(sender: sender)
         settingViewModel.triggerReload()
     }
+    
 }
 
 

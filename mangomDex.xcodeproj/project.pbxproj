@@ -116,6 +116,7 @@
 		57E51F302B9E8CA70089EDEB /* StickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F2F2B9E8CA70089EDEB /* StickerViewModel.swift */; };
 		57E51F322B9E8EF40089EDEB /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */; };
 		57E51F342B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */; };
+		57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6816D2BA51CB800FE63C6 /* BtnAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -232,6 +233,7 @@
 		57E51F2F2B9E8CA70089EDEB /* StickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerViewModel.swift; sourceTree = "<group>"; };
 		57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		57F6816D2BA51CB800FE63C6 /* BtnAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				578723752B94644E0038DA4D /* ProoductTableViewCell.swift */,
 				57E51F312B9E8EF40089EDEB /* StickerCollectionViewCell.swift */,
 				57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */,
+				57F6816D2BA51CB800FE63C6 /* BtnAction.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				578723702B940CF40038DA4D /* SettingButton.swift in Sources */,
+				57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */,
 				578723722B945D670038DA4D /* Product.swift in Sources */,
 				57AE194B2B8E1E77008F1033 /* StickerViewController.swift in Sources */,
 				57E51F2C2B9DE64E0089EDEB /* SettingViewModel.swift in Sources */,
