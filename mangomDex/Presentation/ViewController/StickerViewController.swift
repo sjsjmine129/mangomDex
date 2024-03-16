@@ -78,7 +78,6 @@ class StickerViewController: UIViewController {
         dd.selectRow(at: 0)
         dd.cellHeight = 35
         
-        // when select lisr
         dd.selectionAction = { [unowned self] (index: Int, item: String) in
             lblDropdownTitle.text = item
             
@@ -95,6 +94,17 @@ class StickerViewController: UIViewController {
         }
         
         return dd
+    }()
+    
+    private lazy var stNoSticker: UIStackView = {
+        let stackView = UIStackView()
+        //stackView.backgroundColor = .blue
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 10
+        
+        return stackView
     }()
     
     private lazy var imgVwNoSticker: UIImageView = {
@@ -132,8 +142,11 @@ class StickerViewController: UIViewController {
         self.view.backgroundColor = UIColor(resource: .magClothes)
         
         self.view.addSubview(self.collectionView)
-        self.view.addSubview(imgVwNoSticker)
-        self.view.addSubview(lblNoSticker)
+        
+        self.view.addSubview(stNoSticker)
+        
+        stNoSticker.addArrangedSubview(imgVwNoSticker)
+        stNoSticker.addArrangedSubview(lblNoSticker)
         
         NSLayoutConstraint.activate([
             //collectionView
@@ -151,12 +164,10 @@ class StickerViewController: UIViewController {
             imgVwDropDown.heightAnchor.constraint(equalToConstant: 15),
             imgVwDropDown.widthAnchor.constraint(equalToConstant: 15),
             //imgVwNoSticker
-            imgVwNoSticker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            imgVwNoSticker.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             imgVwNoSticker.widthAnchor.constraint(equalToConstant: 200),
-            //lblNoSticker
-            lblNoSticker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            lblNoSticker.topAnchor.constraint(equalTo: imgVwNoSticker.bottomAnchor, constant: 20),
+            //stNoSticker
+            stNoSticker.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            stNoSticker.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor,constant: -20),
         ])
         
         self.collectionView.dataSource = self
