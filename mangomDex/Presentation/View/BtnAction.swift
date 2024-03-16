@@ -31,6 +31,18 @@ class BtnAction{
         button.layer.add(pulse, forKey: nil)
     }
     
+    static func btnActionFlash(button: UIButton) {
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 0.1
+        flash.fromValue = 0.8
+        flash.toValue = 0.5
+        flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = 1
+        
+        button.layer.add(flash, forKey: nil)
+    }
+    
     static func btnActionSize(button: UIButton) {
         let pulse = CASpringAnimation(keyPath: "transform.scale")
         pulse.duration = 0.1
