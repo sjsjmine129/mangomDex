@@ -210,7 +210,8 @@ extension StickerViewController{
 // MARK: - objc
 extension StickerViewController{
     // show DropDown
-    @objc func showDropdown(){
+    @objc func showDropdown(_ sender: UIButton){
+        BtnAction.btnActionSize(button: sender)
         ddFilter.show()
         changeImgVwDropDown(name: "chevron.up")
     }

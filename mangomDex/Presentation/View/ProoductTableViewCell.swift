@@ -143,8 +143,8 @@ class ProoductTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .magClothes
         self.contentView.addSubview(containerVw)
         
-        btnProductFind.addTarget(self, action: #selector(didTapFind), for: .touchUpInside)
-        btnProductDetail.addTarget(self, action: #selector(didTapDetail), for: .touchUpInside)
+        btnProductFind.addTarget(self, action: #selector(didTapFind(_:)), for: .touchUpInside)
+        btnProductDetail.addTarget(self, action: #selector(didTapDetail(_:)), for: .touchUpInside)
         
         
         imgVwProduct.image = UIImage(named: "\(item.name).jpeg")
@@ -208,14 +208,16 @@ class ProoductTableViewCell: UITableViewCell {
     }
     
     //send product data to ViewconTrollers function
-    @objc func didTapFind(){
+    @objc func didTapFind(_ button: UIButton){
+        BtnAction.btnActionAll(button: button)
         if let product = product{
             delegate?.didTapButton(for: product.findLink)
         }
     }
     
     //send product data to ViewconTrollers function
-    @objc func didTapDetail(){
+    @objc func didTapDetail(_ button: UIButton){
+        BtnAction.btnActionAll(button: button)
         if let product = product{
             delegate?.didTapButton(for: product.productLink)
         }
