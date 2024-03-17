@@ -70,4 +70,13 @@ class StickerViewModel{
         return (fade, num)
     }
     
+    func changeId(id: Int) -> String{
+        if id < 10{
+            return "0\(id)"
+        }
+        else{
+            return "\(id)"
+        }
+    }
+    
 }

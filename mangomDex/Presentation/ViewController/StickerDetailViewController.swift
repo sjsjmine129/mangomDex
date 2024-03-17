@@ -42,7 +42,6 @@ class StickerDetailViewController: UIViewController {
         self.stickerViewModel = viewModel
         self.index = index
         self.stickers = stickers
-        print("hello: \(self.index) ")
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -115,7 +114,7 @@ extension StickerDetailViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerDetailCollectionViewCell.id, for: indexPath) as! StickerDetailCollectionViewCell
         
-        cell.detailCellConfigure(with: sticker)
+        cell.detailCellConfigure(with: sticker, viewModel: stickerViewModel)
         
         return cell
     }
