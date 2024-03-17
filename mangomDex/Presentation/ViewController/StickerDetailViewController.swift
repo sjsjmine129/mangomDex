@@ -24,6 +24,16 @@ class StickerDetailViewController: UIViewController {
         return cv
     }()
     
+    private var btnBack: UIImageView = {
+        let imgVw = UIImageView()
+        if let image = UIImage(systemName: "chevron.down")?.withTintColor(.textBlack, renderingMode: .alwaysOriginal) {
+            imgVw.image = image
+        }
+        imgVw.contentMode = .scaleAspectFit
+        
+        return imgVw
+    }()
+    
     private let index: Int
     private var stickerViewModel : StickerViewModel
     var stickers : [Sticker]
@@ -46,7 +56,7 @@ class StickerDetailViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .magClothes
-        //        setNavigationBar()
+        setNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -70,6 +80,29 @@ class StickerDetailViewController: UIViewController {
     
 }
 
+// MARK: - navigationbar
+extension StickerDetailViewController{
+    //set navigation Bar UI of setting tab
+    func setNavigationBar(){
+        
+        let title = UILabel()
+        title.text = "띠부씰 상세"
+        title.font = UIFont(name: "HUDdiu150", size: 25)
+        title.textColor = UIColor(resource: .textBlack)
+        
+        if let image = UIImage(systemName: "chevron.left")?.withTintColor(.textBlack, renderingMode: .alwaysOriginal) {
+            let customButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(leftButtonTapped))
+            navigationItem.leftBarButtonItem = customButton
+        }
+        
+        navigationItem.titleView = title
+
+        self.navigationController?.navigationBar.frame.size.height = 50
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.barTintColor = .magClothes
+    }
+}
+
 
 // MARK: - set data of grid
 extension StickerDetailViewController: UICollectionViewDataSource {
@@ -91,5 +124,13 @@ extension StickerDetailViewController: UICollectionViewDataSource {
 extension StickerDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
+    }
+}
+
+
+// MARK: - objc
+extension StickerDetailViewController{
+    @objc func leftButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
