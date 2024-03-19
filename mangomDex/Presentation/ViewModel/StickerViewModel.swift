@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class StickerViewModel{
     
@@ -76,6 +77,19 @@ class StickerViewModel{
         }
         else{
             return "\(id)"
+        }
+    }
+    
+    
+    func openIink(url:String, type: LinkType){
+        
+        if let link = URL(string: url) {
+            UIApplication.shared.open(link, options: [:], completionHandler: nil)
+        } else {
+            if type == .insta{
+                let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
+                UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
+            }
         }
     }
     

@@ -375,21 +375,21 @@ extension StickerInfo{
     var linkImg: UIImage?{
         switch self {
         case ._21, ._22, ._23: // 감자
-            return UIImage(named: "감자망그러진곰.PNG")
+            return UIImage(named: "감자망그러진곰.jpg")
         case ._07, ._50, ._51,._52 : // 작은햄터 1
-            return UIImage(named: "망그러진작은햄터1.PNG")
+            return UIImage(named: "망그러진작은햄터.jpg")
         case ._08, ._49, ._55 : // 작은햄터 2
-            return UIImage(named: "망그러진작은햄터2.PNG")
+            return UIImage(named: "망그러진작은햄터2.jpg")
         case ._11, ._65, ._12, ._68, ._66, ._67 : // 커플 망곰 2
-            return UIImage(named: "커플망그러진곰2.PNG")
+            return UIImage(named: "커플망그러진곰2.jpg")
         case ._09, ._27, ._10: // 꼬질 망곰
-            return UIImage(named: "꼬질망그러진곰.PNG")
+            return UIImage(named: "꼬질망그러진곰.jpg")
         case ._01, ._02, ._03, ._04, ._05, ._29: // 아기 망곰
-            return UIImage(named: "아기망그러진곰.PNG")
+            return UIImage(named: "아기망그러진곰.jpg")
         case ._06: // 망그러진 곰 6
-            return UIImage(named: "망그러진곰6.PNG")
+            return UIImage(named: "망그러진곰6.jpg")
         case ._13, ._14, ._15: // 커플 1
-            return UIImage(named: "커플망그러진곰.PNG")
+            return UIImage(named: "커플망그러진곰.jpg")
         case ._46: //
             return UIImage(named: "두더지인스타.png")
         case ._48: //분홍내복
@@ -433,7 +433,7 @@ extension StickerInfo{
         case ._19: //선물
             return UIImage(named: "선물.png")
         default: //기타
-            return UIImage(named: "기타.png")
+            return UIImage(named: "기타.jpg")
         }
     }
 }
