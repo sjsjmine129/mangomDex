@@ -176,16 +176,49 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
+    private lazy var stNumberChange: UIStackView = {
+        let st = UIStackView()
+        st.translatesAutoresizingMaskIntoConstraints = false
+        st.axis = .horizontal
+        st.alignment = .center
+        st.spacing = 15
+        st.distribution = .fill
+        
+        return st
+    }()
+    
+    private lazy var lblNumber: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = UIFont(name: "HUDdiu150", size: 25)
+        lbl.textColor = .textBlack
+        
+        return lbl
+    }()
+    
+    private lazy var btnMinus: NumberButton = {
+        let btn = NumberButton(type: .minus)
+        btn.addTarget(self, action: #selector(numberBtnPress(_:)), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    private lazy var btnPlus: NumberButton = {
+        let btn = NumberButton(type: .plus)
+        btn.addTarget(self, action: #selector(numberBtnPress(_:)), for: .touchUpInside)
+        
+        return btn
+    }()
+    
     var stickerViewModel : StickerViewModel?
-    var goLink : String?
-    var linkType : LinkType?
+    var sticker : Sticker?
     
     // MARK: - make UI of cell
     func detailCellConfigure(with item: Sticker, viewModel: StickerViewModel){
         self.stickerViewModel = viewModel
+        self.sticker = item
+
         self.addSubview(vwContainer)
-        self.goLink = item.stickerLink
-        self.linkType = item.linkType
         
         vwContainer.addSubview(imgVwSticker)
         
@@ -205,6 +238,11 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         stLinkText.addArrangedSubview(lblLinkText)
         stLinkText.addArrangedSubview(btnLink)
         
+        vwContainer.addSubview(stNumberChange)
+        stNumberChange.addArrangedSubview(btnMinus)
+        stNumberChange.addArrangedSubview(lblNumber)
+        stNumberChange.addArrangedSubview(btnPlus)
+        
         // set data
         vwid.backgroundColor = item.color
         lblId.text = viewModel.changeId(id: item.id)
@@ -212,6 +250,16 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         
         imgVwSticker.image = item.image
         imgVwLink.image = item.linkImage
+        
+        lblNumber.text = "수집한 개수: \(item.number)"
+        
+        if item.number == 0{
+            self.btnMinus.backgroundColor = .lightGray
+        }
+        else if item.number == 99{
+            self.btnPlus.backgroundColor = .lightGray
+        }
+
         
         if let range = item.name.range(of: "망그러진") {
             let trimmedText = String(item.name[range.lowerBound...])
@@ -270,6 +318,10 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             lblLinkBtnTitle.leadingAnchor.constraint(equalTo:  imgLinkBtn.trailingAnchor, constant: 8),
             lblLinkBtnTitle.trailingAnchor.constraint(equalTo:  btnLink.trailingAnchor, constant: -12),
             lblLinkBtnTitle.centerYAnchor.constraint(equalTo: btnLink.centerYAnchor),
+            //stNumberChange
+            stNumberChange.centerXAnchor.constraint(equalTo: vwContainer.centerXAnchor),
+            stNumberChange.topAnchor.constraint(equalTo: vwLinkBox.bottomAnchor),
+            stNumberChange.bottomAnchor.constraint(equalTo: vwContainer.bottomAnchor),
         ])
     }
     
@@ -279,6 +331,37 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
 extension StickerDetailCollectionViewCell{
     @objc func goToLink(_ button: UIButton){
         BtnAction.btnActionAll(button: button)
-        self.stickerViewModel?.openIink(url: self.goLink ?? "", type: self.linkType ?? .kakao)
+        self.stickerViewModel?.openIink(url: self.sticker?.stickerLink ?? "", type: self.sticker?.linkType ?? .kakao)
     }
+    
+    @objc func numberBtnPress(_ button: UIButton){
+        if let nowNum = self.sticker?.number{
+            let newNum = nowNum + button.tag
+            if newNum < 0 || newNum >= 100{
+                return
+            }
+            
+            if newNum == 0{
+                self.btnMinus.backgroundColor = .lightGray
+            }
+            else if newNum == 1{
+                self.btnMinus.backgroundColor = .magBody
+            }
+            else if newNum == 99{
+                self.btnPlus.backgroundColor = .lightGray
+            }
+            else if newNum == 98{
+                self.btnPlus.backgroundColor = .magBody
+            }
+            
+            BtnAction.btnActionAll(button: button)
+            self.stickerViewModel?.stickers[sticker!.id - 1].number = newNum
+            self.sticker?.number = newNum
+            self.lblNumber.text = "수집한 개수: \(newNum)"
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
+            
+            
+        }
+    }
+    
 }

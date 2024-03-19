@@ -93,4 +93,6 @@ class StickerViewModel{
         }
     }
     
+//    func plusNum(id: Int, index: Int, 
+    
 }
