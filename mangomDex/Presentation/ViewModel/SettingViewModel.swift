@@ -36,9 +36,8 @@ class SettingViewModel{
     
     // open magbear instagram
     func openInstagram(){
-        let instagramURL = URL(string: "instagram://user?username=yurang_official")!
         
-        if UIApplication.shared.canOpenURL(instagramURL) {
+        if let instagramURL = URL(string: "instagram://user?username=yurang_official") {
             UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
         } else {
             let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
