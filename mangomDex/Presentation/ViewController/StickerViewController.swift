@@ -7,7 +7,7 @@
 
 import UIKit
 import DropDown
-
+import CoreData
 
 class StickerViewController: UIViewController {
     
@@ -124,6 +124,7 @@ class StickerViewController: UIViewController {
         return lbl
     }()
     
+    var container: NSPersistentContainer!
     private lazy var stickerViewModel = StickerViewModel()
     lazy var stickers : [Sticker] = []
     
@@ -132,12 +133,59 @@ class StickerViewController: UIViewController {
         super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
         
-        setNavigationBar()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.container = appDelegate.persistentContainer
+        
+        let context = container.viewContext
+        
+        let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
+        
+        do {
+            var coreData = try container.viewContext.fetch(fetchRequest)
+            
+            if coreData.isEmpty {
+                // Loop through the IDs from 1 to 73
+                for id in 1...73 {
+                    
+                    let newData = StickerNumbers(context: context)
+                    
+                    newData.id = Int16(id)
+                    newData.number = 0
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Error saving sticker \(id): \(error)")
+                    }
+                }
+                
+                coreData = try container.viewContext.fetch(fetchRequest)
+                
+            }
+            
+            
+            stickerViewModel.setStoredStickerNumber(coreData: coreData)
+            //for i in coreData{
+            //  print("\(i.id): \(i.number)")
+            //}
+            
+            
+        } catch {
+            print("Error fetching stickers: \(error)")
+        }
+        
+        
+        
         self.stickers = stickerViewModel.filteredStickers(condition: .all)
+        setNavigationBar()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         self.view.backgroundColor = UIColor(resource: .magClothes)
         
@@ -269,7 +317,7 @@ extension StickerViewController{
         ddFilter.show()
         changeImgVwDropDown(name: "chevron.up")
     }
-
+    
     //reload grid
     @objc func reloadDataInGridFlowLayout() {
         gridFlowLayout.collectionView?.reloadData()
