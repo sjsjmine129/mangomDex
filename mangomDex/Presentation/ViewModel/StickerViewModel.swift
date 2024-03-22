@@ -29,6 +29,13 @@ class StickerViewModel{
         }
     }
     
+    // functions to reest to 0 all sticker number
+    func resetNumberToZero(){
+        for i in stickers{
+            i.number = 0
+        }
+    }
+    
     // function that filter sticker
     func filteredStickers(condition:StickerFilter)->[Sticker]{
         var retStickers: [Sticker] = []

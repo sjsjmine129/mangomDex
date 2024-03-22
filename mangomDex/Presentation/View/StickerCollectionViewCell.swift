@@ -21,8 +21,8 @@ class StickerCollectionViewCell: UICollectionViewCell {
 
         btn.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-            btn.addGestureRecognizer(longPressRecognizer)
+//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+//            btn.addGestureRecognizer(longPressRecognizer)
         
         return btn
     }()
