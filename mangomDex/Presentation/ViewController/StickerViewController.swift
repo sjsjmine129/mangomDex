@@ -132,7 +132,7 @@ class StickerViewController: UIViewController {
     override func loadView() {
         super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetStickerNumberData), name: NSNotification.Name(rawValue: "ResetStickerNumberData"), object: nil)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
@@ -316,6 +316,11 @@ extension StickerViewController{
     
     //reload grid
     @objc func reloadDataInGridFlowLayout() {
+        gridFlowLayout.collectionView?.reloadData()
+    }
+    
+    @objc func resetStickerNumberData(){
+        stickerViewModel.resetNumberToZero()
         gridFlowLayout.collectionView?.reloadData()
     }
 }
