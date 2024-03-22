@@ -45,6 +45,7 @@
 		57953A412BA90F7200C4F51F /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 57953A3F2BA90F7200C4F51F /* Instagram.png */; };
 		57953A432BA92F8A00C4F51F /* 기타.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57953A422BA92F8A00C4F51F /* 기타.jpg */; };
 		57953A452BA9CBC900C4F51F /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57953A442BA9CBC900C4F51F /* NumberButton.swift */; };
+		57953A482BA9DB9A00C4F51F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57953A462BA9DB9A00C4F51F /* Model.xcdatamodeld */; };
 		579B0F102B9A05FA00125D83 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579B0F0F2B9A05FA00125D83 /* ProductDetailViewController.swift */; };
 		57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE192C2B8E1374008F1033 /* AppDelegate.swift */; };
 		57AE192F2B8E1374008F1033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE192E2B8E1374008F1033 /* SceneDelegate.swift */; };
@@ -199,6 +200,7 @@
 		57953A3F2BA90F7200C4F51F /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
 		57953A422BA92F8A00C4F51F /* 기타.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "기타.jpg"; sourceTree = "<group>"; };
 		57953A442BA9CBC900C4F51F /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
+		57953A472BA9DB9A00C4F51F /* StickerNumber.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StickerNumber.xcdatamodel; sourceTree = "<group>"; };
 		579B0F0F2B9A05FA00125D83 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		57AE19292B8E1374008F1033 /* mangomDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mangomDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AE192C2B8E1374008F1033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				57AE193A2B8E1376008F1033 /* Info.plist */,
 				57AE19542B8E27F3008F1033 /* LaunchScreen.storyboard */,
 				57AE19352B8E1376008F1033 /* Assets.xcassets */,
+				57953A462BA9DB9A00C4F51F /* Model.xcdatamodeld */,
 			);
 			path = mangomDex;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */,
 				57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */,
 				57E97F2C2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift in Sources */,
+				57953A482BA9DB9A00C4F51F /* Model.xcdatamodeld in Sources */,
 				57E97F322BA6E2D6009CBEEB /* StickerTypes.swift in Sources */,
 				57AE192F2B8E1374008F1033 /* SceneDelegate.swift in Sources */,
 				578723762B94644E0038DA4D /* ProoductTableViewCell.swift in Sources */,
@@ -1092,6 +1096,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		57953A462BA9DB9A00C4F51F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				57953A472BA9DB9A00C4F51F /* StickerNumber.xcdatamodel */,
+			);
+			currentVersion = 57953A472BA9DB9A00C4F51F /* StickerNumber.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 57AE19212B8E1374008F1033 /* Project object */;
 }

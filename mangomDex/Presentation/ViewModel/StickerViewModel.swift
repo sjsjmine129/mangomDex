@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class StickerViewModel{
     
@@ -20,7 +21,15 @@ class StickerViewModel{
         }
     }
     
-    // function taht filter sticker
+    // function to set initial number
+    func setStoredStickerNumber(coreData: [StickerNumbers]){
+        for i in coreData{
+            let index = i.id - 1
+            stickers[Int(index)].number = Int(i.number)
+        }
+    }
+    
+    // function that filter sticker
     func filteredStickers(condition:StickerFilter)->[Sticker]{
         var retStickers: [Sticker] = []
         
