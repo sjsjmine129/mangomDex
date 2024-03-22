@@ -143,7 +143,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     private let lblLinkBtnTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HUDdiu150", size: 20)
+        label.font = UIFont(name: "HUDdiu150", size: 18)
         label.textColor = UIColor(resource: .textBlack)
         return label
     }()
@@ -151,7 +151,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     private let imgLinkBtn: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -162,7 +162,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         btn.addSubview(imgLinkBtn)
         btn.backgroundColor = .magBody
         
-        btn.layer.cornerRadius = 10
+        btn.layer.cornerRadius = 8
         btn.layer.borderWidth = 1.5
         btn.layer.borderColor = UIColor(resource: .magBorder).cgColor
         
@@ -315,8 +315,8 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             stLinkText.trailingAnchor.constraint(equalTo:  vwLinkBox.trailingAnchor, constant: -12),
             stLinkText.centerYAnchor.constraint(equalTo: vwLinkBox.centerYAnchor),
             //imgLinkBtn
-            imgLinkBtn.heightAnchor.constraint(equalToConstant: 30),
-            imgLinkBtn.widthAnchor.constraint(equalToConstant: 30),
+            imgLinkBtn.heightAnchor.constraint(equalToConstant: 20),
+            imgLinkBtn.widthAnchor.constraint(equalToConstant: 22),
             imgLinkBtn.topAnchor.constraint(equalTo:  btnLink.topAnchor, constant: 8),
             imgLinkBtn.leadingAnchor.constraint(equalTo:  btnLink.leadingAnchor, constant: 12),
             imgLinkBtn.bottomAnchor.constraint(equalTo:  btnLink.bottomAnchor, constant: -8),
