@@ -5,6 +5,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>HUDdiu150.otf</string>
+		<string>Pretendard-Medium.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
+		<string>Helvetica Bold Condensed.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
