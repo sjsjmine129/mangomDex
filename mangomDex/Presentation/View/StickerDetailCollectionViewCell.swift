@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class StickerDetailCollectionViewCell: UICollectionViewCell {
     
@@ -212,9 +213,14 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     
     var stickerViewModel : StickerViewModel?
     var sticker : Sticker?
+    var container: NSPersistentContainer!
     
     // MARK: - make UI of cell
     func detailCellConfigure(with item: Sticker, viewModel: StickerViewModel){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.container = appDelegate.persistentContainer
+        
         self.stickerViewModel = viewModel
         self.sticker = item
 
@@ -358,6 +364,24 @@ extension StickerDetailCollectionViewCell{
             self.stickerViewModel?.stickers[sticker!.id - 1].number = newNum
             self.sticker?.number = newNum
             self.lblNumber.text = "수집한 개수: \(newNum)"
+            
+            let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %d", sticker!.id)
+
+            do {
+                let results = try container.viewContext.fetch(fetchRequest)
+                if let entity = results.first {
+                    entity.number  = Int16(newNum)
+
+                    try container.viewContext.save()
+                } else {
+                    print("Entity with id 3 not found.")
+                }
+            } catch {
+                print("Error fetching entity: \(error)")
+            }
+            
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
             
             

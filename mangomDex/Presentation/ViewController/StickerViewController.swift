@@ -166,10 +166,6 @@ class StickerViewController: UIViewController {
             
             
             stickerViewModel.setStoredStickerNumber(coreData: coreData)
-            //for i in coreData{
-            //  print("\(i.id): \(i.number)")
-            //}
-            
             
         } catch {
             print("Error fetching stickers: \(error)")
