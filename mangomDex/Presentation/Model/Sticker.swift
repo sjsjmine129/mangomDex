@@ -208,7 +208,7 @@ extension StickerInfo{
         case ._41:
             return "고양이 망그러진 곰"
         case ._42:
-            return "곰돌이 망그러진 곰"
+            return "곰돌이 후드 망그러진 곰"
         case ._43:
             return "코끼리 망그러진 곰"
         case ._44:

@@ -83,7 +83,7 @@ class ProoductTableViewCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.spacing = 8
+        stackView.spacing = 12
         
         return stackView
     }()
@@ -200,9 +200,9 @@ class ProoductTableViewCell: UITableViewCell {
             lblProductPriceTag.bottomAnchor.constraint(equalTo: lblProductPrice.bottomAnchor, constant: 0),
             lblProductPriceTag.leadingAnchor.constraint(equalTo: lblProductPrice.trailingAnchor, constant: 0),
             //stProductButtons
-            stProductButtons.bottomAnchor.constraint(equalTo: containerVw.bottomAnchor, constant: -8),
-            stProductButtons.leadingAnchor.constraint(equalTo: imgVwProduct.trailingAnchor, constant: 8),
-            stProductButtons.trailingAnchor.constraint(equalTo: containerVw.trailingAnchor, constant: -8),
+            stProductButtons.bottomAnchor.constraint(equalTo: containerVw.bottomAnchor, constant: -12),
+            stProductButtons.leadingAnchor.constraint(equalTo: imgVwProduct.trailingAnchor, constant: 12),
+            stProductButtons.trailingAnchor.constraint(equalTo: containerVw.trailingAnchor, constant: -12),
         ])
         
     }
