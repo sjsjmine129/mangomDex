@@ -281,6 +281,8 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             }
         }
         
+        imgVwSticker.alpha = 0.9
+        
         NSLayoutConstraint.activate([
             //contentView
             vwContainer.topAnchor.constraint(equalTo:  self.topAnchor, constant: 0),
