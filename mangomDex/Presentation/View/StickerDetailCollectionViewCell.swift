@@ -215,6 +215,11 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     var sticker : Sticker?
     var container: NSPersistentContainer!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.vwContainer.subviews.forEach {$0.removeFromSuperview()}
+    }
+    
     // MARK: - make UI of cell
     func detailCellConfigure(with item: Sticker, viewModel: StickerViewModel){
         
