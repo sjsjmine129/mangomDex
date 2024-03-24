@@ -12,12 +12,24 @@ import CoreData
 class StickerViewModel{
     
     let defaults = UserDefaults.standard
+    var review = false
     
     private(set) var stickers: [Sticker] = []
     
     init() {
         for i in 1...73{
             stickers.append(Sticker(id: i))
+        }
+        
+        let first = defaults.object(forKey: "first")
+        
+        if first == nil {
+            defaults.set(1, forKey: "first")
+        }else{
+            defaults.set(first as! Int + 1, forKey: "first")
+            if(first as! Int > 3){
+                review = true
+            }
         }
     }
     
@@ -108,7 +120,5 @@ class StickerViewModel{
             }
         }
     }
-    
-//    func plusNum(id: Int, index: Int, 
     
 }
