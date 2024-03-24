@@ -22,11 +22,18 @@ class StickerCollectionViewCell: UICollectionViewCell {
     private lazy var btnSticker: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        
-        btn.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+               
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(flipAndPlus(_:)))
         btn.addGestureRecognizer(longPressRecognizer)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        btn.addGestureRecognizer(tapGesture)
+        
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        btn.addGestureRecognizer(doubleTapGesture)
+        
+        tapGesture.require(toFail: doubleTapGesture)
         
         return btn
     }()
@@ -86,47 +93,61 @@ class StickerCollectionViewCell: UICollectionViewCell {
             lblCollectNum.leadingAnchor.constraint(equalTo:  btnSticker.leadingAnchor, constant: 6),
         ])
     }
-    
-    @objc private func handleTap(_ sender: UIButton) {
-        // Handle regular tap
-        BtnAction.btnActionSize(button: sender)
-        delegate?.didTapSticker(for: sender.tag)
-    }
-    
-    @objc private func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
-                let newNum = (self.sticker?.number ?? 0) + 1
-                if newNum >= 100{
+
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        guard let button = sender.view as? UIButton else {
                     return
                 }
-                
-                self.btnSticker.alpha = 0.9
-                self.sticker?.number = newNum
-                self.lblCollectNum.text = "\(newNum)"
-                
-                self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
-                
-                let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
-
-                do {
-                    let results = try self.container.viewContext.fetch(fetchRequest)
-                    if let entity = results.first {
-                        entity.number  = Int16(newNum)
-
-                        try self.container.viewContext.save()
-                    } else {
-                        print("Entity with id 3 not found.")
-                    }
-                } catch {
-                    print("Error fetching entity: \(error)")
+        BtnAction.btnActionSize(button: button)
+        delegate?.didTapSticker(for: button.tag)
+    }
+    
+    @objc private func handleDoubleTap(_ sender: UITapGestureRecognizer) {
+        guard let button = sender.view as? UIButton else {
+                    return
                 }
-            }, completion: { (_) in
-               
-            })
+        BtnAction.btnActionSize(button: button)
+        
+        flipAndAdd()
+    }
+    
+    @objc private func flipAndPlus(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            flipAndAdd()
         }
     }
     
 }
 
+extension StickerCollectionViewCell{
+    func flipAndAdd(){
+        UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
+            let newNum = (self.sticker?.number ?? 0) + 1
+            if newNum >= 100{
+                return
+            }
+            
+            self.btnSticker.alpha = 0.9
+            self.sticker?.number = newNum
+            self.lblCollectNum.text = "\(newNum)"
+            
+            self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
+            
+            let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
+
+            do {
+                let results = try self.container.viewContext.fetch(fetchRequest)
+                if let entity = results.first {
+                    entity.number  = Int16(newNum)
+
+                    try self.container.viewContext.save()
+                } else {
+                    print("Entity with id 3 not found.")
+                }
+            } catch {
+                print("Error fetching entity: \(error)")
+            }
+        }, completion: { (_) in })
+    }
+}
