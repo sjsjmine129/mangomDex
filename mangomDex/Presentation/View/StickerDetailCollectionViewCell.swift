@@ -362,7 +362,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
 extension StickerDetailCollectionViewCell{
     @objc private func imgVwStickerTapped() {
         
-        UIView.transition(with: imgVwSticker, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+        UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
             self.changeNum(changeNum: 1)
         }, completion: { (_) in
         })
@@ -378,12 +378,12 @@ extension StickerDetailCollectionViewCell{
         BtnAction.btnActionAll(button: button)
         
         if(button.tag == 1){
-            UIView.transition(with: imgVwSticker, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+            UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
                 self.changeNum(changeNum: button.tag)
             }, completion: { (_) in
             })
         }else{
-            UIView.transition(with: imgVwSticker, duration: 1.0, options: [.transitionFlipFromRight], animations: {
+            UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromRight], animations: {
                 self.changeNum(changeNum: button.tag)
             }, completion: { (_) in
                 

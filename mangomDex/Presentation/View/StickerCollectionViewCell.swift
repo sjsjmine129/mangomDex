@@ -95,7 +95,7 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
     @objc private func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            UIView.transition(with: self, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+            UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
                 let newNum = (self.sticker?.number ?? 0) + 1
                 if newNum >= 100{
                     return
