@@ -11,13 +11,13 @@ import CoreData
 class StickerDetailCollectionViewCell: UICollectionViewCell {
     
     static let id = "StickerDetailCollectionViewCell"
-
+    
     // MARK: - UI
     private lazy var vwContainer: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.backgroundColor = .magClothes
-
+        
         return vw
     }()
     
@@ -29,8 +29,6 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 0
         stackView.distribution = .equalCentering
         
-//        stackView.backgroundColor = .magMouth
-
         return stackView
     }()
     
@@ -41,7 +39,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         stackView.alignment = .center
         stackView.spacing = 10
         stackView.distribution = .equalCentering
-
+        
         return stackView
     }()
     
@@ -228,7 +226,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         
         self.stickerViewModel = viewModel
         self.sticker = item
-
+        
         self.addSubview(vwContainer)
         
         vwContainer.addSubview(imgVwSticker)
@@ -262,6 +260,13 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         imgVwSticker.image = item.image
         imgVwLink.image = item.linkImage
         
+        let setting = stickerViewModel?.checkSetting()
+        if item.number == 0 && ((setting?.fadeMode) != nil) {
+            imgVwSticker.alpha = 0.5
+        }else{
+            imgVwSticker.alpha = 0.9
+        }
+            
         lblNumber.text = "수집한 개수: \(item.number)"
         
         if item.number == 0{
@@ -270,7 +275,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         else if item.number == 99{
             self.btnPlus.backgroundColor = .lightGray
         }
-
+        
         
         if let range = item.name.range(of: "망그러진") {
             let trimmedText = String(item.name[range.lowerBound...])
@@ -286,7 +291,6 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             }
         }
         
-        imgVwSticker.alpha = 0.9
         
         NSLayoutConstraint.activate([
             //contentView
@@ -336,29 +340,80 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             stNumberChange.topAnchor.constraint(equalTo: vwLinkBox.bottomAnchor),
             stNumberChange.bottomAnchor.constraint(equalTo: vwContainer.bottomAnchor),
         ])
+        
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        // Add tap gesture recognizer to imgVwSticker
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgVwStickerTapped))
+        imgVwSticker.isUserInteractionEnabled = true
+        imgVwSticker.addGestureRecognizer(tapGesture)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }
 
 //MARK: - objc
 extension StickerDetailCollectionViewCell{
+    @objc private func imgVwStickerTapped() {
+        
+        UIView.transition(with: imgVwSticker, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+            self.changeNum(changeNum: 1)
+        }, completion: { (_) in
+        })
+        
+    }
+    
     @objc func goToLink(_ button: UIButton){
         BtnAction.btnActionAll(button: button)
         self.stickerViewModel?.openIink(url: self.sticker?.stickerLink ?? "", type: self.sticker?.linkType ?? .kakao)
     }
     
     @objc func numberBtnPress(_ button: UIButton){
+        BtnAction.btnActionAll(button: button)
+        
+        if(button.tag == 1){
+            UIView.transition(with: imgVwSticker, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+                self.changeNum(changeNum: button.tag)
+            }, completion: { (_) in
+            })
+        }else{
+            UIView.transition(with: imgVwSticker, duration: 1.0, options: [.transitionFlipFromRight], animations: {
+                self.changeNum(changeNum: button.tag)
+            }, completion: { (_) in
+                
+            })
+        }
+    }
+    
+}
+
+
+extension StickerDetailCollectionViewCell{
+    func changeNum(changeNum: Int){
         if let nowNum = self.sticker?.number{
-            let newNum = nowNum + button.tag
+            let newNum = nowNum + changeNum
             if newNum < 0 || newNum >= 100{
                 return
             }
             
             if newNum == 0{
                 self.btnMinus.backgroundColor = .lightGray
+                let setting = stickerViewModel?.checkSetting()
+                if  ((setting?.fadeMode) != nil) {
+                    imgVwSticker.alpha = 0.5
+                }
             }
             else if newNum == 1{
                 self.btnMinus.backgroundColor = .magBody
+                let setting = stickerViewModel?.checkSetting()
+                imgVwSticker.alpha = 0.9
+
             }
             else if newNum == 99{
                 self.btnPlus.backgroundColor = .lightGray
@@ -367,20 +422,20 @@ extension StickerDetailCollectionViewCell{
                 self.btnPlus.backgroundColor = .magBody
             }
             
-            BtnAction.btnActionAll(button: button)
-            self.stickerViewModel?.stickers[sticker!.id - 1].number = newNum
+            
+            self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
             self.sticker?.number = newNum
             self.lblNumber.text = "수집한 개수: \(newNum)"
             
             let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", sticker!.id)
-
+            fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
+            
             do {
-                let results = try container.viewContext.fetch(fetchRequest)
+                let results = try self.container.viewContext.fetch(fetchRequest)
                 if let entity = results.first {
                     entity.number  = Int16(newNum)
-
-                    try container.viewContext.save()
+                    
+                    try self.container.viewContext.save()
                 } else {
                     print("Entity with id 3 not found.")
                 }
@@ -388,11 +443,7 @@ extension StickerDetailCollectionViewCell{
                 print("Error fetching entity: \(error)")
             }
             
-            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
-            
-            
         }
     }
-    
 }
