@@ -21,11 +21,11 @@ class ProoductTableViewCell: UITableViewCell {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = 14
-        //        vw.layer.shadowColor = UIColor.gray.cgColor
-        //        vw.layer.shadowOpacity = 0.8
-        //        vw.layer.shadowRadius = 4
-        //        vw.layer.shadowOffset = CGSize(width: 2, height: 2)
-        //        vw.layer.shadowPath = nil
+        vw.layer.shadowColor = UIColor.gray.cgColor
+        vw.layer.shadowOpacity = 0.8
+        vw.layer.shadowRadius = 4
+        vw.layer.shadowOffset = CGSize(width: 2, height: 2)
+        vw.layer.shadowPath = nil
         
         return vw
     }()
@@ -36,27 +36,16 @@ class ProoductTableViewCell: UITableViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 20)
         lbl.textColor = UIColor(resource: .textBlack)
-        lbl.textAlignment = .center
-        
+        lbl.numberOfLines = 2
+        lbl.textAlignment = .left
         return lbl
     }()
     
     private lazy var lblProductPrice: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = UIFont(name: "HUDdiu150", size: 15)
+        lbl.font = UIFont(name: "HUDdiu150", size: 18)
         lbl.textColor = UIColor(resource: .magBorder)
-        lbl.textAlignment = .center
-        
-        return lbl
-    }()
-    
-    private lazy var lblProductPriceTag: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = UIFont(name: "HUDdiu150", size: 15)
-        lbl.textColor = UIColor(resource: .magBorder)
-        lbl.text = "원"
         lbl.textAlignment = .center
         
         return lbl
@@ -81,23 +70,23 @@ class ProoductTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.alignment = .center
+        stackView.alignment = .trailing
         stackView.distribution = .fillEqually
         stackView.spacing = 12
         
         return stackView
     }()
     
-    private lazy var btnProductDetail: ProductButton = {
-        let btn = ProductButton(title: "상품 상세")
-        btn.layer.shadowColor = UIColor.gray.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowRadius = 4
-        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
-        btn.layer.shadowPath = nil
-        
-        return btn
-    }()
+    //    private lazy var btnProductDetail: ProductButton = {
+    //        let btn = ProductButton(title: "상품 상세")
+    //        btn.layer.shadowColor = UIColor.gray.cgColor
+    //        btn.layer.shadowOpacity = 0.5
+    //        btn.layer.shadowRadius = 4
+    //        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+    //        btn.layer.shadowPath = nil
+    //
+    //        return btn
+    //    }()
     
     private lazy var btnProductFind: ProductButton = {
         let btn = ProductButton(title: "재고 찾기")
@@ -144,32 +133,31 @@ class ProoductTableViewCell: UITableViewCell {
         self.contentView.addSubview(containerVw)
         
         btnProductFind.addTarget(self, action: #selector(didTapFind(_:)), for: .touchUpInside)
-        btnProductDetail.addTarget(self, action: #selector(didTapDetail(_:)), for: .touchUpInside)
+        //        btnProductDetail.addTarget(self, action: #selector(didTapDetail(_:)), for: .touchUpInside)
         
         
         imgVwProduct.image = UIImage(named: "\(item.name).jpeg")
-        lblProductName.text = item.name
-        lblProductPrice.text = "\(item.price)"
+        lblProductName.text = item.productName
+        lblProductPrice.text = "\(item.price)원"
         
         btnProductFind.cuApplink = item.findLink
-        btnProductDetail.cuApplink = item.productLink
+        //        btnProductDetail.cuApplink = item.productLink
         
         containerVw.addSubview(imgVwProduct)
         containerVw.addSubview(vwProductInfo)
         
         vwProductInfo.addSubview(lblProductName)
         vwProductInfo.addSubview(lblProductPrice)
-        vwProductInfo.addSubview(lblProductPriceTag)
         vwProductInfo.addSubview(stProductButtons)
         
-        stProductButtons.addArrangedSubview(btnProductDetail)
+        //        stProductButtons.addArrangedSubview(btnProductDetail)
         stProductButtons.addArrangedSubview(btnProductFind)
         
         if item.findLink == nil {
             btnProductFind.isHidden = true
         }
         if item.productLink == nil {
-            btnProductDetail.isHidden = true
+            //            btnProductDetail.isHidden = true
         }
         
         
@@ -193,15 +181,12 @@ class ProoductTableViewCell: UITableViewCell {
             //lblProductName
             lblProductName.topAnchor.constraint(equalTo: vwProductInfo.topAnchor, constant: 8),
             lblProductName.leadingAnchor.constraint(equalTo: vwProductInfo.leadingAnchor, constant: 0),
+            lblProductName.trailingAnchor.constraint(equalTo: vwProductInfo.trailingAnchor, constant: 0),
             //lblProductPrice
-            lblProductPrice.topAnchor.constraint(equalTo: lblProductName.bottomAnchor, constant: 4),
+            lblProductPrice.topAnchor.constraint(equalTo: lblProductName.bottomAnchor, constant: 6),
             lblProductPrice.leadingAnchor.constraint(equalTo: vwProductInfo.leadingAnchor, constant: 4),
-            //lblProductPriceTag
-            lblProductPriceTag.bottomAnchor.constraint(equalTo: lblProductPrice.bottomAnchor, constant: 0),
-            lblProductPriceTag.leadingAnchor.constraint(equalTo: lblProductPrice.trailingAnchor, constant: 0),
             //stProductButtons
             stProductButtons.bottomAnchor.constraint(equalTo: containerVw.bottomAnchor, constant: -12),
-            stProductButtons.leadingAnchor.constraint(equalTo: imgVwProduct.trailingAnchor, constant: 12),
             stProductButtons.trailingAnchor.constraint(equalTo: containerVw.trailingAnchor, constant: -12),
         ])
         

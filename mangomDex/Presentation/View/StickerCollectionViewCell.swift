@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol StickerGirdCellDelegate: AnyObject{
     func didTapSticker(for index: Int?)
@@ -13,6 +14,9 @@ protocol StickerGirdCellDelegate: AnyObject{
 
 class StickerCollectionViewCell: UICollectionViewCell {
     static let id = "StickerCollectionViewCell"
+    private var sticker : Sticker?
+    var container: NSPersistentContainer!
+    private var stickerViewModel : StickerViewModel?
     
     // MARK: - UI
     private lazy var btnSticker: UIButton = {
@@ -21,8 +25,8 @@ class StickerCollectionViewCell: UICollectionViewCell {
         
         btn.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
         
-        //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-        //            btn.addGestureRecognizer(longPressRecognizer)
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        btn.addGestureRecognizer(longPressRecognizer)
         
         return btn
     }()
@@ -43,9 +47,12 @@ class StickerCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - make UI of cell
-    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate){
-        self.delegate = delegate
+    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate, viewModel: StickerViewModel){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.container = appDelegate.persistentContainer
         
+        self.delegate = delegate
+        self.sticker = item
         self.contentView.addSubview(btnSticker)
         
         contentView.addSubview(lblCollectNum)
@@ -88,8 +95,36 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
     @objc private func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            // Handle long press
-            print("Long press detected!")
+            UIView.transition(with: self, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+                let newNum = (self.sticker?.number ?? 0) + 1
+                if newNum >= 100{
+                    return
+                }
+                
+                self.btnSticker.alpha = 0.9
+                self.sticker?.number = newNum
+                self.lblCollectNum.text = "\(newNum)"
+                
+                self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
+                
+                let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
+
+                do {
+                    let results = try self.container.viewContext.fetch(fetchRequest)
+                    if let entity = results.first {
+                        entity.number  = Int16(newNum)
+
+                        try self.container.viewContext.save()
+                    } else {
+                        print("Entity with id 3 not found.")
+                    }
+                } catch {
+                    print("Error fetching entity: \(error)")
+                }
+            }, completion: { (_) in
+               
+            })
         }
     }
     
