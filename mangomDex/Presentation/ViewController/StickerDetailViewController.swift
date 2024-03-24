@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -60,11 +61,6 @@ class StickerDetailViewController: UIViewController {
     }()
     
     @objc private func handleSwipeUp(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        //        let transition = CATransition()
-        //        transition.duration = 0.3
-        //        transition.type = .push
-        //        transition.subtype = .fromTop
-        //        view.window?.layer.add(transition, forKey: kCATransition)
         navigationController?.popViewController(animated: true)
     }
     
@@ -94,6 +90,10 @@ class StickerDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if stickerViewModel.review{
+            SKStoreReviewController.requestReview()
+        }
         
         self.view.addSubview(self.collectionView)
         self.view.addGestureRecognizer(swipeUpGestureRecognizer)
