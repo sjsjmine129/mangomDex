@@ -28,6 +28,7 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     private func setupPinchGestureRecognizer() {
         pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        pinchGestureRecognizer.delegate = self
         collectionView?.addGestureRecognizer(pinchGestureRecognizer)
     }
     
@@ -61,17 +62,6 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    private func adjustZoomScale(_ scale: CGFloat, at pinchLocation: CGPoint) {
-        guard let collectionView = collectionView else { return }
-        
-        let zoomCenter = collectionView.convert(pinchLocation, to: collectionView.superview)
-        
-        for attributes in layoutAttributesForElements(in: collectionView.bounds)! {
-            let distance = abs(zoomCenter.x - attributes.center.x)
-            let scale = 1 - ((1 - scale) * distance / collectionView.bounds.width)
-            attributes.transform = CGAffineTransform(scaleX: scale, y: scale)
-        }
-    }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
@@ -85,4 +75,10 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
         fatalError()
     }
     
+}
+
+extension GridCollectionViewFlowLayout: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
