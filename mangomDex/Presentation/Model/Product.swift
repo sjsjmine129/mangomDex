@@ -8,31 +8,36 @@
 import Foundation
 
 class Product {
+    let productName: String
     let name: String
     let price: Int
     var findLink: String?
     var productLink: String?
     
-    init(name: String, price: Int, findLink: String, productLink:String){
+    init(productName: String, name: String, price: Int, findLink: String, productLink:String){
+        self.productName = productName
         self.name = name
         self.price = price
         self.findLink = findLink
         self.productLink = productLink
     }
     
-    init(name: String, price: Int, productLink:String){
+    init(productName: String, name: String, price: Int, productLink:String){
+        self.productName = productName
         self.name = name
         self.price = price
         self.productLink = productLink
     }
     
-    init(name: String, price: Int, findLink: String){
+    init(productName: String, name: String, price: Int, findLink: String){
+        self.productName = productName
         self.name = name
         self.price = price
         self.findLink = findLink
     }
     
-    init(name: String, price: Int){
+    init(productName: String, name: String, price: Int){
+        self.productName = productName
         self.name = name
         self.price = price
     }

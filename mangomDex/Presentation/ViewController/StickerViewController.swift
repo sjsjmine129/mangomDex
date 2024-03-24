@@ -15,7 +15,6 @@ class StickerViewController: UIViewController {
     private let gridFlowLayout: GridCollectionViewFlowLayout = {
         let layout = GridCollectionViewFlowLayout()
         layout.cellSpacing = 4
-        layout.numberOfColumns = 4
         layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         return layout
     }()
@@ -132,7 +131,7 @@ class StickerViewController: UIViewController {
     override func loadView() {
         super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetStickerNumberData), name: NSNotification.Name(rawValue: "ResetStickerNumberData"), object: nil)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
@@ -145,32 +144,24 @@ class StickerViewController: UIViewController {
             var coreData = try container.viewContext.fetch(fetchRequest)
             
             if coreData.isEmpty {
-                // Loop through the IDs from 1 to 73
                 for id in 1...73 {
-                    
                     let newData = StickerNumbers(context: context)
-                    
                     newData.id = Int16(id)
                     newData.number = 0
-                    
+            
                     do {
                         try context.save()
                     } catch {
                         print("Error saving sticker \(id): \(error)")
                     }
                 }
-                
                 coreData = try container.viewContext.fetch(fetchRequest)
-                
             }
-            
-            
             stickerViewModel.setStoredStickerNumber(coreData: coreData)
             
         } catch {
             print("Error fetching stickers: \(error)")
         }
-        
         
         
         self.stickers = stickerViewModel.filteredStickers(condition: .all)
@@ -180,13 +171,9 @@ class StickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
         self.view.backgroundColor = UIColor(resource: .magClothes)
         
         self.view.addSubview(self.collectionView)
-        
         self.view.addSubview(stNoSticker)
         
         stNoSticker.addArrangedSubview(imgVwNoSticker)
@@ -217,7 +204,6 @@ class StickerViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
-    
 }
 
 
@@ -241,18 +227,15 @@ extension StickerViewController: UICollectionViewDataSource {
             lblNoSticker.isHidden = true
             imgVwNoSticker.isHidden = true
         }
-        
         return self.stickers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sticker = self.stickers[indexPath.row]
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
-        
         let setting = stickerViewModel.checkSetting()
         
-        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode, index: indexPath.row, delegate: self )
+        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode, index: indexPath.row, delegate: self, viewModel: stickerViewModel )
         
         return cell
     }
@@ -316,6 +299,11 @@ extension StickerViewController{
     
     //reload grid
     @objc func reloadDataInGridFlowLayout() {
+        gridFlowLayout.collectionView?.reloadData()
+    }
+    
+    @objc func resetStickerNumberData(){
+        stickerViewModel.resetNumberToZero()
         gridFlowLayout.collectionView?.reloadData()
     }
 }
