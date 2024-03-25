@@ -93,6 +93,7 @@ class StickerDetailViewController: UIViewController {
         
         if stickerViewModel.review{
             SKStoreReviewController.requestReview()
+            stickerViewModel.review = false
         }
         
         self.view.addSubview(self.collectionView)
