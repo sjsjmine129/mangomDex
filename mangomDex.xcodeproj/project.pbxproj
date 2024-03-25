@@ -1029,7 +1029,7 @@
 				DEVELOPMENT_TEAM = B4BSCLJVA5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mangomDex/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "망그러진 띠부씰 도감";
+				INFOPLIST_KEY_CFBundleDisplayName = "망그러진 도감";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1041,9 +1041,11 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1058,7 +1060,7 @@
 				DEVELOPMENT_TEAM = B4BSCLJVA5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mangomDex/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "망그러진 띠부씰 도감";
+				INFOPLIST_KEY_CFBundleDisplayName = "망그러진 도감";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1070,9 +1072,11 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
