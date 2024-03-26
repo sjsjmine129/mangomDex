@@ -8,25 +8,6 @@
 import UIKit
 import StoreKit
 
-class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
-    }
-    
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.view(forKey: .from) else { return }
-        
-        let containerView = transitionContext.containerView
-        let finalFrame = CGRect(x: 0, y: -containerView.bounds.height, width: containerView.bounds.width, height: containerView.bounds.height)
-        
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            fromView.frame = finalFrame
-        }) { _ in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        }
-    }
-}
-
 class StickerDetailViewController: UIViewController {
     
     // MARK: - UI
