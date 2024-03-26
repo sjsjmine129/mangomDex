@@ -23,7 +23,7 @@ class StickerCollectionViewCell: UICollectionViewCell {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
                
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(flipAndPlus(_:)))
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
         btn.addGestureRecognizer(longPressRecognizer)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -55,6 +55,8 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
     // MARK: - make UI of cell
     func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate, viewModel: StickerViewModel){
+        
+        self.stickerViewModel = viewModel
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
         
@@ -111,15 +113,16 @@ class StickerCollectionViewCell: UICollectionViewCell {
         flipAndAdd()
     }
     
-    @objc private func flipAndPlus(_ gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc private func longPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            flipAndAdd()
+            flipAndZero()
         }
     }
     
 }
 
 extension StickerCollectionViewCell{
+    //Flip card and add one
     func flipAndAdd(){
         UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
             let newNum = (self.sticker?.number ?? 0) + 1
@@ -128,6 +131,42 @@ extension StickerCollectionViewCell{
             }
             
             self.btnSticker.alpha = 0.9
+            self.sticker?.number = newNum
+            self.lblCollectNum.text = "\(newNum)"
+            
+            self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
+            
+            let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
+
+            do {
+                let results = try self.container.viewContext.fetch(fetchRequest)
+                if let entity = results.first {
+                    entity.number  = Int16(newNum)
+
+                    try self.container.viewContext.save()
+                } else {
+                    print("Entity with id 3 not found.")
+                }
+            } catch {
+                print("Error fetching entity: \(error)")
+            }
+        }, completion: { (_) in })
+    }
+    
+    //Flip card and add one
+    func flipAndZero(){
+        UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromRight], animations: {
+            if self.sticker?.number == 0{
+                return
+            }
+            
+            let newNum = 0
+            let mode = self.stickerViewModel?.checkSetting()
+            if  mode?.fadeMode ?? false {
+                self.btnSticker.alpha = 0.5
+            }
+            
             self.sticker?.number = newNum
             self.lblCollectNum.text = "\(newNum)"
             
