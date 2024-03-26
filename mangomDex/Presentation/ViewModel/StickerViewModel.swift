@@ -13,6 +13,7 @@ class StickerViewModel{
     
     let defaults = UserDefaults.standard
     var review = false
+    var onboarding = false
     
     private(set) var stickers: [Sticker] = []
     
@@ -24,6 +25,7 @@ class StickerViewModel{
         let first = defaults.object(forKey: "first")
         
         if first == nil {
+            onboarding = true
             defaults.set(1, forKey: "first")
         }else{
             defaults.set(first as! Int + 1, forKey: "first")
@@ -92,8 +94,14 @@ class StickerViewModel{
             }
         }
         
-        if let temp = numStyle, temp as! Bool == true{
+        if numStyle == nil {
+            defaults.set(true, forKey: "numStyle")
             num = true
+        }
+        else{
+            if let temp = numStyle, temp as! Bool == true{
+                num = true
+            }
         }
         
         return (fade, num)

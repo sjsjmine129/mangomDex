@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26FFB2C669177BF2AC1B09AE /* Pods_mangomDex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */; };
+		5753BAF22BB2BDC200BD3B06 /* pointing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5753BAF12BB2BDC200BD3B06 /* pointing.png */; };
 		578723702B940CF40038DA4D /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787236F2B940CF40038DA4D /* SettingButton.swift */; };
 		578723722B945D670038DA4D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723712B945D670038DA4D /* Product.swift */; };
 		578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723732B9462F50038DA4D /* ProductViewModel.swift */; };
@@ -163,6 +164,7 @@
 		1A5EB9A9CBC96E60B8A12309 /* Pods-mangomDex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangomDex.debug.xcconfig"; path = "Target Support Files/Pods-mangomDex/Pods-mangomDex.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF91682C44D421378FCB47E /* Pods-mangomDex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangomDex.release.xcconfig"; path = "Target Support Files/Pods-mangomDex/Pods-mangomDex.release.xcconfig"; sourceTree = "<group>"; };
 		3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mangomDex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5753BAF12BB2BDC200BD3B06 /* pointing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointing.png; sourceTree = "<group>"; };
 		5787236F2B940CF40038DA4D /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		578723712B945D670038DA4D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		578723732B9462F50038DA4D /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				57953A3F2BA90F7200C4F51F /* Instagram.png */,
 				57953A3E2BA90F7200C4F51F /* kakao.png */,
 				57F681732BA5B16300FE63C6 /* all.png */,
+				5753BAF12BB2BDC200BD3B06 /* pointing.png */,
 				57C780E72B90D0E500C00317 /* icon.png */,
 				57F6816F2BA5AB5400FE63C6 /* falling.png */,
 				57953A2D2BA88EB100C4F51F /* kakao */,
@@ -707,6 +710,7 @@
 				57DD5E882B8F23E400A6CAAA /* 59.jpg in Resources */,
 				57DD5E922B8F23E400A6CAAA /* 67.jpg in Resources */,
 				57DD5EB22B8F23E400A6CAAA /* 42.jpg in Resources */,
+				5753BAF22BB2BDC200BD3B06 /* pointing.png in Resources */,
 				57C780EA2B921A9F00C00317 /* Pretendard-Medium.otf in Resources */,
 				57DD5E9F2B8F23E400A6CAAA /* 38.jpg in Resources */,
 				57AE195B2B8E2D4E008F1033 /* right.png in Resources */,
