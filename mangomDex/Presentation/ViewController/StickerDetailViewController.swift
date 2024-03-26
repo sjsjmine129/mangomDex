@@ -6,25 +6,7 @@
 //
 
 import UIKit
-
-class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
-    }
-    
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.view(forKey: .from) else { return }
-        
-        let containerView = transitionContext.containerView
-        let finalFrame = CGRect(x: 0, y: -containerView.bounds.height, width: containerView.bounds.width, height: containerView.bounds.height)
-        
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            fromView.frame = finalFrame
-        }) { _ in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        }
-    }
-}
+import StoreKit
 
 class StickerDetailViewController: UIViewController {
     
@@ -60,11 +42,6 @@ class StickerDetailViewController: UIViewController {
     }()
     
     @objc private func handleSwipeUp(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        //        let transition = CATransition()
-        //        transition.duration = 0.3
-        //        transition.type = .push
-        //        transition.subtype = .fromTop
-        //        view.window?.layer.add(transition, forKey: kCATransition)
         navigationController?.popViewController(animated: true)
     }
     
@@ -94,6 +71,11 @@ class StickerDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if stickerViewModel.review{
+            SKStoreReviewController.requestReview()
+            stickerViewModel.review = false
+        }
         
         self.view.addSubview(self.collectionView)
         self.view.addGestureRecognizer(swipeUpGestureRecognizer)
