@@ -347,8 +347,12 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         // Add tap gesture recognizer to imgVwSticker
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgVwStickerTapped))
         imgVwSticker.isUserInteractionEnabled = true
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(imgVwStickerLongPress))
+        imgVwSticker.addGestureRecognizer(longPressRecognizer)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgVwStickerTapped))
         imgVwSticker.addGestureRecognizer(tapGesture)
     }
     
@@ -361,13 +365,22 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
 //MARK: - objc
 extension StickerDetailCollectionViewCell{
     @objc private func imgVwStickerTapped() {
-        
         UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
             self.changeNum(changeNum: 1)
         }, completion: { (_) in
         })
         
     }
+    
+    @objc private func imgVwStickerLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromRight], animations: {
+                self.changeNum(changeNum: -1)
+            }, completion: { (_) in
+            })
+        }
+    }
+    
     
     @objc func goToLink(_ button: UIButton){
         BtnAction.btnActionAll(button: button)
@@ -397,7 +410,10 @@ extension StickerDetailCollectionViewCell{
 extension StickerDetailCollectionViewCell{
     func changeNum(changeNum: Int){
         if let nowNum = self.sticker?.number{
-            let newNum = nowNum + changeNum
+            var newNum = nowNum + changeNum
+            if changeNum == -1{
+                newNum = 0
+            }
             if newNum < 0 || newNum >= 100{
                 return
             }
@@ -411,7 +427,6 @@ extension StickerDetailCollectionViewCell{
             }
             else if newNum == 1{
                 self.btnMinus.backgroundColor = .magBody
-                let setting = stickerViewModel?.checkSetting()
                 imgVwSticker.alpha = 0.9
 
             }

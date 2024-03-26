@@ -27,8 +27,14 @@ class SettingViewModel{
             }
         }
         
-        if let temp = numStyle, temp as! Bool == true{
+        if numStyle == nil {
+            defaults.set(true, forKey: "numStyle")
             num = true
+        }
+        else{
+            if let temp = numStyle, temp as! Bool == true{
+                num = true
+            }
         }
         
         return (fade, num)
