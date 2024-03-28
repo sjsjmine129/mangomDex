@@ -281,11 +281,11 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             let trimmedText = String(item.name[range.lowerBound...])
             
             if item.linkType == .insta {
-                lblLinkText.text = "\(trimmedText)을\n인스타툰에서 만나요!"
+                lblLinkText.text = "\(trimmedText)\n인스타툰에서 만나요!"
                 imgLinkBtn.image = UIImage(named: "Instagram.png")
                 lblLinkBtnTitle.text = "인스타툰 보기"
             }else if item.linkType == .kakao{
-                lblLinkText.text = "\(trimmedText)을\n이모티콘으로 만나요!"
+                lblLinkText.text = "\(trimmedText)\n이모티콘으로 만나요!"
                 imgLinkBtn.image = UIImage(named: "kakao.png")
                 lblLinkBtnTitle.text = "이모티콘 보기"
             }

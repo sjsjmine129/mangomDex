@@ -126,151 +126,151 @@ extension StickerInfo{
     var name: String {
         switch self {
         case ._01:
-            return "화난 눈썹 망그러진 곰"
+            return "화난 눈썹 망그러진 곰을"
         case ._02:
-            return "체력 소진 망그러진 곰"
+            return "체력 소진 망그러진 곰을"
         case ._03:
-            return "쒸익 망그러진 곰"
+            return "쒸익 망그러진 곰을"
         case ._04:
-            return "단추 팅 망그러진 곰"
+            return "단추 팅 망그러진 곰을"
         case ._05:
-            return "데헷 망그러진 곰"
+            return "데헷 망그러진 곰을"
         case ._06:
-            return "눕는게 좋아 망그러진 곰"
+            return "눕는게 좋아 망그러진 곰을"
         case ._07:
-            return "하트 꼬옥 망그러진 햄터"
+            return "하트 꼬옥 망그러진 햄터를"
         case ._08:
-            return "브이 망그러진 햄터"
+            return "브이 망그러진 햄터를"
         case ._09:
-            return "울먹 망그러진 곰"
+            return "울먹 망그러진 곰을"
         case ._10:
-            return "안녕 망그러진 곰"
+            return "안녕 망그러진 곰을"
         case ._11:
-            return "볼살 말랑 망그러진 곰"
+            return "볼살 말랑 망그러진 곰을"
         case ._12:
-            return "히잉 망그러진 곰"
+            return "히잉 망그러진 곰을"
         case ._13:
-            return "네가 좋아 망그러진 곰"
+            return "네가 좋아 망그러진 곰을"
         case ._14:
-            return "부끄 망그러진 곰"
+            return "부끄 망그러진 곰을"
         case ._15:
-            return "당신을 위한 망그러진 곰"
+            return "당신을 위한 망그러진 곰을"
         case ._16:
-            return "헤드폰 망그러진 곰"
+            return "헤드폰 망그러진 곰을"
         case ._17:
-            return "화가 망그러진 곰"
+            return "화가 망그러진 곰을"
         case ._18:
-            return "우비 망그러진 곰"
+            return "우비 망그러진 곰을"
         case ._19:
-            return "선물 망그러진 곰"
+            return "선물 망그러진 곰을"
         case ._20:
-            return "딸기가 좋아 망그러진 곰"
+            return "딸기가 좋아 망그러진 곰을"
         case ._21:
-            return "망그러진 감자"
+            return "망그러진 감자를"
         case ._22:
-            return "브이 망그러진 감자"
+            return "브이 망그러진 감자를"
         case ._23:
-            return "부아앙 망그러진 감자"
+            return "부아앙 망그러진 감자를"
         case ._24:
-            return "둘이서 함께 망그러진 감자"
+            return "둘이서 함께 망그러진 감자를"
         case ._25:
-            return "당신을 따르는 망그러진 감자"
+            return "당신을 따르는 망그러진 감자를"
         case ._26:
-            return "줍줍 망그러진 감자"
+            return "줍줍 망그러진 감자를"
         case ._27:
-            return "부아앙 망그러진 곰"
+            return "부아앙 망그러진 곰을"
         case ._28:
-            return "뒹굴 망그러진 판다"
+            return "뒹굴 망그러진 판다를"
         case ._29:
-            return "행복 망그러진 곰"
+            return "행복 망그러진 곰을"
         case ._30:
-            return "꾸벅 망그러진 곰"
+            return "꾸벅 망그러진 곰을"
         case ._31:
-            return "망그러진 곰돌즈"
+            return "망그러진 곰돌즈를"
         case ._32:
-            return "노란 수영복 망그러진 곰"
+            return "노란 수영복 망그러진 곰을"
         case ._33:
-            return "파란 수영복 망그러진 토끼"
+            return "파란 수영복 망그러진 토끼를"
         case ._34:
-            return "보송 망그러진 곰"
+            return "보송 망그러진 곰을"
         case ._35:
-            return "빨간 한복 망그러진 곰"
+            return "빨간 한복 망그러진 곰을"
         case ._36:
-            return "파란 한복 망그러진 곰"
+            return "파란 한복 망그러진 곰을"
         case ._37:
-            return "납작 망그러진 곰"
+            return "납작 망그러진 곰을"
         case ._38:
-            return "판다 망그러진 곰"
+            return "판다 망그러진 곰을"
         case ._39:
-            return "토끼 망그러진 곰"
+            return "토끼 망그러진 곰을"
         case ._40:
-            return "개구리 망그러진 곰"
+            return "개구리 망그러진 곰을"
         case ._41:
-            return "고양이 망그러진 곰"
+            return "고양이 망그러진 곰을"
         case ._42:
-            return "곰돌이 후드 망그러진 곰"
+            return "곰돌이 후드 망그러진 곰을"
         case ._43:
-            return "코끼리 망그러진 곰"
+            return "코끼리 망그러진 곰을"
         case ._44:
-            return "오리 망그러진 곰"
+            return "오리 망그러진 곰을"
         case ._45:
-            return "돼지 망그러진 곰"
+            return "돼지 망그러진 곰을"
         case ._46:
-            return "두더지 망그러진 곰"
+            return "두더지 망그러진 곰을"
         case ._47:
-            return "고슴도치 망그러진 곰"
+            return "고슴도치 망그러진 곰을"
         case ._48:
-            return "분홍 내복 망그러진 곰"
+            return "분홍 내복 망그러진 곰을"
         case ._49:
-            return "엄지 척 망그러진 햄터"
+            return "엄지 척 망그러진 햄터를"
         case ._50:
-            return "채찍 망그러진 햄터"
+            return "채찍 망그러진 햄터를"
         case ._51:
-            return "뇸뇸 망그러진 햄터"
+            return "뇸뇸 망그러진 햄터를"
         case ._52:
-            return "빈둥빈둥 망그러진 햄터"
+            return "빈둥빈둥 망그러진 햄터를"
         case ._53:
-            return "자연스러운 포즈 망그러진 곰"
+            return "자연스러운 포즈 망그러진 곰을"
         case ._54:
-            return "나비넥타이 망그러진 다람쥐"
+            return "나비넥타이 망그러진 다람쥐를"
         case ._55:
-            return "댄싱 망그러진 햄터"
+            return "댄싱 망그러진 햄터를"
         case ._56:
-            return "울보 산타 망그러진 곰"
+            return "울보 산타 망그러진 곰을"
         case ._57:
-            return "스노우볼 망그러진 곰"
+            return "스노우볼 망그러진 곰을"
         case ._58:
-            return "루돌프 망그러진 곰"
+            return "루돌프 망그러진 곰을"
         case ._59:
-            return "악마 망그러진 곰"
+            return "악마 망그러진 곰을"
         case ._60:
-            return "천사 망그러진 곰"
+            return "천사 망그러진 곰을"
         case ._61:
-            return "군고구마 망그러진 곰"
+            return "군고구마 망그러진 곰을"
         case ._62:
-            return "탐정 망그러진 곰"
+            return "탐정 망그러진 곰을"
         case ._63:
-            return "서커스 망그러진 곰"
+            return "서커스 망그러진 곰을"
         case ._64:
-            return "오버핏 니트 망그러진 곰"
+            return "오버핏 니트 망그러진 곰을"
         case ._65:
-            return "하트 댄싱 망그러진 곰"
+            return "하트 댄싱 망그러진 곰을"
         case ._66:
-            return "질투 망그러진 곰"
+            return "질투 망그러진 곰을"
         case ._67:
-            return "외로운 망그러진 곰"
+            return "외로운 망그러진 곰을"
         case ._68:
-            return "쓰담쓰담 망그러진 곰"
+            return "쓰담쓰담 망그러진 곰을"
         case ._69:
-            return "행운 요정 망그러진 곰"
+            return "행운 요정 망그러진 곰을"
         case ._70:
-            return "행운 만땅 망그러진 곰"
+            return "행운 만땅 망그러진 곰을"
         case ._71:
-            return "망그러진 행운 부적"
+            return "망그러진 행운 부적을"
         case ._72:
-            return "망그러진 사랑 부적"
+            return "망그러진 사랑 부적을"
         case ._73:
-            return "망그러진 행복 부적"
+            return "망그러진 행복 부적을"
         }
     }
 }
