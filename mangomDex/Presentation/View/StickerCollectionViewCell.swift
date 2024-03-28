@@ -19,12 +19,6 @@ class StickerCollectionViewCell: UICollectionViewCell {
     private var stickerViewModel : StickerViewModel?
     
     // MARK: - UI
-    private lazy var containerVw: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        return vw
-    }()
-    
     private lazy var btnSticker: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -64,11 +58,9 @@ class StickerCollectionViewCell: UICollectionViewCell {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
         
-        self.contentView.addSubview(containerVw)
-        
-        containerVw.addSubview(btnSticker)
-        containerVw.addSubview(lblCollectNum)
-        
+        self.contentView.addSubview(btnSticker)
+        self.contentView.addSubview(lblCollectNum)
+
         btnSticker.imageView?.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
