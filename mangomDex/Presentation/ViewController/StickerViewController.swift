@@ -392,6 +392,7 @@ extension StickerViewController: UICollectionViewDataSource {
             lblNoSticker.isHidden = true
             imgVwNoSticker.isHidden = true
         }
+        
         return self.stickers.count
     }
     

@@ -19,10 +19,16 @@ class StickerCollectionViewCell: UICollectionViewCell {
     private var stickerViewModel : StickerViewModel?
     
     // MARK: - UI
+    private lazy var containerVw: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        return vw
+    }()
+    
     private lazy var btnSticker: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-               
+        
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
         btn.addGestureRecognizer(longPressRecognizer)
         
@@ -53,6 +59,13 @@ class StickerCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.delegate = nil
+        self.containerVw.subviews.forEach {$0.removeFromSuperview()}
+    }
+    
     // MARK: - make UI of cell
     func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate, viewModel: StickerViewModel){
         
@@ -62,9 +75,11 @@ class StickerCollectionViewCell: UICollectionViewCell {
         
         self.delegate = delegate
         self.sticker = item
-        self.contentView.addSubview(btnSticker)
         
-        contentView.addSubview(lblCollectNum)
+        self.contentView.addSubview(containerVw)
+        
+        containerVw.addSubview(btnSticker)
+        containerVw.addSubview(lblCollectNum)
         
         btnSticker.tag = index
         btnSticker.setImage(item.image, for: .normal)
@@ -95,19 +110,19 @@ class StickerCollectionViewCell: UICollectionViewCell {
             lblCollectNum.leadingAnchor.constraint(equalTo:  btnSticker.leadingAnchor, constant: 6),
         ])
     }
-
+    
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         guard let button = sender.view as? UIButton else {
-                    return
-                }
+            return
+        }
         BtnAction.btnActionSize(button: button)
         delegate?.didTapSticker(for: button.tag)
     }
     
     @objc private func handleDoubleTap(_ sender: UITapGestureRecognizer) {
         guard let button = sender.view as? UIButton else {
-                    return
-                }
+            return
+        }
         BtnAction.btnActionSize(button: button)
         
         flipAndAdd()
@@ -138,12 +153,12 @@ extension StickerCollectionViewCell{
             
             let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
-
+            
             do {
                 let results = try self.container.viewContext.fetch(fetchRequest)
                 if let entity = results.first {
                     entity.number  = Int16(newNum)
-
+                    
                     try self.container.viewContext.save()
                 } else {
                     print("Entity with id 3 not found.")
@@ -174,12 +189,12 @@ extension StickerCollectionViewCell{
             
             let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
-
+            
             do {
                 let results = try self.container.viewContext.fetch(fetchRequest)
                 if let entity = results.first {
                     entity.number  = Int16(newNum)
-
+                    
                     try self.container.viewContext.save()
                 } else {
                     print("Entity with id 3 not found.")
