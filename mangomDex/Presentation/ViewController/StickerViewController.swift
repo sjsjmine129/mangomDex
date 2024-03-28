@@ -401,7 +401,7 @@ extension StickerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
         let setting = stickerViewModel.checkSetting()
         
-        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode, index: indexPath.row, delegate: self, viewModel: stickerViewModel )
+        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode, index: indexPath.row, delegate: self, viewModel: stickerViewModel, colunms: self.gridFlowLayout.numberOfColumns )
         
         return cell
     }

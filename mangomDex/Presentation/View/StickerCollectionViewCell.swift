@@ -59,45 +59,17 @@ class StickerCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        self.delegate = nil
-        self.containerVw.subviews.forEach {$0.removeFromSuperview()}
-    }
-    
-    // MARK: - make UI of cell
-    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate, viewModel: StickerViewModel){
-        
-        self.stickerViewModel = viewModel
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
-        
-        self.delegate = delegate
-        self.sticker = item
         
         self.contentView.addSubview(containerVw)
         
         containerVw.addSubview(btnSticker)
         containerVw.addSubview(lblCollectNum)
         
-        btnSticker.tag = index
-        btnSticker.setImage(item.image, for: .normal)
         btnSticker.imageView?.contentMode = .scaleAspectFit
-        
-        if numSetting {
-            lblCollectNum.text = "\(item.number)"
-            lblCollectNum.isHidden = false
-        }else{
-            lblCollectNum.isHidden = true
-        }
-        
-        
-        if item.number == 0 && fadeSetting {
-            btnSticker.alpha = 0.5
-        }else{
-            btnSticker.alpha = 0.9
-        }
         
         NSLayoutConstraint.activate([
             //btnSticker
@@ -109,6 +81,64 @@ class StickerCollectionViewCell: UICollectionViewCell {
             lblCollectNum.bottomAnchor.constraint(equalTo:  btnSticker.bottomAnchor, constant: -2),
             lblCollectNum.leadingAnchor.constraint(equalTo:  btnSticker.leadingAnchor, constant: 6),
         ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.delegate = nil
+        self.sticker = nil
+    }
+    
+    // MARK: - make UI of cell
+    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate, viewModel: StickerViewModel, colunms: Int){
+        self.stickerViewModel = viewModel
+        
+        self.delegate = delegate
+        self.sticker = item
+        
+        btnSticker.tag = index
+        btnSticker.setImage(item.image, for: .normal)
+        
+        if numSetting {
+            var fontSize = 15
+            switch colunms{
+            case 2:
+                fontSize = 30
+            case 3:
+                fontSize = 20
+            case 4:
+                fontSize = 15
+            case 5:
+                fontSize = 12
+            case 6:
+                fontSize = 10
+            case 7:
+                fontSize = 8
+            case 8:
+                fontSize = 8
+            case 9:
+                fontSize = 6
+            default:
+                fontSize = 15
+            }
+            
+            lblCollectNum.font = UIFont(name: "HUDdiu150", size: CGFloat(fontSize))
+            lblCollectNum.text = "\(item.number)"
+            lblCollectNum.isHidden = false
+        }else{
+            lblCollectNum.isHidden = true
+        }
+        
+        if item.number == 0 && fadeSetting {
+            btnSticker.alpha = 0.5
+        }else{
+            btnSticker.alpha = 0.9
+        }
+        
     }
     
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
