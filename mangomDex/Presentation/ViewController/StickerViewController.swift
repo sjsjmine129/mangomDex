@@ -340,7 +340,7 @@ class StickerViewController: UIViewController {
                 vwOnboarding.centerYAnchor.constraint(equalTo: vwBalck.centerYAnchor),
                 //btnClose
                 btnClose.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                btnClose.topAnchor.constraint(equalTo: vwOnboarding.bottomAnchor, constant: 30),
+                btnClose.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35),
             ])
         }
         
