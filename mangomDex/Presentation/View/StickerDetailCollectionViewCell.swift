@@ -255,7 +255,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         // set data
         vwid.backgroundColor = item.color
         lblId.text = viewModel.changeId(id: item.id)
-        lblTitle.text = item.name
+        lblTitle.text = String(item.name.prefix(item.name.count - 1))
         
         imgVwSticker.image = item.image
         imgVwLink.image = item.linkImage
@@ -303,8 +303,8 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             imgVwSticker.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 40),
             imgVwSticker.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -40),
             //stButtons
-            stButtons.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 35),
-            stButtons.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -35),
+            stButtons.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 30),
+            stButtons.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -30),
             stButtons.topAnchor.constraint(equalTo: imgVwSticker.bottomAnchor, constant: 30),
             //vwid
             vwid.heightAnchor.constraint(equalToConstant: 24),
