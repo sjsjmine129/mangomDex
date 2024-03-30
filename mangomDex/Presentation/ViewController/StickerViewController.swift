@@ -10,6 +10,12 @@ import DropDown
 import CoreData
 
 class StickerViewController: UIViewController {
+    var container: NSPersistentContainer!
+    private lazy var stickerViewModel = StickerViewModel()
+    lazy var stickers : [Sticker] = []
+    private var pinchGestureRecognizer: UIPinchGestureRecognizer!
+    private var initialPinchScale: CGFloat = 1.0
+    private var columns: Int = 4
     
     // MARK: - UI component
     private let gridFlowLayout: GridCollectionViewFlowLayout = {
@@ -25,10 +31,11 @@ class StickerViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = true
         view.contentInset = .zero
-        view.backgroundColor = .clear
         view.clipsToBounds = true
         view.register(StickerCollectionViewCell.self, forCellWithReuseIdentifier: "StickerCollectionViewCell")
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        
         return view
     }()
     
@@ -265,10 +272,6 @@ class StickerViewController: UIViewController {
     }()
     
     
-    var container: NSPersistentContainer!
-    private lazy var stickerViewModel = StickerViewModel()
-    lazy var stickers : [Sticker] = []
-    
     // MARK: - LifeCycle
     override func loadView() {
         super.loadView()
@@ -312,6 +315,10 @@ class StickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        pinchGestureRecognizer.delegate = self
+        collectionView.addGestureRecognizer(pinchGestureRecognizer)
         
         self.view.backgroundColor = UIColor(resource: .magClothes)
         
@@ -481,6 +488,36 @@ extension StickerViewController{
         self.vwOnboarding.removeFromSuperview()
         self.btnClose.removeFromSuperview()
     }
+    
+    
+    @objc private func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        switch gestureRecognizer.state {
+        case .began:
+            initialPinchScale = gestureRecognizer.scale
+            columns = gridFlowLayout.numberOfColumns
+        case .changed:
+            let scale = gestureRecognizer.scale
+            if scale > 1{
+                let roundedDeltaScale = Int(round(scale))
+                let temp = columns - roundedDeltaScale
+                if(temp > 1 && temp < 9 && temp != columns){
+                    gridFlowLayout.numberOfColumns = temp
+                    self.collectionView.reloadData()
+                }
+            }
+            else{
+                let roundedDeltaScale = Int(round(1/scale))
+                let temp = columns + roundedDeltaScale
+                if(temp > 1 && temp < 9 && temp != columns){
+                    gridFlowLayout.numberOfColumns = temp
+                    self.collectionView.reloadData()
+                }
+            }
+
+        default:
+            break
+        }
+    }
 }
 
 
@@ -491,5 +528,11 @@ extension StickerViewController: StickerGirdCellDelegate{
             let nextPage = StickerDetailViewController(viewModel: self.stickerViewModel, index: index ?? 0, stickers: self.stickers)
             navigationController.pushViewController(nextPage, animated: true)
         }
+    }
+}
+
+extension StickerViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
