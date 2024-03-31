@@ -146,7 +146,6 @@ class StickerCollectionViewCell: UICollectionViewCell {
             return
         }
         BtnAction.btnActionSize(button: button)
-        
         flipAndAdd()
     }
     
@@ -188,7 +187,13 @@ extension StickerCollectionViewCell{
             } catch {
                 print("Error fetching entity: \(error)")
             }
+            
+            if newNum == 1{
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
+            }
         }, completion: { (_) in })
+        
+        
     }
     
     //Flip card and add one
@@ -224,6 +229,8 @@ extension StickerCollectionViewCell{
             } catch {
                 print("Error fetching entity: \(error)")
             }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
         }, completion: { (_) in })
     }
 }
