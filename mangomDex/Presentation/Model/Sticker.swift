@@ -226,7 +226,7 @@ extension StickerInfo{
         case ._50:
             return "채찍 망그러진 햄터를"
         case ._51:
-            return "뇸뇸 망그러진 햄터를"
+            return "냠냠 망그러진 햄터를"
         case ._52:
             return "빈둥빈둥 망그러진 햄터를"
         case ._53:
