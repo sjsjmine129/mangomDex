@@ -39,7 +39,10 @@ class StickerViewModel{
     func setStoredStickerNumber(coreData: [StickerNumbers]){
         for i in coreData{
             let index = i.id - 1
-            stickers[Int(index)].number = Int(i.number)
+            let num =  Int(i.number)
+            stickers[Int(index)].number = num
+            if num != 0 {
+            }
         }
     }
     
@@ -107,6 +110,7 @@ class StickerViewModel{
         return (fade, num)
     }
     
+    //change id to show data
     func changeId(id: Int) -> String{
         if id < 10{
             return "0\(id)"
@@ -116,7 +120,7 @@ class StickerViewModel{
         }
     }
     
-    
+    //function to open link of inst or kakao
     func openIink(url:String, type: LinkType){
         
         if let link = URL(string: url) {
@@ -127,6 +131,41 @@ class StickerViewModel{
                 UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
             }
         }
+    }
+    
+    //function make number of sticker
+    func getNumberString(stickers: [Sticker], condition:StickerFilter)->String{
+        var totalNum = 73
+        var collectNum = 0
+        
+        switch condition{
+        case .all:
+            collectNum = countVollected(stickers: stickers)
+        case .collected:
+            collectNum = stickers.count
+        case .noncollected:
+            collectNum = 73 - stickers.count
+        case .season1:
+            totalNum = 20
+            collectNum = countVollected(stickers: stickers)
+        case .season2:
+            totalNum = 53
+            collectNum = countVollected(stickers: stickers)
+        }
+        
+        return "\(collectNum)/\(totalNum)"
+    }
+    
+    
+    func countVollected(stickers: [Sticker])->Int{
+        var ret = 0
+        for i in stickers{
+            if i.number != 0{
+                ret += 1
+            }
+        }
+        
+        return ret
     }
     
 }

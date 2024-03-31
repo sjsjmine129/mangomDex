@@ -375,7 +375,7 @@ extension StickerDetailCollectionViewCell{
     @objc private func imgVwStickerLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromRight], animations: {
-                self.changeNum(changeNum: -1)
+                self.changeNum(changeNum: 0)
             }, completion: { (_) in
             })
         }
@@ -411,7 +411,7 @@ extension StickerDetailCollectionViewCell{
     func changeNum(changeNum: Int){
         if let nowNum = self.sticker?.number{
             var newNum = nowNum + changeNum
-            if changeNum == -1{
+            if changeNum == 0{
                 newNum = 0
             }
             if newNum < 0 || newNum >= 100{

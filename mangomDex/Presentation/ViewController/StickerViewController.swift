@@ -39,6 +39,45 @@ class StickerViewController: UIViewController {
         return view
     }()
     
+    private lazy var lblTitle: UILabel = {
+        let title = UILabel()
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.text = "망그러진 띠부씰"
+        title.font = UIFont(name: "HUDdiu150", size: 25)
+        title.textColor = UIColor(resource: .textBlack )
+        
+        return title
+    }()
+    
+    private lazy var lblStickerNum: UILabel = {
+        var lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = UIFont(name: "HUDdiu150", size: 20)
+        lbl.textColor = UIColor(resource: .textBlack)
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    
+    private lazy var vwTitle: UIView = {
+        let vw = UIView()
+        vw.addSubview(lblTitle)
+        vw.addSubview(lblStickerNum)
+        
+        NSLayoutConstraint.activate([
+            //lblTitle
+            lblTitle.leadingAnchor.constraint(equalTo: vw.leadingAnchor),
+            lblTitle.topAnchor.constraint(equalTo: vw.topAnchor),
+            lblTitle.bottomAnchor.constraint(equalTo: vw.bottomAnchor),
+            //lblStickerNum
+            lblStickerNum.trailingAnchor.constraint(equalTo: vw.trailingAnchor),
+            lblStickerNum.bottomAnchor.constraint(equalTo: vw.bottomAnchor),
+            lblStickerNum.leadingAnchor.constraint(equalTo: lblTitle.trailingAnchor, constant: 10),
+        ])
+        
+        return vw
+    }()
+    
     private let lblDropdownTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +128,8 @@ class StickerViewController: UIViewController {
             
             if let filter = StickerFilter(rawValue: item) {
                 self.stickers = stickerViewModel.filteredStickers(condition: filter)
+                lblStickerNum.text = stickerViewModel.getNumberString(stickers: self.stickers, condition: filter)
+                
                 gridFlowLayout.collectionView?.reloadData()
                 
                 self.changeImgVwDropDown(name: "chevron.down")
@@ -277,6 +318,7 @@ class StickerViewController: UIViewController {
         super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resetStickerNumberData), name: NSNotification.Name(rawValue: "ResetStickerNumberData"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeCollectionNum), name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
@@ -328,6 +370,7 @@ class StickerViewController: UIViewController {
         stNoSticker.addArrangedSubview(imgVwNoSticker)
         stNoSticker.addArrangedSubview(lblNoSticker)
         
+        lblStickerNum.text = stickerViewModel.getNumberString(stickers: self.stickers, condition: .all)
         
         // show onboarding
         if stickerViewModel.onboarding{
@@ -435,12 +478,7 @@ private extension StickerViewController{
     //set navigation Bar UI of sticker tab
     func setNavigationBar(){
         
-        let title = UILabel()
-        title.text = "망그러진 띠부씰 도감"
-        title.font = UIFont(name: "HUDdiu150", size: 25)
-        title.textColor = UIColor(resource: .textBlack )
-        
-        let leftBarBtn = UIBarButtonItem(customView: title)
+        let leftBarBtn = UIBarButtonItem(customView: vwTitle)
         let rightBarBtn = UIBarButtonItem(customView: btnDropdown)
         
         navigationItem.leftBarButtonItem = leftBarBtn
@@ -473,12 +511,18 @@ extension StickerViewController{
     //reload grid
     @objc func reloadDataInGridFlowLayout() {
         gridFlowLayout.collectionView?.reloadData()
+        setNumber()
     }
     
     // reset sticker numberData
     @objc func resetStickerNumberData(){
         stickerViewModel.resetNumberToZero()
         gridFlowLayout.collectionView?.reloadData()
+        setNumber()
+    }
+    
+    @objc func changeCollectionNum(){
+        setNumber()
     }
     
     // close onBoarding
@@ -534,5 +578,12 @@ extension StickerViewController: StickerGirdCellDelegate{
 extension StickerViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    func setNumber(){
+        guard let item = lblDropdownTitle.text else{return}
+        if let filter = StickerFilter(rawValue: item) {
+            lblStickerNum.text = stickerViewModel.getNumberString(stickers: self.stickers, condition: filter)
+        } else {}
     }
 }
