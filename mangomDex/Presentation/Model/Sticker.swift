@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class Sticker{
+    static let stickeTotalNum = 73
     let id: Int
     var number: Int
     let season: Int
@@ -20,7 +21,7 @@ class Sticker{
     var linkImage: UIImage?
     
     
-    init(id:Int, number:Int = 0){
+    init(id:Int, number:Int){
         guard let info = StickerInfo(rawValue: id) else {
             fatalError("Invalid sticker id")
         }
@@ -42,6 +43,7 @@ class Sticker{
         default:
             season = 0
         }
+        
     }
     
 }

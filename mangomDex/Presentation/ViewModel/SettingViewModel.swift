@@ -9,7 +9,7 @@ import Foundation
 
 class SettingViewModel{
     let defaults = UserDefaults.standard
-    let settingDataModel = SettingData()
+    let settingDataModel = CoreData_mang()
     
     func checkSetting() -> (fadeMode: Bool, numMode: Bool){
         let fadeStyle = defaults.object(forKey: "fadeStyle")

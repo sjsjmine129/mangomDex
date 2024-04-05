@@ -27,7 +27,7 @@ class OnboardingView: UIView{
     }()
     
     
-    lazy var lblTwoTap: UILabel={
+    lazy var lblTwoTap: UILabel = {
         var lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "Pretendard-SemiBold", size: 30)
@@ -39,7 +39,7 @@ class OnboardingView: UIView{
         return lbl
     }()
     
-    lazy var lblLongPress: UILabel={
+    lazy var lblLongPress: UILabel = {
         var lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "Pretendard-SemiBold", size: 30)

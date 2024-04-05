@@ -14,12 +14,13 @@ protocol StickerGirdCellDelegate: AnyObject{
 
 class StickerCollectionViewCell: UICollectionViewCell {
     static let id = "StickerCollectionViewCell"
-    private var sticker : Sticker?
+    var sticker : Sticker?
     var container: NSPersistentContainer!
     private var stickerViewModel : StickerViewModel?
+    private weak var delegate: StickerGirdCellDelegate?
     
     // MARK: - UI
-    private lazy var btnSticker: UIButton = {
+    lazy var btnSticker: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         
@@ -38,15 +39,13 @@ class StickerCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
-    private var lblCollectNum: UILabel = {
+    var lblCollectNum: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "HUDdiu150", size: 15)
         label.textColor = UIColor(resource: .textBlack)
         return label
     }()
-    
-    private weak var delegate: StickerGirdCellDelegate?
     
     // MARK: - Life Cycle
     override func layoutSubviews() {
@@ -55,12 +54,14 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        //TODO: delete
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.container = appDelegate.persistentContainer
         
         self.contentView.addSubview(btnSticker)
         self.contentView.addSubview(lblCollectNum)
-
+        
         btnSticker.imageView?.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
@@ -86,53 +87,14 @@ class StickerCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - make UI of cell
-    func cellConfigure(with item: Sticker, fadeSetting: Bool, numSetting: Bool, index: Int, delegate: StickerGirdCellDelegate, viewModel: StickerViewModel, colunms: Int){
-        self.stickerViewModel = viewModel
-        
+    func cellConfigure(delegate: StickerGirdCellDelegate, viewModel: StickerViewModel){
         self.delegate = delegate
-        self.sticker = item
-        
-        btnSticker.tag = index
-        btnSticker.setImage(item.image, for: .normal)
-        
-        if numSetting {
-            var fontSize = 15
-            switch colunms{
-            case 2:
-                fontSize = 30
-            case 3:
-                fontSize = 20
-            case 4:
-                fontSize = 15
-            case 5:
-                fontSize = 12
-            case 6:
-                fontSize = 10
-            case 7:
-                fontSize = 8
-            case 8:
-                fontSize = 8
-            case 9:
-                fontSize = 6
-            default:
-                fontSize = 15
-            }
-            
-            lblCollectNum.font = UIFont(name: "HUDdiu150", size: CGFloat(fontSize))
-            lblCollectNum.text = "\(item.number)"
-            lblCollectNum.isHidden = false
-        }else{
-            lblCollectNum.isHidden = true
-        }
-        
-        if item.number == 0 && fadeSetting {
-            btnSticker.alpha = 0.5
-        }else{
-            btnSticker.alpha = 0.9
-        }
-        
+        self.stickerViewModel = viewModel
     }
-    
+}
+
+// MARK: - objc
+extension StickerCollectionViewCell{
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         guard let button = sender.view as? UIButton else {
             return
@@ -157,6 +119,7 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
 }
 
+//
 extension StickerCollectionViewCell{
     //Flip card and add one
     func flipAndAdd(){

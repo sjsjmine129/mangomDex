@@ -6,13 +6,10 @@
 //
 
 import UIKit
-import DropDown
-import CoreData
 
 class StickerViewController: UIViewController {
-    var container: NSPersistentContainer!
     private lazy var stickerViewModel = StickerViewModel()
-    lazy var stickers : [Sticker] = []
+    
     private var pinchGestureRecognizer: UIPinchGestureRecognizer!
     private var initialPinchScale: CGFloat = 1.0
     private var columns: Int = 4
@@ -51,45 +48,15 @@ class StickerViewController: UIViewController {
     // MARK: - LifeCycle
     override func loadView() {
         super.loadView()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataInGridFlowLayout), name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resetStickerNumberData), name: NSNotification.Name(rawValue: "ResetStickerNumberData"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeCollectionNum), name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
         
         btnDropdown.addTarget(self, action: #selector(showDropdown(_:)), for: .touchUpInside)
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.container = appDelegate.persistentContainer
-        
-        let context = container.viewContext
-        
-        let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
-        
-        do {
-            var coreData = try container.viewContext.fetch(fetchRequest)
-            
-            if coreData.isEmpty {
-                for id in 1...73 {
-                    let newData = StickerNumbers(context: context)
-                    newData.id = Int16(id)
-                    newData.number = 0
-                    
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Error saving sticker \(id): \(error)")
-                    }
-                }
-                coreData = try container.viewContext.fetch(fetchRequest)
-            }
-            stickerViewModel.setStoredStickerNumber(coreData: coreData)
-            
-        } catch {
-            print("Error fetching stickers: \(error)")
-        }
-        
-        
-        self.stickers = stickerViewModel.filteredStickers(condition: .all)
         setNavigationBar()
+        setBindings()
     }
     
     override func viewDidLoad() {
@@ -100,29 +67,17 @@ class StickerViewController: UIViewController {
         collectionView.addGestureRecognizer(pinchGestureRecognizer)
         
         self.view.backgroundColor = UIColor(resource: .magClothes)
-        
-        self.view.addSubview(self.collectionView)
+        self.view.addSubview(collectionView)
         self.view.addSubview(stNoSticker)
-        
-        
-        vwTitle.lblStickerNum.text = stickerViewModel.getNumberString(stickers: self.stickers, condition: .all)
-        
+    
         btnDropdown.ddFilter.selectionAction = { [unowned self] (index: Int, item: String) in
-            btnDropdown.lblDropdownTitle.text = item
-            
-            if let filter = StickerFilter(rawValue: item) {
-                self.stickers = stickerViewModel.filteredStickers(condition: filter)
-                vwTitle.lblStickerNum.text = stickerViewModel.getNumberString(stickers: self.stickers, condition: filter)
-                
-                gridFlowLayout.collectionView?.reloadData()
-                
-                self.changeImgVwDropDown(name: "chevron.down")
-            } else {}
+            stickerViewModel.changeFilter(filtertype: item)
         }
         
         btnDropdown.ddFilter.cancelAction = { [weak self] in
-            self?.changeImgVwDropDown(name: "chevron.down")
+            self?.stickerViewModel.setDropDownImage(imgName: "chevron.down")
         }
+        
         
         // show onboarding
         if stickerViewModel.onboarding{
@@ -159,8 +114,10 @@ class StickerViewController: UIViewController {
 // MARK: - set data of grid
 extension StickerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // show img
-        if self.stickers.count == 0 {
+        let stickerNum =  stickerViewModel.filteredStickers.count
+        
+        // show no sticker image
+        if stickerNum == 0 {
             stNoSticker.lblNoSticker.isHidden = false
             stNoSticker.imgVwNoSticker.isHidden = false
             
@@ -177,15 +134,15 @@ extension StickerViewController: UICollectionViewDataSource {
             stNoSticker.imgVwNoSticker.isHidden = true
         }
         
-        return self.stickers.count
+        return stickerNum
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sticker = self.stickers[indexPath.row]
+        let sticker = stickerViewModel.filteredStickers[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
-        let setting = stickerViewModel.checkSetting()
         
-        cell.cellConfigure(with: sticker, fadeSetting: setting.fadeMode, numSetting: setting.numMode, index: indexPath.row, delegate: self, viewModel: stickerViewModel, colunms: self.gridFlowLayout.numberOfColumns )
+        cell.cellConfigure(delegate: self, viewModel: stickerViewModel)
+        stickerViewModel.setGridCellUIData(cell: cell, sticker: sticker, index: indexPath.row, colunms: self.gridFlowLayout.numberOfColumns)
         
         return cell
     }
@@ -224,39 +181,30 @@ private extension StickerViewController{
     }
 }
 
-// MARK: - otherFunc
-extension StickerViewController{
-    func changeImgVwDropDown(name: String){
-        if let image = UIImage(systemName: name)?.withTintColor(.textBlack, renderingMode: .alwaysOriginal) {
-            btnDropdown.imgVwDropDown.image = image
-        }
-    }
-}
-
 // MARK: - objc
 extension StickerViewController{
     // show DropDown
     @objc func showDropdown(_ sender: UIButton){
         BtnAction.btnActionSize(button: sender)
         btnDropdown.ddFilter.show()
-        changeImgVwDropDown(name: "chevron.up")
+        stickerViewModel.setDropDownImage(imgName: "chevron.up")
     }
     
     //reload grid
     @objc func reloadDataInGridFlowLayout() {
         gridFlowLayout.collectionView?.reloadData()
-        setNumber()
+        stickerViewModel.setNumberString()
     }
     
     // reset sticker numberData
     @objc func resetStickerNumberData(){
         stickerViewModel.resetNumberToZero()
         gridFlowLayout.collectionView?.reloadData()
-        setNumber()
+        stickerViewModel.setNumberString()
     }
     
     @objc func changeCollectionNum(){
-        setNumber()
+        stickerViewModel.setNumberString()
     }
     
     // close onBoarding
@@ -289,7 +237,6 @@ extension StickerViewController{
                     self.collectionView.reloadData()
                 }
             }
-            
         default:
             break
         }
@@ -301,21 +248,34 @@ extension StickerViewController{
 extension StickerViewController: StickerGirdCellDelegate{
     func didTapSticker(for index: Int?) {
         if let navigationController = self.navigationController {
-            let nextPage = StickerDetailViewController(viewModel: self.stickerViewModel, index: index ?? 0, stickers: self.stickers)
+            let nextPage = StickerDetailViewController(viewModel: self.stickerViewModel, index: index ?? 0, stickers: self.stickerViewModel.filteredStickers)
             navigationController.pushViewController(nextPage, animated: true)
         }
     }
 }
 
+// MARK: - UIGestureRecognizerDelegate
 extension StickerViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
-    func setNumber(){
-        guard let item = btnDropdown.lblDropdownTitle.text else{return}
-        if let filter = StickerFilter(rawValue: item) {
-            vwTitle.lblStickerNum.text = stickerViewModel.getNumberString(stickers: self.stickers, condition: filter)
-        } else {}
+}
+
+
+// MARK: - set bindings
+extension StickerViewController{
+    func setBindings() {
+        stickerViewModel.dropdownImage.bind { [weak self] imageName in
+            self?.btnDropdown.imgVwDropDown.image = UIImage(systemName: imageName)?.withTintColor(.textBlack, renderingMode: .alwaysOriginal)
+        }
+        
+        stickerViewModel.filterMode.bind{ [weak self] mode in
+            self?.btnDropdown.lblDropdownTitle.text = mode
+            self?.gridFlowLayout.collectionView?.reloadData()
+        }
+        
+        stickerViewModel.numberString.bind{ [weak self] text in
+            self?.vwTitle.lblStickerNum.text = text
+        }
     }
 }

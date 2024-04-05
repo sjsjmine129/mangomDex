@@ -20,6 +20,8 @@ class ProductViewModel{
         Product(productName: "망그러진 곰 바질토마토 베이글", name: "망곰바질토마토베이글", price: 4900 ,productLink: "https://pocketcu.co.kr/product/detail/2023120035619?cateTyp=D"),
     ]
     
+    
+    // set Cell UI data
     func setProductCell(cell: ProoductTableViewCell, index: Int){
        let item = products[index]
         
@@ -30,7 +32,5 @@ class ProductViewModel{
             cell.btnProductFind.isHidden = true
         }
     }
-    
-    
     
 }
