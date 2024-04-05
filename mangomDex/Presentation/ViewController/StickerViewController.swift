@@ -45,147 +45,7 @@ class StickerViewController: UIViewController {
     
     private lazy var stNoSticker = NoStickerStack()
     
-    
-    private lazy var vwBlack: UIView = {
-        var vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.backgroundColor = .black
-        vw.alpha = 0.7
-        
-        return vw
-    }()
-    
-    private lazy var vwOnboarding: UIView = {
-        var vwMain = UIView()
-        vwMain.translatesAutoresizingMaskIntoConstraints = false
-        
-        var lblTwoTap = UILabel()
-        lblTwoTap.translatesAutoresizingMaskIntoConstraints = false
-        lblTwoTap.font = UIFont(name: "Pretendard-SemiBold", size: 30)
-        lblTwoTap.textColor = UIColor(resource: .hamWhite)
-        lblTwoTap.text = "2번 탭해서\n띠부씰 수집!"
-        lblTwoTap.numberOfLines = 2
-        lblTwoTap.textAlignment = .left
-        
-        var lblLongPress = UILabel()
-        lblLongPress.translatesAutoresizingMaskIntoConstraints = false
-        lblLongPress.font = UIFont(name: "Pretendard-SemiBold", size: 30)
-        lblLongPress.textColor = UIColor(resource: .hamWhite)
-        lblLongPress.text = "꾹 눌러서\n개수 초기화!"
-        lblLongPress.numberOfLines = 2
-        lblLongPress.textAlignment = .left
-        
-        var imgVw04 = UIImageView(image: UIImage(named: "4.jpg"))
-        imgVw04.translatesAutoresizingMaskIntoConstraints = false
-        imgVw04.contentMode = .scaleAspectFit
-        imgVw04.alpha = 0.9
-        
-        var imgVw24 = UIImageView(image: UIImage(named: "24.jpg"))
-        imgVw24.translatesAutoresizingMaskIntoConstraints = false
-        imgVw24.contentMode = .scaleAspectFit
-        imgVw24.alpha = 0.9
-        
-        var imgVwPoint1 = UIImageView(image: UIImage(named: "pointing.png"))
-        imgVwPoint1.translatesAutoresizingMaskIntoConstraints = false
-        imgVwPoint1.contentMode = .scaleAspectFit
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.autoreverse, .repeat], animations: {
-            imgVwPoint1.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }, completion: nil)
-        
-        Timer.scheduledTimer(withTimeInterval: 1.2, repeats: true) { timer in
-            if imgVwPoint1.alpha == 1{
-                imgVwPoint1.alpha = 0
-            }
-            else{
-                imgVwPoint1.alpha = 1
-            }
-        }
-        
-        var imgVwPoint2 = UIImageView(image: UIImage(named: "pointing.png"))
-        imgVwPoint2.translatesAutoresizingMaskIntoConstraints = false
-        imgVwPoint2.contentMode = .scaleAspectFit
-        
-        UIView.animate(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat], animations: {
-            imgVwPoint2.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            imgVwPoint2.alpha = 0.3
-        }, completion: nil)
-        
-        vwMain.addSubview(lblTwoTap)
-        vwMain.addSubview(imgVw04)
-        vwMain.addSubview(imgVwPoint1)
-        vwMain.addSubview(lblLongPress)
-        vwMain.addSubview(imgVw24)
-        vwMain.addSubview(imgVwPoint2)
-        
-        NSLayoutConstraint.activate([
-            //lblTwoTap
-            lblTwoTap.leadingAnchor.constraint(equalTo: vwMain.leadingAnchor),
-            //imgVw04
-            imgVw04.heightAnchor.constraint(equalToConstant: 130),
-            imgVw04.widthAnchor.constraint(equalToConstant: 100),
-            imgVw04.leadingAnchor.constraint(equalTo: lblTwoTap.trailingAnchor, constant: 20),
-            imgVw04.topAnchor.constraint(equalTo: vwMain.topAnchor, constant: 0),
-            imgVw04.bottomAnchor.constraint(equalTo: lblTwoTap.centerYAnchor, constant: 20),
-            //imgVwPoint1
-            imgVwPoint1.heightAnchor.constraint(equalToConstant: 200),
-            imgVwPoint1.widthAnchor.constraint(equalToConstant: 120),
-            imgVwPoint1.trailingAnchor.constraint(equalTo: vwMain.trailingAnchor,constant: 0),
-            imgVwPoint1.topAnchor.constraint(equalTo: imgVw04.bottomAnchor, constant: -50),
-            imgVwPoint1.leadingAnchor.constraint(equalTo: imgVw04.trailingAnchor, constant: -60),
-            //imgVw24
-            imgVw24.heightAnchor.constraint(equalToConstant: 130),
-            imgVw24.widthAnchor.constraint(equalToConstant: 100),
-            imgVw24.leadingAnchor.constraint(equalTo: vwMain.leadingAnchor, constant: 10),
-            imgVw24.topAnchor.constraint(equalTo: imgVwPoint1.bottomAnchor, constant: -50),
-            //imgVwPoint2
-            imgVwPoint2.heightAnchor.constraint(equalToConstant: 200),
-            imgVwPoint2.widthAnchor.constraint(equalToConstant: 120),
-            imgVwPoint2.bottomAnchor.constraint(equalTo: vwMain.bottomAnchor,constant: 0),
-            imgVwPoint2.topAnchor.constraint(equalTo: imgVw24.bottomAnchor, constant: -50),
-            imgVwPoint2.leadingAnchor.constraint(equalTo: imgVw24.trailingAnchor, constant: -60),
-            //lblLongPress
-            lblLongPress.centerYAnchor.constraint(equalTo: imgVw24.bottomAnchor, constant: -20),
-            lblLongPress.leadingAnchor.constraint(equalTo: imgVwPoint2.trailingAnchor, constant: 0),
-            lblLongPress.trailingAnchor.constraint(equalTo: vwMain.trailingAnchor, constant: 0),
-        ])
-        
-        return vwMain
-    }()
-    
-    
-    private let lblbtnClose: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HUDdiu150", size: 20)
-        label.textColor = UIColor(resource: .textBlack)
-        label.text = "띠부씰 모으러 가기!"
-        
-        return label
-    }()
-    
-    private lazy var btnClose: UIButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addSubview(lblbtnClose)
-        btn.backgroundColor = .magBody
-        btn.layer.cornerRadius = 8
-        btn.layer.borderWidth = 1.5
-        btn.layer.borderColor = UIColor(resource: .magBorder).cgColor
-        
-        
-        btn.addTarget(self, action: #selector(closeOnBoarding(_:)), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
-            //lblbtnClose
-            lblbtnClose.topAnchor.constraint(equalTo: btn.topAnchor, constant: 10),
-            lblbtnClose.leadingAnchor.constraint(equalTo: btn.leadingAnchor, constant: 18),
-            lblbtnClose.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -18),
-            lblbtnClose.bottomAnchor.constraint(equalTo: btn.bottomAnchor, constant: -10),
-        ])
-        
-        return btn
-    }()
+    private lazy var vwOnboarding = OnboardingView()
     
     
     // MARK: - LifeCycle
@@ -268,21 +128,14 @@ class StickerViewController: UIViewController {
         if stickerViewModel.onboarding{
             stickerViewModel.onboarding = false
             
-            self.view.addSubview(vwBlack)
             self.view.addSubview(vwOnboarding)
-            self.view.addSubview(btnClose)
+            vwOnboarding.btnClose.addTarget(self, action: #selector(closeOnBoarding(_:)), for: .touchUpInside)
             NSLayoutConstraint.activate([
-                //vwBlack
-                vwBlack.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-                vwBlack.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-                vwBlack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
-                vwBlack.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
                 //vwOnboarding
-                vwOnboarding.centerXAnchor.constraint(equalTo: vwBlack.centerXAnchor),
-                vwOnboarding.centerYAnchor.constraint(equalTo: vwBlack.centerYAnchor),
-                //btnClose
-                btnClose.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                btnClose.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35),
+                vwOnboarding.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+                vwOnboarding.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+                vwOnboarding.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+                vwOnboarding.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             ])
         }
         
@@ -409,9 +262,7 @@ extension StickerViewController{
     // close onBoarding
     @objc func closeOnBoarding(_ sender: UIButton){
         BtnAction.btnActionSize(button: sender)
-        self.vwBlack.removeFromSuperview()
         self.vwOnboarding.removeFromSuperview()
-        self.btnClose.removeFromSuperview()
     }
     
     
@@ -438,7 +289,7 @@ extension StickerViewController{
                     self.collectionView.reloadData()
                 }
             }
-
+            
         default:
             break
         }

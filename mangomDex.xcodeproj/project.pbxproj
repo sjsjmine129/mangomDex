@@ -14,6 +14,7 @@
 		5726D7362BBFC10F0088D2CB /* StickerTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7352BBFC10F0088D2CB /* StickerTitle.swift */; };
 		5726D7382BBFC29E0088D2CB /* DropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */; };
 		5726D73A2BBFC5D50088D2CB /* NoStickerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */; };
+		5726D73C2BBFCE7B0088D2CB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D73B2BBFCE7B0088D2CB /* OnboardingView.swift */; };
 		5753BAF22BB2BDC200BD3B06 /* pointing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5753BAF12BB2BDC200BD3B06 /* pointing.png */; };
 		578723702B940CF40038DA4D /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787236F2B940CF40038DA4D /* SettingButton.swift */; };
 		578723722B945D670038DA4D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723712B945D670038DA4D /* Product.swift */; };
@@ -176,6 +177,7 @@
 		5726D7352BBFC10F0088D2CB /* StickerTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTitle.swift; sourceTree = "<group>"; };
 		5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownBtn.swift; sourceTree = "<group>"; };
 		5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStickerStack.swift; sourceTree = "<group>"; };
+		5726D73B2BBFCE7B0088D2CB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5753BAF12BB2BDC200BD3B06 /* pointing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointing.png; sourceTree = "<group>"; };
 		5787236F2B940CF40038DA4D /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		578723712B945D670038DA4D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				5726D7352BBFC10F0088D2CB /* StickerTitle.swift */,
 				5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */,
 				5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */,
+				5726D73B2BBFCE7B0088D2CB /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				5726D7362BBFC10F0088D2CB /* StickerTitle.swift in Sources */,
 				578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */,
 				5726D7382BBFC29E0088D2CB /* DropDownBtn.swift in Sources */,
+				5726D73C2BBFCE7B0088D2CB /* OnboardingView.swift in Sources */,
 				57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */,
 				57E97F2C2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift in Sources */,
 				57953A482BA9DB9A00C4F51F /* Model.xcdatamodeld in Sources */,
