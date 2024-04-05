@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class ProductDetailViewController: UIViewController, WKNavigationDelegate {
+class ProductDetailViewController: UIViewController, WKNavigationDelegate, UIGestureRecognizerDelegate {
     
     var CUlinkData: String?
     
@@ -17,7 +17,6 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
         wV.translatesAutoresizingMaskIntoConstraints = false
         wV.navigationDelegate = self
         
-        // Load a webpage
         if let cuLinkData = CUlinkData, let url = URL(string: cuLinkData) {
             let request = URLRequest(url: url)
             wV.load(request)
@@ -42,10 +41,6 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
         
         return btn
     }()
-    
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
     
     
     //MARK: - LifeCycle
@@ -75,7 +70,10 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
-    
+}
+
+// MARK: - loading indicator
+extension ProductDetailViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -87,6 +85,13 @@ class ProductDetailViewController: UIViewController, WKNavigationDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+}
+
+// MARK: - objc
+extension ProductDetailViewController{
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - webView setting
@@ -112,6 +117,3 @@ extension ProductDetailViewController{
     }
 }
 
-extension ProductDetailViewController: UIGestureRecognizerDelegate{
-    
-}
