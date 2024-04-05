@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SettingViewController: UIViewController {
     
@@ -24,7 +23,6 @@ class SettingViewController: UIViewController {
     }
     
 }
-
 
 // MARK: - init page
 private extension SettingViewController{

@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import UIKit
-import CoreData
 
 class StickerViewModel{
     
@@ -125,22 +123,6 @@ class StickerViewModel{
         }
     }
     
-    //function to open link of inst or kakao
-    func openIink(index: Int){
-        let sticker = filteredStickers[index]
-        let url = sticker.stickerLink!
-        let type = sticker.linkType
-        
-        if let link = URL(string: url) {
-            UIApplication.shared.open(link, options: [:], completionHandler: nil)
-        } else {
-            if type == .insta{
-                let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
-                UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
-            }
-        }
-    }
-    
     //function make number of sticker
     func setNumberString(){
         var totalNum = Sticker.stickeTotalNum
@@ -196,15 +178,14 @@ class StickerViewModel{
     }
     
     // set grid cell data
-    func setGridCellUIData(cell: StickerCollectionViewCell, index: Int, colunms: Int){
+    func setGridCellUIData(cell: StickerCollectionViewCell, index: Int, colunms: Int)->Int{
         let sticker = filteredStickers[index]
         cell.btnSticker.tag = index
         cell.btnSticker.setImage(sticker.image, for: .normal)
-        
+        var fontSize = 15
         let setting = checkSetting()
         
         if setting.numMode {
-            var fontSize = 15
             switch colunms{
             case 2:
                 fontSize = 30
@@ -226,7 +207,6 @@ class StickerViewModel{
                 fontSize = 15
             }
             
-            cell.lblCollectNum.font = UIFont(name: "HUDdiu150", size: CGFloat(fontSize))
             cell.lblCollectNum.text = "\(sticker.number)"
             cell.lblCollectNum.isHidden = false
         }else{
@@ -238,10 +218,12 @@ class StickerViewModel{
         }else{
             cell.btnSticker.alpha = 0.9
         }
+        
+        return fontSize
     }
     
     // set Detail cell data
-    func setDetailCellUIData(cell: StickerDetailCollectionViewCell, index: Int){
+    func setDetailCellUIData(cell: StickerDetailCollectionViewCell, index: Int)->String{
         let sticker = filteredStickers[index]
         
         // set data
@@ -269,20 +251,22 @@ class StickerViewModel{
             cell.btnPlus.backgroundColor = .lightGray
         }
         
+        var imageName = "Instagram.png"
         
         if let range = sticker.name.range(of: "망그러진") {
             let trimmedText = String(sticker.name[range.lowerBound...])
             
             if sticker.linkType == .insta {
                 cell.lblLinkText.text = "\(trimmedText)\n인스타툰에서 만나요!"
-                cell.imgLinkBtn.image = UIImage(named: "Instagram.png")
                 cell.lblLinkBtnTitle.text = "인스타툰 보기"
             }else if sticker.linkType == .kakao{
                 cell.lblLinkText.text = "\(trimmedText)\n이모티콘으로 만나요!"
-                cell.imgLinkBtn.image = UIImage(named: "kakao.png")
+                imageName = "kakao.png"
                 cell.lblLinkBtnTitle.text = "이모티콘 보기"
             }
         }
+        
+        return imageName
     }
     
     

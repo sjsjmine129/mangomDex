@@ -337,7 +337,19 @@ extension StickerDetailCollectionViewCell{
     
     @objc func goToLink(_ button: UIButton){
         BtnAction.btnActionAll(button: button)
-        self.stickerViewModel?.openIink(index: index)
+        
+        let sticker = stickerViewModel!.filteredStickers[index]
+        let url = sticker.stickerLink!
+        let type = sticker.linkType
+        
+        if let link = URL(string: url) {
+            UIApplication.shared.open(link, options: [:], completionHandler: nil)
+        } else {
+            if type == .insta{
+                let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
+                UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     @objc func numberBtnPress(_ button: UIButton){

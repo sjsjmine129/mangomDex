@@ -117,7 +117,8 @@ extension StickerDetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerDetailCollectionViewCell.id, for: indexPath) as! StickerDetailCollectionViewCell
         
         cell.detailCellConfigure(viewModel: stickerViewModel)
-        stickerViewModel.setDetailCellUIData(cell: cell, index: indexPath.row)
+        let imageName = stickerViewModel.setDetailCellUIData(cell: cell, index: indexPath.row)
+        cell.imgLinkBtn.image = UIImage(named: imageName)
         
         return cell
     }
