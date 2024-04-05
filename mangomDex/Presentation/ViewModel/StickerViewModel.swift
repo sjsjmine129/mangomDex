@@ -12,7 +12,7 @@ import CoreData
 class StickerViewModel{
     
     let defaults = UserDefaults.standard
-    //    var review = false
+    var review = false
     var onboarding = false
     let coreData = CoreData_mang()
     
@@ -40,9 +40,9 @@ class StickerViewModel{
             defaults.set(1, forKey: "first")
         }else{
             defaults.set(first as! Int + 1, forKey: "first")
-            //            if(first as! Int > 3){
-            //                review = true
-            //            }
+            if(first as! Int > 3){
+                review = true
+            }
         }
         
         filteredStickers = Array(stickers)
@@ -126,7 +126,10 @@ class StickerViewModel{
     }
     
     //function to open link of inst or kakao
-    func openIink(url:String, type: LinkType){
+    func openIink(index: Int){
+        let sticker = filteredStickers[index]
+        let url = sticker.stickerLink!
+        let type = sticker.linkType
         
         if let link = URL(string: url) {
             UIApplication.shared.open(link, options: [:], completionHandler: nil)
@@ -193,7 +196,8 @@ class StickerViewModel{
     }
     
     // set grid cell data
-    func setGridCellUIData(cell: StickerCollectionViewCell, sticker: Sticker, index: Int, colunms: Int){
+    func setGridCellUIData(cell: StickerCollectionViewCell, index: Int, colunms: Int){
+        let sticker = filteredStickers[index]
         cell.btnSticker.tag = index
         cell.btnSticker.setImage(sticker.image, for: .normal)
         
@@ -236,6 +240,51 @@ class StickerViewModel{
         }
     }
     
+    // set Detail cell data
+    func setDetailCellUIData(cell: StickerDetailCollectionViewCell, index: Int){
+        let sticker = filteredStickers[index]
+        
+        // set data
+        cell.index = index
+        cell.vwid.backgroundColor = sticker.color
+        cell.lblId.text = changeId(id: sticker.id)
+        cell.lblTitle.text = String(sticker.name.prefix(sticker.name.count - 1))
+        
+        cell.imgVwSticker.image = sticker.image
+        cell.imgVwLink.image = sticker.linkImage
+        
+        let setting = checkSetting()
+        if sticker.number == 0 && setting.fadeMode {
+            cell.imgVwSticker.alpha = 0.5
+        }else{
+            cell.imgVwSticker.alpha = 0.9
+        }
+        
+        cell.lblNumber.text = "수집한 개수: \(sticker.number)"
+        
+        if sticker.number == 0{
+            cell.btnMinus.backgroundColor = .lightGray
+        }
+        else if sticker.number == 99{
+            cell.btnPlus.backgroundColor = .lightGray
+        }
+        
+        
+        if let range = sticker.name.range(of: "망그러진") {
+            let trimmedText = String(sticker.name[range.lowerBound...])
+            
+            if sticker.linkType == .insta {
+                cell.lblLinkText.text = "\(trimmedText)\n인스타툰에서 만나요!"
+                cell.imgLinkBtn.image = UIImage(named: "Instagram.png")
+                cell.lblLinkBtnTitle.text = "인스타툰 보기"
+            }else if sticker.linkType == .kakao{
+                cell.lblLinkText.text = "\(trimmedText)\n이모티콘으로 만나요!"
+                cell.imgLinkBtn.image = UIImage(named: "kakao.png")
+                cell.lblLinkBtnTitle.text = "이모티콘 보기"
+            }
+        }
+    }
+    
     
     // add one sticker
     func addStickerNum(index: Int, cell: StickerCollectionViewCell){
@@ -249,6 +298,7 @@ class StickerViewModel{
         cell.lblCollectNum.text = "\(newNum)"
         
         stickers[filteredStickers[index].id - 1].number = newNum
+        filteredStickers[index].number = newNum
         
         coreData.changeStickerNum(id: filteredStickers[index].id, newNum: newNum)
         
@@ -272,10 +322,51 @@ class StickerViewModel{
         cell.lblCollectNum.text = "\(newNum)"
         
         stickers[filteredStickers[index].id - 1].number = newNum
+        filteredStickers[index].number = newNum
         
         coreData.changeStickerNum(id: filteredStickers[index].id, newNum: newNum)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
+    }
+    
+    // change sticker num
+    func adjustStickerNum(index: Int, changeNum: Int, cell: StickerDetailCollectionViewCell){
+        let sticker = filteredStickers[index]
+        let nowNum = sticker.number
+        
+        var newNum = nowNum + changeNum
+        if changeNum == 0{
+            newNum = 0
+        }
+        if newNum < 0 || newNum >= 100{
+            return
+        }
+        
+        if newNum == 0{
+            cell.btnMinus.backgroundColor = .lightGray
+            let setting = checkSetting()
+            if  setting.fadeMode {
+                cell.imgVwSticker.alpha = 0.5
+            }
+        }
+        else if newNum == 1{
+            cell.btnMinus.backgroundColor = .magBody
+            cell.imgVwSticker.alpha = 0.9
+        }
+        else if newNum == 99{
+            cell.btnPlus.backgroundColor = .lightGray
+        }
+        else if newNum == 98{
+            cell.btnPlus.backgroundColor = .magBody
+        }
+        
+        cell.lblNumber.text = "수집한 개수: \(newNum)"
+        
+        stickers[sticker.id - 1].number = newNum
+        filteredStickers[index].number = newNum
+        coreData.changeStickerNum(id: filteredStickers[index].id, newNum: newNum)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
     }
     
 }

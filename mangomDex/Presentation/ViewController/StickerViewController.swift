@@ -138,11 +138,10 @@ extension StickerViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sticker = stickerViewModel.filteredStickers[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCollectionViewCell.id, for: indexPath) as! StickerCollectionViewCell
         
         cell.cellConfigure(delegate: self, viewModel: stickerViewModel)
-        stickerViewModel.setGridCellUIData(cell: cell, sticker: sticker, index: indexPath.row, colunms: self.gridFlowLayout.numberOfColumns)
+        stickerViewModel.setGridCellUIData(cell: cell, index: indexPath.row, colunms: self.gridFlowLayout.numberOfColumns)
         
         return cell
     }

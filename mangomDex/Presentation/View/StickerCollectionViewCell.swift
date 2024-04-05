@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 protocol StickerGirdCellDelegate: AnyObject{
     func didTapSticker(for index: Int?)
@@ -14,7 +13,6 @@ protocol StickerGirdCellDelegate: AnyObject{
 
 class StickerCollectionViewCell: UICollectionViewCell {
     static let id = "StickerCollectionViewCell"
-    var container: NSPersistentContainer!
     private var stickerViewModel : StickerViewModel?
     private weak var delegate: StickerGirdCellDelegate?
     
@@ -53,10 +51,6 @@ class StickerCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //TODO: delete
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.container = appDelegate.persistentContainer
         
         self.contentView.addSubview(btnSticker)
         self.contentView.addSubview(lblCollectNum)

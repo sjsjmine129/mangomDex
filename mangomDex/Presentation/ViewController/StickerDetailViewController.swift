@@ -58,11 +58,11 @@ class StickerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        if stickerViewModel.review{
-        //            SKStoreReviewController.requestReview()
-        //            stickerViewModel.review = false
-        //        }
-        SKStoreReviewController.requestReview()
+        if stickerViewModel.review{
+            SKStoreReviewController.requestReview()
+            stickerViewModel.review = false
+        }
+        
         
         self.view.addSubview(self.collectionView)
         self.view.addGestureRecognizer(swipeUpGestureRecognizer)
@@ -114,11 +114,10 @@ extension StickerDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sticker = self.stickerViewModel.filteredStickers[indexPath.row]
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerDetailCollectionViewCell.id, for: indexPath) as! StickerDetailCollectionViewCell
         
-        cell.detailCellConfigure(with: sticker, viewModel: stickerViewModel)
+        cell.detailCellConfigure(viewModel: stickerViewModel)
+        stickerViewModel.setDetailCellUIData(cell: cell, index: indexPath.row)
         
         return cell
     }
