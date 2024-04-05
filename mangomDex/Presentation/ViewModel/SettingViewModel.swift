@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import UIKit
 
 class SettingViewModel{
     let defaults = UserDefaults.standard
+    let settingDataModel = CoreData_mang()
     
     func checkSetting() -> (fadeMode: Bool, numMode: Bool){
         let fadeStyle = defaults.object(forKey: "fadeStyle")
@@ -40,26 +40,9 @@ class SettingViewModel{
         return (fade, num)
     }
     
-    // open magbear instagram
-    func openInstagram(){
-        
-        if let instagramURL = URL(string: "instagram://user?username=yurang_official") {
-            UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
-        } else {
-            let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
-            UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
-        }
-    }
-    
-    // open kakao inquire link
-    func openKakaoInquire(){
-        let instagramWebURL = URL(string: "https://open.kakao.com/o/s9QZvhfg")!
-        UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
-    }
-    
     //change fade setting
-    func fadeSwitchValueChanged(sender: UISwitch){
-        if sender.isOn {
+    func fadeSwitchValueChanged(isOn: Bool){
+        if isOn {
             defaults.set(true, forKey: "fadeStyle")
         } else {
             defaults.set(false, forKey: "fadeStyle")
@@ -67,8 +50,8 @@ class SettingViewModel{
     }
     
     //change num setting
-    func numSwitchValueChanged(sender: UISwitch){
-        if sender.isOn {
+    func numSwitchValueChanged(isOn: Bool){
+        if isOn {
             defaults.set(true, forKey: "numStyle")
         } else {
             defaults.set(false, forKey: "numStyle")
@@ -79,4 +62,10 @@ class SettingViewModel{
     func triggerReload() {
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
      }
+    
+    //reset StickerData and reset CoreData
+    func resetStickerData(){
+        settingDataModel.resetStickerNum()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResetStickerNumberData"), object: nil)
+    }
 }

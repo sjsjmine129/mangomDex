@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		26FFB2C669177BF2AC1B09AE /* Pods_mangomDex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */; };
+		5726D7292BBF7B760088D2CB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7282BBF7B760088D2CB /* SettingView.swift */; };
+		5726D72D2BBF90160088D2CB /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D72C2BBF90160088D2CB /* CoreData.swift */; };
+		5726D7322BBFB9390088D2CB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7312BBFB9390088D2CB /* Observable.swift */; };
+		5726D7362BBFC10F0088D2CB /* StickerTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7352BBFC10F0088D2CB /* StickerTitle.swift */; };
+		5726D7382BBFC29E0088D2CB /* DropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */; };
+		5726D73A2BBFC5D50088D2CB /* NoStickerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */; };
+		5726D73C2BBFCE7B0088D2CB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D73B2BBFCE7B0088D2CB /* OnboardingView.swift */; };
 		5753BAF22BB2BDC200BD3B06 /* pointing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5753BAF12BB2BDC200BD3B06 /* pointing.png */; };
 		578723702B940CF40038DA4D /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787236F2B940CF40038DA4D /* SettingButton.swift */; };
 		578723722B945D670038DA4D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723712B945D670038DA4D /* Product.swift */; };
@@ -164,6 +171,13 @@
 		1A5EB9A9CBC96E60B8A12309 /* Pods-mangomDex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangomDex.debug.xcconfig"; path = "Target Support Files/Pods-mangomDex/Pods-mangomDex.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF91682C44D421378FCB47E /* Pods-mangomDex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangomDex.release.xcconfig"; path = "Target Support Files/Pods-mangomDex/Pods-mangomDex.release.xcconfig"; sourceTree = "<group>"; };
 		3B7D4751AEA4FBDB7B7FEC18 /* Pods_mangomDex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mangomDex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5726D7282BBF7B760088D2CB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		5726D72C2BBF90160088D2CB /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		5726D7312BBFB9390088D2CB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		5726D7352BBFC10F0088D2CB /* StickerTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTitle.swift; sourceTree = "<group>"; };
+		5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownBtn.swift; sourceTree = "<group>"; };
+		5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStickerStack.swift; sourceTree = "<group>"; };
+		5726D73B2BBFCE7B0088D2CB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5753BAF12BB2BDC200BD3B06 /* pointing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointing.png; sourceTree = "<group>"; };
 		5787236F2B940CF40038DA4D /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		578723712B945D670038DA4D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -421,6 +435,8 @@
 				57E51F2D2B9DECF00089EDEB /* Sticker.swift */,
 				57AECEDB2BA16FFD00C2D99B /* StickerFilter.swift */,
 				57E97F312BA6E2D6009CBEEB /* StickerTypes.swift */,
+				5726D72C2BBF90160088D2CB /* CoreData.swift */,
+				5726D7312BBFB9390088D2CB /* Observable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +475,11 @@
 				57E51F332B9E99E50089EDEB /* GridCollectionViewFlowLayout.swift */,
 				57F6816D2BA51CB800FE63C6 /* BtnAction.swift */,
 				57953A442BA9CBC900C4F51F /* NumberButton.swift */,
+				5726D7282BBF7B760088D2CB /* SettingView.swift */,
+				5726D7352BBFC10F0088D2CB /* StickerTitle.swift */,
+				5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */,
+				5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */,
+				5726D73B2BBFCE7B0088D2CB /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -874,19 +895,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				57953A452BA9CBC900C4F51F /* NumberButton.swift in Sources */,
+				5726D73A2BBFC5D50088D2CB /* NoStickerStack.swift in Sources */,
 				578723702B940CF40038DA4D /* SettingButton.swift in Sources */,
 				57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */,
 				578723722B945D670038DA4D /* Product.swift in Sources */,
 				57AE194B2B8E1E77008F1033 /* StickerViewController.swift in Sources */,
 				57E51F2C2B9DE64E0089EDEB /* SettingViewModel.swift in Sources */,
+				5726D7292BBF7B760088D2CB /* SettingView.swift in Sources */,
 				57AE19312B8E1374008F1033 /* ProductViewController.swift in Sources */,
 				57E51F302B9E8CA70089EDEB /* StickerViewModel.swift in Sources */,
 				57E51F322B9E8EF40089EDEB /* StickerCollectionViewCell.swift in Sources */,
 				57AECEDC2BA16FFD00C2D99B /* StickerFilter.swift in Sources */,
 				57E51F2E2B9DECF00089EDEB /* Sticker.swift in Sources */,
 				57AE192D2B8E1374008F1033 /* AppDelegate.swift in Sources */,
+				5726D7322BBFB9390088D2CB /* Observable.swift in Sources */,
 				579B0F102B9A05FA00125D83 /* ProductDetailViewController.swift in Sources */,
+				5726D72D2BBF90160088D2CB /* CoreData.swift in Sources */,
+				5726D7362BBFC10F0088D2CB /* StickerTitle.swift in Sources */,
 				578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */,
+				5726D7382BBFC29E0088D2CB /* DropDownBtn.swift in Sources */,
+				5726D73C2BBFCE7B0088D2CB /* OnboardingView.swift in Sources */,
 				57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */,
 				57E97F2C2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift in Sources */,
 				57953A482BA9DB9A00C4F51F /* Model.xcdatamodeld in Sources */,
@@ -1043,7 +1071,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1075,7 +1103,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

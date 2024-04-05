@@ -18,6 +18,19 @@ class ProductViewModel{
         Product(productName: "망그러진 곰 꿀호떡버거", name: "망곰이의꿀호떡버거", price: 3400, findLink: "https://www.pocketcu.co.kr/search/stock?isRecommend=Y&item_cd=8809692955115", productLink: "https://www.pocketcu.co.kr/product/detail/2023110035285?store_cd=&cateTyp=&chldMealEvtYn=&isNetYn=Y"),
         Product(productName: "망그러진 곰 치즈포테이토 베이글", name: "망곰치즈감자베이글", price: 4900, productLink: "https://www.pocketcu.co.kr/product/detail/2024010036642?store_cd=&cateTyp=&chldMealEvtYn=&isNetYn=Y"),
         Product(productName: "망그러진 곰 바질토마토 베이글", name: "망곰바질토마토베이글", price: 4900 ,productLink: "https://pocketcu.co.kr/product/detail/2023120035619?cateTyp=D"),
-
     ]
+    
+    
+    // set Cell UI data
+    func setProductCell(cell: ProoductTableViewCell, index: Int){
+       let item = products[index]
+        
+        cell.lblProductName.text = item.productName
+        cell.lblProductPrice.text = "\(item.price)원"
+        cell.btnProductFind.cuApplink = item.findLink
+        if item.findLink == nil {
+            cell.btnProductFind.isHidden = true
+        }
+    }
+    
 }
