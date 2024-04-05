@@ -11,6 +11,9 @@
 		5726D7292BBF7B760088D2CB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7282BBF7B760088D2CB /* SettingView.swift */; };
 		5726D72D2BBF90160088D2CB /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D72C2BBF90160088D2CB /* CoreData.swift */; };
 		5726D7322BBFB9390088D2CB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7312BBFB9390088D2CB /* Observable.swift */; };
+		5726D7362BBFC10F0088D2CB /* StickerTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7352BBFC10F0088D2CB /* StickerTitle.swift */; };
+		5726D7382BBFC29E0088D2CB /* DropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */; };
+		5726D73A2BBFC5D50088D2CB /* NoStickerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */; };
 		5753BAF22BB2BDC200BD3B06 /* pointing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5753BAF12BB2BDC200BD3B06 /* pointing.png */; };
 		578723702B940CF40038DA4D /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787236F2B940CF40038DA4D /* SettingButton.swift */; };
 		578723722B945D670038DA4D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578723712B945D670038DA4D /* Product.swift */; };
@@ -170,6 +173,9 @@
 		5726D7282BBF7B760088D2CB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5726D72C2BBF90160088D2CB /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		5726D7312BBFB9390088D2CB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		5726D7352BBFC10F0088D2CB /* StickerTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTitle.swift; sourceTree = "<group>"; };
+		5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownBtn.swift; sourceTree = "<group>"; };
+		5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStickerStack.swift; sourceTree = "<group>"; };
 		5753BAF12BB2BDC200BD3B06 /* pointing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointing.png; sourceTree = "<group>"; };
 		5787236F2B940CF40038DA4D /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		578723712B945D670038DA4D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -468,6 +474,9 @@
 				57F6816D2BA51CB800FE63C6 /* BtnAction.swift */,
 				57953A442BA9CBC900C4F51F /* NumberButton.swift */,
 				5726D7282BBF7B760088D2CB /* SettingView.swift */,
+				5726D7352BBFC10F0088D2CB /* StickerTitle.swift */,
+				5726D7372BBFC29E0088D2CB /* DropDownBtn.swift */,
+				5726D7392BBFC5D50088D2CB /* NoStickerStack.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -883,6 +892,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57953A452BA9CBC900C4F51F /* NumberButton.swift in Sources */,
+				5726D73A2BBFC5D50088D2CB /* NoStickerStack.swift in Sources */,
 				578723702B940CF40038DA4D /* SettingButton.swift in Sources */,
 				57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */,
 				578723722B945D670038DA4D /* Product.swift in Sources */,
@@ -898,7 +908,9 @@
 				5726D7322BBFB9390088D2CB /* Observable.swift in Sources */,
 				579B0F102B9A05FA00125D83 /* ProductDetailViewController.swift in Sources */,
 				5726D72D2BBF90160088D2CB /* CoreData.swift in Sources */,
+				5726D7362BBFC10F0088D2CB /* StickerTitle.swift in Sources */,
 				578723742B9462F50038DA4D /* ProductViewModel.swift in Sources */,
+				5726D7382BBFC29E0088D2CB /* DropDownBtn.swift in Sources */,
 				57D3F1462B98AB570044D50A /* ProductButton.swift in Sources */,
 				57E97F2C2BA5DBFC009CBEEB /* StickerDetailCollectionViewCell.swift in Sources */,
 				57953A482BA9DB9A00C4F51F /* Model.xcdatamodeld in Sources */,
