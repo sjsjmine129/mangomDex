@@ -67,21 +67,29 @@ private extension SettingViewController{
     
     @objc func openInstagram(_ button:UIButton){
         BtnAction.btnActionAll(button: button)
-        settingViewModel.openInstagram()
+        
+        if let instagramURL = URL(string: "instagram://user?username=yurang_official") {
+            UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
+        } else {
+            let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
+            UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
+        }
     }
     
     @objc func openKakaoInquire(_ button:UIButton){
         BtnAction.btnActionAll(button: button)
-        settingViewModel.openKakaoInquire()
+        
+        let instagramWebURL = URL(string: "https://open.kakao.com/o/s9QZvhfg")!
+        UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
     }
     
     @objc func fadeSwitchValueChanged(_ sender: UISwitch) {
-        settingViewModel.fadeSwitchValueChanged(sender: sender)
+        settingViewModel.fadeSwitchValueChanged(isOn: sender.isOn)
         settingViewModel.triggerReload()
     }
     
     @objc func numSwitchValueChanged(_ sender: UISwitch) {
-        settingViewModel.numSwitchValueChanged(sender: sender)
+        settingViewModel.numSwitchValueChanged(isOn: sender.isOn)
         settingViewModel.triggerReload()
     }
     
