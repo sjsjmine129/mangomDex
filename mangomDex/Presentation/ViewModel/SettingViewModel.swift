@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class SettingViewModel{
     let defaults = UserDefaults.standard
+    let settingDataModel = SettingData()
     
     func checkSetting() -> (fadeMode: Bool, numMode: Bool){
         let fadeStyle = defaults.object(forKey: "fadeStyle")
@@ -42,7 +44,6 @@ class SettingViewModel{
     
     // open magbear instagram
     func openInstagram(){
-        
         if let instagramURL = URL(string: "instagram://user?username=yurang_official") {
             UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)
         } else {
@@ -79,4 +80,10 @@ class SettingViewModel{
     func triggerReload() {
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
      }
+    
+    //reset StickerData and reset CoreData
+    func resetStickerData(){
+        settingDataModel.resetStickerNum()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResetStickerNumberData"), object: nil)
+    }
 }
