@@ -12,7 +12,7 @@ import CoreData
 class StickerViewModel{
     
     let defaults = UserDefaults.standard
-    var review = false
+    //    var review = false
     var onboarding = false
     let coreData = CoreData_mang()
     
@@ -26,7 +26,7 @@ class StickerViewModel{
     
     init() {
         let numdata = coreData.getStickerNumber()
-
+        
         for i in numdata{
             let num =  Int(i.number)
             let id = Int(i.id)
@@ -40,9 +40,9 @@ class StickerViewModel{
             defaults.set(1, forKey: "first")
         }else{
             defaults.set(first as! Int + 1, forKey: "first")
-            if(first as! Int > 3){
-                review = true
-            }
+            //            if(first as! Int > 3){
+            //                review = true
+            //            }
         }
         
         filteredStickers = Array(stickers)
@@ -196,7 +196,7 @@ class StickerViewModel{
     func setGridCellUIData(cell: StickerCollectionViewCell, sticker: Sticker, index: Int, colunms: Int){
         cell.btnSticker.tag = index
         cell.btnSticker.setImage(sticker.image, for: .normal)
-        cell.sticker = sticker
+        
         let setting = checkSetting()
         
         if setting.numMode {
@@ -234,6 +234,48 @@ class StickerViewModel{
         }else{
             cell.btnSticker.alpha = 0.9
         }
+    }
+    
+    
+    // add one sticker
+    func addStickerNum(index: Int, cell: StickerCollectionViewCell){
+        
+        let newNum = filteredStickers[index].number + 1
+        if newNum >= 100{
+            return
+        }
+        
+        cell.btnSticker.alpha = 0.9
+        cell.lblCollectNum.text = "\(newNum)"
+        
+        stickers[filteredStickers[index].id - 1].number = newNum
+        
+        coreData.changeStickerNum(id: filteredStickers[index].id, newNum: newNum)
+        
+        if newNum == 1{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
+        }
+    }
+    
+    // set Zero the sticker num
+    func zeroStickerNum(index: Int, cell: StickerCollectionViewCell){
+        if filteredStickers[index].number == 0{
+            return
+        }
+        
+        let newNum = 0
+        let mode = checkSetting()
+        if  mode.fadeMode {
+            cell.btnSticker.alpha = 0.5
+        }
+        
+        cell.lblCollectNum.text = "\(newNum)"
+        
+        stickers[filteredStickers[index].id - 1].number = newNum
+        
+        coreData.changeStickerNum(id: filteredStickers[index].id, newNum: newNum)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
     }
     
 }

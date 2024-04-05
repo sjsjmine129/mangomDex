@@ -25,34 +25,20 @@ class StickerDetailViewController: UIViewController {
         return cv
     }()
     
-    private var btnBack: UIImageView = {
-        let imgVw = UIImageView()
-        if let image = UIImage(systemName: "chevron.down")?.withTintColor(.textBlack, renderingMode: .alwaysOriginal) {
-            imgVw.image = image
-        }
-        imgVw.contentMode = .scaleAspectFit
-        
-        return imgVw
-    }()
-    
     private lazy var swipeUpGestureRecognizer: UISwipeGestureRecognizer = {
         let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeUp(_:)))
         gestureRecognizer.direction = .up
         return gestureRecognizer
     }()
     
-    @objc private func handleSwipeUp(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        navigationController?.popViewController(animated: true)
-    }
     
     private let index: Int
     private var stickerViewModel : StickerViewModel
-    var stickers : [Sticker]
     
-    init(viewModel: StickerViewModel, index: Int, stickers: [Sticker]) {
+    
+    init(viewModel: StickerViewModel, index: Int) {
         self.stickerViewModel = viewModel
         self.index = index
-        self.stickers = stickers
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -72,10 +58,11 @@ class StickerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if stickerViewModel.review{
-            SKStoreReviewController.requestReview()
-            stickerViewModel.review = false
-        }
+        //        if stickerViewModel.review{
+        //            SKStoreReviewController.requestReview()
+        //            stickerViewModel.review = false
+        //        }
+        SKStoreReviewController.requestReview()
         
         self.view.addSubview(self.collectionView)
         self.view.addGestureRecognizer(swipeUpGestureRecognizer)
@@ -123,11 +110,11 @@ extension StickerDetailViewController{
 // MARK: - set data of grid
 extension StickerDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.stickers.count
+        return self.stickerViewModel.filteredStickers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sticker = self.stickers[indexPath.row]
+        let sticker = self.stickerViewModel.filteredStickers[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerDetailCollectionViewCell.id, for: indexPath) as! StickerDetailCollectionViewCell
         
@@ -143,10 +130,13 @@ extension StickerDetailViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
 // MARK: - objc
 extension StickerDetailViewController{
     @objc func leftButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func handleSwipeUp(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        navigationController?.popViewController(animated: true)
     }
 }

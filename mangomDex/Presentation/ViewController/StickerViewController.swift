@@ -248,7 +248,7 @@ extension StickerViewController{
 extension StickerViewController: StickerGirdCellDelegate{
     func didTapSticker(for index: Int?) {
         if let navigationController = self.navigationController {
-            let nextPage = StickerDetailViewController(viewModel: self.stickerViewModel, index: index ?? 0, stickers: self.stickerViewModel.filteredStickers)
+            let nextPage = StickerDetailViewController(viewModel: self.stickerViewModel, index: index ?? 0)
             navigationController.pushViewController(nextPage, animated: true)
         }
     }

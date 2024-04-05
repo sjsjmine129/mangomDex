@@ -14,7 +14,6 @@ protocol StickerGirdCellDelegate: AnyObject{
 
 class StickerCollectionViewCell: UICollectionViewCell {
     static let id = "StickerCollectionViewCell"
-    var sticker : Sticker?
     var container: NSPersistentContainer!
     private var stickerViewModel : StickerViewModel?
     private weak var delegate: StickerGirdCellDelegate?
@@ -83,7 +82,6 @@ class StickerCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.delegate = nil
-        self.sticker = nil
     }
     
     // MARK: - make UI of cell
@@ -108,92 +106,19 @@ extension StickerCollectionViewCell{
             return
         }
         BtnAction.btnActionSize(button: button)
-        flipAndAdd()
+        
+        UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
+            self.stickerViewModel?.addStickerNum(index: self.btnSticker.tag, cell: self)
+        }, completion: { (_) in })
     }
     
     @objc private func longPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            flipAndZero()
+            UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromRight], animations: {
+                self.stickerViewModel?.zeroStickerNum(index: self.btnSticker.tag, cell: self)
+            }, completion: { (_) in })
         }
     }
-    
 }
 
-//
-extension StickerCollectionViewCell{
-    //Flip card and add one
-    func flipAndAdd(){
-        UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
-            let newNum = (self.sticker?.number ?? 0) + 1
-            if newNum >= 100{
-                return
-            }
-            
-            self.btnSticker.alpha = 0.9
-            self.sticker?.number = newNum
-            self.lblCollectNum.text = "\(newNum)"
-            
-            self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
-            
-            let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
-            
-            do {
-                let results = try self.container.viewContext.fetch(fetchRequest)
-                if let entity = results.first {
-                    entity.number  = Int16(newNum)
-                    
-                    try self.container.viewContext.save()
-                } else {
-                    print("Entity with id 3 not found.")
-                }
-            } catch {
-                print("Error fetching entity: \(error)")
-            }
-            
-            if newNum == 1{
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
-            }
-        }, completion: { (_) in })
-        
-        
-    }
-    
-    //Flip card and add one
-    func flipAndZero(){
-        UIView.transition(with: self, duration: 0.7, options: [.transitionFlipFromRight], animations: {
-            if self.sticker?.number == 0{
-                return
-            }
-            
-            let newNum = 0
-            let mode = self.stickerViewModel?.checkSetting()
-            if  mode?.fadeMode ?? false {
-                self.btnSticker.alpha = 0.5
-            }
-            
-            self.sticker?.number = newNum
-            self.lblCollectNum.text = "\(newNum)"
-            
-            self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
-            
-            let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
-            
-            do {
-                let results = try self.container.viewContext.fetch(fetchRequest)
-                if let entity = results.first {
-                    entity.number  = Int16(newNum)
-                    
-                    try self.container.viewContext.save()
-                } else {
-                    print("Entity with id 3 not found.")
-                }
-            } catch {
-                print("Error fetching entity: \(error)")
-            }
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeCollectionNum"), object: nil)
-        }, completion: { (_) in })
-    }
-}
+

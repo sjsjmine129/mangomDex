@@ -67,5 +67,24 @@ class CoreData_mang{
         }
     }
     
+    
+    func changeStickerNum(id: Int, newNum: Int){
+        let context = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            if let entity = results.first {
+                entity.number  = Int16(newNum)
+                try context.save()
+            } else {
+                print("Entity with id 3 not found.")
+            }
+        } catch {
+            print("Error fetching entity: \(error)")
+        }
+    }
+    
 }
 

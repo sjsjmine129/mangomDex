@@ -13,7 +13,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     static let id = "StickerDetailCollectionViewCell"
     
     // MARK: - UI
-    private lazy var vwContainer: UIView = {
+    lazy var vwContainer: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.backgroundColor = .magClothes
@@ -21,7 +21,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return vw
     }()
     
-    private lazy var stButtons: UIStackView = {
+    lazy var stButtons: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -32,7 +32,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var stTitle: UIStackView = {
+    lazy var stTitle: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -43,7 +43,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var vwid: UIView = {
+    lazy var vwid: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = 12
@@ -51,7 +51,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return vw
     }()
     
-    private lazy var lblId: UILabel = {
+    lazy var lblId: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "Helvetica Bold Condensed", size: 16)
@@ -61,7 +61,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var lblTitle: UILabel = {
+    lazy var lblTitle: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 25)
@@ -71,7 +71,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var imgVwSticker: UIImageView = {
+    lazy var imgVwSticker: UIImageView = {
         let imgVw = UIImageView()
         imgVw.translatesAutoresizingMaskIntoConstraints = false
         imgVw.contentMode = .scaleAspectFit
@@ -85,7 +85,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return imgVw
     }()
     
-    private lazy var vwLinkBox: UIView = {
+    lazy var vwLinkBox: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 10
@@ -95,7 +95,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var vwImgLink:UIView = {
+    lazy var vwImgLink:UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.shadowColor = UIColor.gray.cgColor
@@ -107,7 +107,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return vw
     }()
     
-    private lazy var imgVwLink: UIImageView = {
+    lazy var imgVwLink: UIImageView = {
         let imgVw = UIImageView()
         imgVw.translatesAutoresizingMaskIntoConstraints = false
         imgVw.contentMode = .scaleAspectFit
@@ -117,7 +117,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return imgVw
     }()
     
-    private lazy var stLinkText: UIStackView = {
+    lazy var stLinkText: UIStackView = {
         let st = UIStackView()
         st.translatesAutoresizingMaskIntoConstraints = false
         st.axis = .vertical
@@ -128,7 +128,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return st
     }()
     
-    private lazy var lblLinkText: UILabel = {
+    lazy var lblLinkText: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 20)
@@ -138,7 +138,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private let lblLinkBtnTitle: UILabel = {
+    let lblLinkBtnTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "HUDdiu150", size: 18)
@@ -146,14 +146,14 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let imgLinkBtn: UIImageView = {
+    let imgLinkBtn: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var btnLink: UIButton = {
+    lazy var btnLink: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addSubview(lblLinkBtnTitle)
@@ -175,7 +175,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
-    private lazy var stNumberChange: UIStackView = {
+    lazy var stNumberChange: UIStackView = {
         let st = UIStackView()
         st.translatesAutoresizingMaskIntoConstraints = false
         st.axis = .horizontal
@@ -186,7 +186,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return st
     }()
     
-    private lazy var lblNumber: UILabel = {
+    lazy var lblNumber: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 25)
@@ -195,14 +195,14 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var btnMinus: NumberButton = {
+    lazy var btnMinus: NumberButton = {
         let btn = NumberButton(type: .minus)
         btn.addTarget(self, action: #selector(numberBtnPress(_:)), for: .touchUpInside)
         
         return btn
     }()
     
-    private lazy var btnPlus: NumberButton = {
+    lazy var btnPlus: NumberButton = {
         let btn = NumberButton(type: .plus)
         btn.addTarget(self, action: #selector(numberBtnPress(_:)), for: .touchUpInside)
         
