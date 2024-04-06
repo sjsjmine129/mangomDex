@@ -210,12 +210,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     
     var stickerViewModel : StickerViewModel?
     var index = 0
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.vwContainer.subviews.forEach {$0.removeFromSuperview()}
-    }
-    
+        
     // MARK: - make UI of cell
     func detailCellConfigure(viewModel: StickerViewModel){
         self.stickerViewModel = viewModel
