@@ -74,6 +74,12 @@ class StickerViewModel{
                     retStickers.append(i)
                 }
             }
+        case .duplicate:
+            for i in stickers{
+                if i.number > 1 {
+                    retStickers.append(i)
+                }
+            }
         case .season1:
             retStickers = Array(stickers[0...19])
         case .season2:
@@ -132,17 +138,19 @@ class StickerViewModel{
         
         switch condition{
         case .all:
-            collectNum = countVollected()
+            collectNum = countCollected()
         case .collected:
             collectNum = filteredStickers.count
         case .noncollected:
-            collectNum = Sticker.stickeTotalNum - filteredStickers.count
+            collectNum = filteredStickers.count
+        case .duplicate:
+            collectNum = filteredStickers.count
         case .season1:
             totalNum = 20
-            collectNum = countVollected()
+            collectNum = countCollected()
         case .season2:
             totalNum = 53
-            collectNum = countVollected()
+            collectNum = countCollected()
         default:
             collectNum = 0
         }
@@ -151,7 +159,7 @@ class StickerViewModel{
     }
     
     // count stikcer collected Num
-    func countVollected()->Int{
+    func countCollected()->Int{
         var ret = 0
         for i in filteredStickers{
             if i.number != 0{

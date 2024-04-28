@@ -27,7 +27,7 @@ class DropDownBtn:UIButton{
     lazy var ddFilter = {
         var dd = DropDown()
         
-        dd.dataSource = ["전체 보기", "모은 띠부씰", "없는 띠부씰", "띠부씰 시즌1", "띠부씰 시즌2"]
+        dd.dataSource = ["전체 보기", "모은 띠부씰", "없는 띠부씰", "중복 띠부씰", "띠부씰 시즌1", "띠부씰 시즌2"]
         dd.anchorView = self
         dd.textFont = UIFont(name: "HUDdiu150", size: 15) ?? UIFont.systemFont(ofSize: 15)
         dd.backgroundColor = .magBody
