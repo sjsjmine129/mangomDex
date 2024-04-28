@@ -34,6 +34,8 @@ class ProductViewModel{
         cell.btnProductFind.cuApplink = item.findLink
         if item.findLink == nil {
             cell.btnProductFind.isHidden = true
+        }else{
+            cell.btnProductFind.isHidden = false
         }
     }
     
