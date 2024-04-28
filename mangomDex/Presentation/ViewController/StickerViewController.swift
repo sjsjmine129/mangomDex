@@ -121,13 +121,17 @@ extension StickerViewController: UICollectionViewDataSource {
             stNoSticker.lblNoSticker.isHidden = false
             stNoSticker.imgVwNoSticker.isHidden = false
             
-            if btnDropdown.lblDropdownTitle.text == "모은 띠부씰"{
+            if btnDropdown.lblDropdownTitle.text == "모은 띠부씰" {
                 stNoSticker.imgVwNoSticker.image = UIImage(named: "falling.png")
                 stNoSticker.lblNoSticker.text = "아직 수집한 띠부씰이 없어요."
                 
             }else if btnDropdown.lblDropdownTitle.text == "없는 띠부씰"{
                 stNoSticker.imgVwNoSticker.image = UIImage(named: "all.png")
                 stNoSticker.lblNoSticker.text = "모든 띠부씰을 다 모았어요!"
+            }else if btnDropdown.lblDropdownTitle.text == "중복 띠부씰" {
+                stNoSticker.imgVwNoSticker.image = UIImage(named: "falling.png")
+                stNoSticker.lblNoSticker.text = "아직 중복으로 수집한 띠부씰이 없어요."
+                
             }
         }else{
             stNoSticker.lblNoSticker.isHidden = true
