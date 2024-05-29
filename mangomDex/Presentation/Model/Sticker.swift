@@ -349,7 +349,7 @@ extension StickerInfo{
         case ._94:
             return "인플루언서 망그러진 곰을"
         case ._95:
-            return "제빵사 망그러진 햄터"
+            return "제빵사 망그러진 햄터를"
         case ._96:
             return "요리사 망그러진 곰을"
         case ._97:

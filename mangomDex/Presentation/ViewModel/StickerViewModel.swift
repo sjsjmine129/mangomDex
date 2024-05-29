@@ -263,9 +263,12 @@ class StickerViewModel{
         
         var imageName = "Instagram.png"
         
-        if let range = sticker.name.range(of: "망그러진") {
-            let trimmedText = String(sticker.name[range.lowerBound...])
-            
+        if(sticker.name == "부앙단을" || sticker.name == "부앙단 (일탈ver.)을"){
+            cell.lblLinkText.text = "부앙단을\n인스타툰에서 만나요!"
+            cell.lblLinkBtnTitle.text = "인스타툰 보기"
+        }else if let range = sticker.name.range(of: "망그러진") {
+            var trimmedText = String(sticker.name[range.lowerBound...])
+      
             if sticker.linkType == .insta {
                 cell.lblLinkText.text = "\(trimmedText)\n인스타툰에서 만나요!"
                 cell.lblLinkBtnTitle.text = "인스타툰 보기"
