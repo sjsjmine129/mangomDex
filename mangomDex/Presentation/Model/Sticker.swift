@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Sticker{
-    static let stickeTotalNum = 73
+    static let stickeTotalNum = 100
     let id: Int
     var number: Int
     let season: Int
@@ -30,7 +30,11 @@ class Sticker{
         self.name = info.name
         self.color = info.color
         self.number = number
-        self.image = UIImage(named: "\(self.id).jpg")
+        if (self.id > 73){
+            self.image = UIImage(named: "1.jpg")
+        }else{
+            self.image = UIImage(named: "\(self.id).jpg")
+        }
         self.stickerLink = info.link
         self.linkType = info.type
         self.linkImage = info.linkImg
@@ -38,8 +42,10 @@ class Sticker{
         switch id {
         case 1...20 :
             season = 1
-        case 21...40:
+        case 21...73:
             season = 2
+        case 74...100:
+            season = 3
         default:
             season = 0
         }
@@ -122,6 +128,33 @@ enum StickerInfo: Int {
     case _71 = 71
     case _72 = 72
     case _73 = 73
+    case _74 = 74
+    case _75 = 75
+    case _76 = 76
+    case _77 = 77
+    case _78 = 78
+    case _79 = 79
+    case _80 = 80
+    case _81 = 81
+    case _82 = 82
+    case _83 = 83
+    case _84 = 84
+    case _85 = 85
+    case _86 = 86
+    case _87 = 87
+    case _88 = 88
+    case _89 = 89
+    case _90 = 90
+    case _91 = 91
+    case _92 = 92
+    case _93 = 93
+    case _94 = 94
+    case _95 = 95
+    case _96 = 96
+    case _97 = 97
+    case _98 = 98
+    case _99 = 99
+    case _100 = 100
 }
 
 extension StickerInfo{
@@ -273,6 +306,60 @@ extension StickerInfo{
             return "망그러진 사랑 부적을"
         case ._73:
             return "망그러진 행복 부적을"
+        case ._74:
+            return "화이팅 망그러진 곰을"
+        case ._75:
+            return "좋았어 망그러진 곰을"
+        case ._76:
+            return "빤히 망그러진 곰을"
+        case ._77:
+            return "도도도 망그러진 곰을"
+        case ._78:
+            return "흙 묻은 망그러진 감자를"
+        case ._79:
+            return "청룡 망그러진 곰을"
+        case ._80:
+            return "복주머니 망그러진 햄터를"
+        case ._81:
+            return "트로트 망그러진 곰을"
+        case ._82:
+            return "학생 망그러진 곰을"
+        case ._83:
+            return "직장인 망그러진 곰을"
+        case ._84:
+            return "망나니 망그러진 곰을"
+        case ._85:
+            return "상체는 서있는 망그러진 곰을"
+        case ._86:
+            return "망부석 망그러진 곰을"
+        case ._87:
+            return "뜨개질 망그러진 곰을"
+        case ._88:
+            return "고봉밥 망그러진 곰을"
+        case ._89:
+            return "파마 망한 망그러진 곰을"
+        case ._90:
+            return "힙한 망그러진 감자를"
+        case ._91:
+            return "멍충 망그러진 곰과 햄터를"
+        case ._92:
+            return "녹은 망그러진 햄터를"
+        case ._93:
+            return "튜브 망그러진 곰을"
+        case ._94:
+            return "인플루언서 망그러진 곰을"
+        case ._95:
+            return "제빵사 망그러진 햄터"
+        case ._96:
+            return "요리사 망그러진 곰을"
+        case ._97:
+            return "벚꽃 망그러진 햄터를"
+        case ._98:
+            return "벚꽃 망그러진 곰을"
+        case ._99:
+            return "부앙단을"
+        case ._100:
+            return "부앙단 (일탈ver.)을"
         }
     }
 }
@@ -281,15 +368,15 @@ extension StickerInfo{
 extension StickerInfo{
     var color: UIColor {
         switch self {
-        case ._01, ._11, ._15, ._20, ._21, ._32, ._35, ._40, ._41, ._47, ._51, ._58, ._59, ._66, ._68, ._72 :
+        case ._01, ._11, ._15, ._20, ._21, ._32, ._35, ._40, ._41, ._47, ._51, ._58, ._59, ._66, ._68, ._72, ._75, ._80, ._85, ._90, ._95, ._100:
             return .stikerOrange
-        case ._02, ._04, ._17, ._22, ._24, ._28, ._37, ._42, ._44, ._54, ._60, ._62, ._69, ._71:
+        case ._02, ._04, ._17, ._22, ._24, ._28, ._37, ._42, ._44, ._54, ._60, ._62, ._69, ._71, ._77, ._82, ._87, ._92, ._97:
             return .stickerGreen
-        case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64:
+        case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64, ._76, ._79, ._83, ._86, ._89, ._93, ._96, ._99:
             return .stickerBlue
-        case ._07, ._08, ._13, ._29, ._33, ._48, ._49, ._53, ._61, ._65:
+        case ._07, ._08, ._13, ._29, ._33, ._48, ._49, ._53, ._61, ._65, ._74, ._84, ._94:
             return .stickerPink
-        case ._05, ._14, ._16, ._19, ._25, ._26, ._34, ._39, ._45, ._55, ._57, ._63, ._67, ._70, ._73:
+        case ._05, ._14, ._16, ._19, ._25, ._26, ._34, ._39, ._45, ._55, ._57, ._63, ._67, ._70, ._73, ._78, ._81, ._88, ._91, ._98:
             return .stickerYellow
         }
     }
@@ -298,7 +385,7 @@ extension StickerInfo{
 extension StickerInfo{
     var type: LinkType {
         switch self {
-        case ._21, ._22, ._23, ._07, ._50, ._51,._52,._08, ._49, ._55 , ._11, ._65, ._12, ._68, ._66, ._67,._09, ._27, ._10,._01, ._02, ._03, ._04, ._05, ._29, ._06, ._13, ._14, ._15:
+        case ._21, ._22, ._23, ._07, ._50, ._51,._52,._08, ._49, ._55 , ._11, ._65, ._12, ._68, ._66, ._67,._09, ._27, ._10,._01, ._02, ._03, ._04, ._05, ._29, ._06, ._13, ._14, ._15, ._74, ._75, ._76, ._78, ._90, ._91:
             return .kakao
         default:
             return .insta

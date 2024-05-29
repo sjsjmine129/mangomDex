@@ -19,7 +19,7 @@ class StickerViewModel{
     
     var dropdownImage: Observable<String> = Observable("chevron.down")
     var filterMode: Observable<String> = Observable("전체 보기")
-    var numberString: Observable<String> = Observable("0/73")
+    var numberString: Observable<String> = Observable("0/100")
     
     
     init() {
@@ -84,6 +84,8 @@ class StickerViewModel{
             retStickers = Array(stickers[0...19])
         case .season2:
             retStickers = Array(stickers[20...72])
+        case .season3:
+            retStickers = Array(stickers[73...99])
         }
         
         filteredStickers = retStickers

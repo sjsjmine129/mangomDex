@@ -1140,7 +1140,7 @@
 				57AE193C2B8E1376008F1033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		57AE193D2B8E1376008F1033 /* Build configuration list for PBXNativeTarget "mangomDex" */ = {
 			isa = XCConfigurationList;
@@ -1149,7 +1149,7 @@
 				57AE193F2B8E1376008F1033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
