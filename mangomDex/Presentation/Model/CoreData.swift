@@ -41,6 +41,22 @@ class CoreData_mang{
                 }
                 coreData = try context.fetch(fetchRequest)
             }
+            else if(coreData.count != Sticker.stickeTotalNum){
+                let start  = coreData.count + 1
+                for id in start...Sticker.stickeTotalNum {
+                    let newData = StickerNumbers(context: context)
+                    newData.id = Int16(id)
+                    newData.number = 0
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Error saving sticker \(id): \(error)")
+                    }
+                }
+                coreData = try context.fetch(fetchRequest)
+            }
+            
 
             return coreData
         } catch {

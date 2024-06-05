@@ -19,7 +19,7 @@ class StickerViewModel{
     
     var dropdownImage: Observable<String> = Observable("chevron.down")
     var filterMode: Observable<String> = Observable("전체 보기")
-    var numberString: Observable<String> = Observable("0/73")
+    var numberString: Observable<String> = Observable("0/100")
     
     
     init() {
@@ -84,6 +84,8 @@ class StickerViewModel{
             retStickers = Array(stickers[0...19])
         case .season2:
             retStickers = Array(stickers[20...72])
+        case .season3:
+            retStickers = Array(stickers[73...99])
         }
         
         filteredStickers = retStickers
@@ -150,6 +152,9 @@ class StickerViewModel{
             collectNum = countCollected()
         case .season2:
             totalNum = 53
+            collectNum = countCollected()
+        case .season3:
+            totalNum = 27
             collectNum = countCollected()
         default:
             collectNum = 0
@@ -261,9 +266,12 @@ class StickerViewModel{
         
         var imageName = "Instagram.png"
         
-        if let range = sticker.name.range(of: "망그러진") {
+        if(sticker.name == "부앙단을" || sticker.name == "부앙단 (일탈ver.)을"){
+            cell.lblLinkText.text = "부앙단을\n인스타툰에서 만나요!"
+            cell.lblLinkBtnTitle.text = "인스타툰 보기"
+        }else if let range = sticker.name.range(of: "망그러진") {
             let trimmedText = String(sticker.name[range.lowerBound...])
-            
+      
             if sticker.linkType == .insta {
                 cell.lblLinkText.text = "\(trimmedText)\n인스타툰에서 만나요!"
                 cell.lblLinkBtnTitle.text = "인스타툰 보기"

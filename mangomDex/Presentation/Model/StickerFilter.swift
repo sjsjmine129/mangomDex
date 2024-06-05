@@ -14,5 +14,6 @@ enum StickerFilter: String{
     case duplicate = "중복 띠부씰"
     case season1 = "띠부씰 시즌1"
     case season2 = "띠부씰 시즌2"
+    case season3 = "띠부씰 시즌3"
 }
 
