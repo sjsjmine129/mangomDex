@@ -150,16 +150,22 @@ extension StickerInfo{
             return "instagram://media?id=3286507627406490652&igsh=NDhsN3VzYXpuNmNl"
         case ._99,._100: //부앙단
             return "instagram://media?id=3291574031805801967&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-        case ._85: //기대기
+        case ._85, ._88: //기대기
             return "instagram://media?id=3277791722153447827&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         case ._87: //목도리
             return "instagram://media?id=3271995067710033022&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         case ._89: //파마
             return "instagram://media?id=2948022314046754751&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-        case ._92: //여름
+        case ._92, ._93: //여름
             return "instagram://media?id=3164730645975881162&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         case ._79, ._80: //청룡
             return "instagram://media?id=3271249137494750716&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        case ._82: //학생
+            return "instagram://media?id=3242288627017653095&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        case ._95: //빵집
+            return "instagram://media?id=2753757637450263476&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        case ._97, ._98: //봄
+            return "instagram://media?id=3324778303888107978&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         default: //기타
             return "instagram://user?username=yurang_official"
         }
@@ -235,20 +241,26 @@ extension StickerInfo{
                 return UIImage(named: "직장인.jpg")
         case ._84, ._86: //애칭
                 return UIImage(named: "애칭.jpg")
-        case ._85: //기대기
+        case ._85, ._88: //기대기
                 return UIImage(named: "기대기.png")
         case ._87: //목도리
                 return UIImage(named: "목도리.png")
         case ._89: //파마
                 return UIImage(named: "파마.png")
-        case ._92: //여름
+        case ._92, ._93: //여름
             return UIImage(named: "여름.png")
         case ._99, ._100: //부앙단
             return UIImage(named: "부앙단.png")
         case ._79, ._80: //청룡
             return UIImage(named: "청룡.png")
+        case ._82: //학생
+            return UIImage(named: "학생.png")
+        case ._95: //빵집
+            return UIImage(named: "빵집.png")
+        case ._97, ._98: //봄
+            return UIImage(named: "봄.png")
         default: //기타
-            return UIImage(named: "기타.jpg")
+            return UIImage(named: "기타.png")
         }
     }
 }

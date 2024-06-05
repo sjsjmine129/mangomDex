@@ -153,6 +153,9 @@ class StickerViewModel{
         case .season2:
             totalNum = 53
             collectNum = countCollected()
+        case .season3:
+            totalNum = 27
+            collectNum = countCollected()
         default:
             collectNum = 0
         }
