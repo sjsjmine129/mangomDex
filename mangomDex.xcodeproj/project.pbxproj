@@ -96,7 +96,6 @@
 		57CBB90B2C10ABD5006A2D62 /* 93.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB90A2C10ABD5006A2D62 /* 93.jpg */; };
 		57CBB90D2C10ACCA006A2D62 /* 95.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB90C2C10ACCA006A2D62 /* 95.jpg */; };
 		57CBB90F2C10ACF9006A2D62 /* 빵집.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB90E2C10ACF9006A2D62 /* 빵집.png */; };
-		57CBB9112C10ADB0006A2D62 /* 96.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB9102C10ADB0006A2D62 /* 96.jpg */; };
 		57CBB9142C10AE9F006A2D62 /* 97.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB9122C10AE9F006A2D62 /* 97.jpg */; };
 		57CBB9152C10AE9F006A2D62 /* 98.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB9132C10AE9F006A2D62 /* 98.jpg */; };
 		57CBB9172C10AEF7006A2D62 /* 봄.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CBB9162C10AEF7006A2D62 /* 봄.png */; };
@@ -192,6 +191,8 @@
 		57E97F2E2BA5DD5C009CBEEB /* StickerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E97F2D2BA5DD5C009CBEEB /* StickerDetailViewController.swift */; };
 		57E97F302BA5EB65009CBEEB /* Helvetica Bold Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57E97F2F2BA5EB65009CBEEB /* Helvetica Bold Condensed.otf */; };
 		57E97F322BA6E2D6009CBEEB /* StickerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E97F312BA6E2D6009CBEEB /* StickerTypes.swift */; };
+		57EAFAE62C1496A9009F2E8A /* 96.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57EAFAE52C1496A9009F2E8A /* 96.jpg */; };
+		57EAFAE82C14979C009F2E8A /* 엄마아빠.png in Resources */ = {isa = PBXBuildFile; fileRef = 57EAFAE72C14979C009F2E8A /* 엄마아빠.png */; };
 		57F6816E2BA51CB800FE63C6 /* BtnAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6816D2BA51CB800FE63C6 /* BtnAction.swift */; };
 		57F681712BA5AB5400FE63C6 /* falling.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F6816F2BA5AB5400FE63C6 /* falling.png */; };
 		57F681742BA5B16300FE63C6 /* all.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F681732BA5B16300FE63C6 /* all.png */; };
@@ -305,7 +306,6 @@
 		57CBB90A2C10ABD5006A2D62 /* 93.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 93.jpg; sourceTree = "<group>"; };
 		57CBB90C2C10ACCA006A2D62 /* 95.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 95.jpg; sourceTree = "<group>"; };
 		57CBB90E2C10ACF9006A2D62 /* 빵집.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "빵집.png"; sourceTree = "<group>"; };
-		57CBB9102C10ADB0006A2D62 /* 96.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 96.jpg; sourceTree = "<group>"; };
 		57CBB9122C10AE9F006A2D62 /* 97.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 97.jpg; sourceTree = "<group>"; };
 		57CBB9132C10AE9F006A2D62 /* 98.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 98.jpg; sourceTree = "<group>"; };
 		57CBB9162C10AEF7006A2D62 /* 봄.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "봄.png"; sourceTree = "<group>"; };
@@ -401,6 +401,8 @@
 		57E97F2D2BA5DD5C009CBEEB /* StickerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerDetailViewController.swift; sourceTree = "<group>"; };
 		57E97F2F2BA5EB65009CBEEB /* Helvetica Bold Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Bold Condensed.otf"; sourceTree = "<group>"; };
 		57E97F312BA6E2D6009CBEEB /* StickerTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTypes.swift; sourceTree = "<group>"; };
+		57EAFAE52C1496A9009F2E8A /* 96.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 96.jpg; sourceTree = "<group>"; };
+		57EAFAE72C14979C009F2E8A /* 엄마아빠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "엄마아빠.png"; sourceTree = "<group>"; };
 		57F6816D2BA51CB800FE63C6 /* BtnAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnAction.swift; sourceTree = "<group>"; };
 		57F6816F2BA5AB5400FE63C6 /* falling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = falling.png; sourceTree = "<group>"; };
 		57F681732BA5B16300FE63C6 /* all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all.png; sourceTree = "<group>"; };
@@ -633,23 +635,6 @@
 		57DD5E382B8F23E400A6CAAA /* StickerImg */ = {
 			isa = PBXGroup;
 			children = (
-				57CBB9122C10AE9F006A2D62 /* 97.jpg */,
-				57CBB9132C10AE9F006A2D62 /* 98.jpg */,
-				57CBB9102C10ADB0006A2D62 /* 96.jpg */,
-				57CBB90C2C10ACCA006A2D62 /* 95.jpg */,
-				57CBB9082C10AB49006A2D62 /* 94.jpg */,
-				57CBB90A2C10ABD5006A2D62 /* 93.jpg */,
-				57CBB9062C10A9E0006A2D62 /* 88.jpg */,
-				57CBB9022C10A814006A2D62 /* 82.jpg */,
-				57CBB8FC2C10A692006A2D62 /* 80.jpg */,
-				57CBB9002C10A792006A2D62 /* 81.jpg */,
-				57511F9F2C0E11E1007D2184 /* 79.jpg */,
-				57511F9D2C0E0EE4007D2184 /* 100.jpg */,
-				57511F992C0E0CD0007D2184 /* 99.jpg */,
-				57511F952C0E097E007D2184 /* 92.jpg */,
-				57511F912C0E0868007D2184 /* 91.jpg */,
-				57511F8F2C0E0787007D2184 /* 90.jpg */,
-				57511F8D2C0E05F5007D2184 /* 89.jpg */,
 				57DD5E7F2B8F23E400A6CAAA /* 1.jpg */,
 				57DD5E772B8F23E400A6CAAA /* 2.jpg */,
 				57DD5E7B2B8F23E400A6CAAA /* 3.jpg */,
@@ -728,11 +713,28 @@
 				57FC95902C082C0E00836C8A /* 76.jpg */,
 				57FC95922C082D5D00836C8A /* 77.jpg */,
 				57511F892C0E03B1007D2184 /* 78.jpg */,
+				57511F9F2C0E11E1007D2184 /* 79.jpg */,
+				57CBB8FC2C10A692006A2D62 /* 80.jpg */,
+				57CBB9002C10A792006A2D62 /* 81.jpg */,
+				57CBB9022C10A814006A2D62 /* 82.jpg */,
 				57FC95A02C08434500836C8A /* 83.jpg */,
 				57FC95A82C08461E00836C8A /* 84.jpg */,
 				57FC95B02C08CE1C00836C8A /* 85.jpg */,
 				57FC95AA2C0846CC00836C8A /* 86.jpg */,
 				57FC95B42C08CF0C00836C8A /* 87.jpg */,
+				57CBB9062C10A9E0006A2D62 /* 88.jpg */,
+				57511F8D2C0E05F5007D2184 /* 89.jpg */,
+				57511F8F2C0E0787007D2184 /* 90.jpg */,
+				57511F912C0E0868007D2184 /* 91.jpg */,
+				57511F952C0E097E007D2184 /* 92.jpg */,
+				57CBB90A2C10ABD5006A2D62 /* 93.jpg */,
+				57CBB9082C10AB49006A2D62 /* 94.jpg */,
+				57CBB90C2C10ACCA006A2D62 /* 95.jpg */,
+				57EAFAE52C1496A9009F2E8A /* 96.jpg */,
+				57CBB9122C10AE9F006A2D62 /* 97.jpg */,
+				57CBB9132C10AE9F006A2D62 /* 98.jpg */,
+				57511F992C0E0CD0007D2184 /* 99.jpg */,
+				57511F9D2C0E0EE4007D2184 /* 100.jpg */,
 			);
 			path = StickerImg;
 			sourceTree = "<group>";
@@ -750,6 +752,7 @@
 		57E97F452BA85F59009CBEEB /* insta */ = {
 			isa = PBXGroup;
 			children = (
+				57EAFAE72C14979C009F2E8A /* 엄마아빠.png */,
 				57CBB9162C10AEF7006A2D62 /* 봄.png */,
 				57CBB90E2C10ACF9006A2D62 /* 빵집.png */,
 				57CBB9042C10A844006A2D62 /* 학생.png */,
@@ -858,7 +861,6 @@
 				57511F922C0E0868007D2184 /* 91.jpg in Resources */,
 				57DD5EA82B8F23E400A6CAAA /* 33.jpg in Resources */,
 				57D3F13F2B95EF3C0044D50A /* 망곰이의꿀호떡버거.jpeg in Resources */,
-				57CBB9112C10ADB0006A2D62 /* 96.jpg in Resources */,
 				57953A412BA90F7200C4F51F /* Instagram.png in Resources */,
 				57FC958F2C0829A500836C8A /* 망그러진곰과햄터.jpg in Resources */,
 				57DD5E8E2B8F23E400A6CAAA /* 8.jpg in Resources */,
@@ -951,6 +953,7 @@
 				57F681742BA5B16300FE63C6 /* all.png in Resources */,
 				57DD5EA62B8F23E400A6CAAA /* 23.jpg in Resources */,
 				57DD5EBB2B8F23E400A6CAAA /* 69.jpg in Resources */,
+				57EAFAE82C14979C009F2E8A /* 엄마아빠.png in Resources */,
 				57DD5EB12B8F23E400A6CAAA /* 19.jpg in Resources */,
 				57DD5EC62B8F23E400A6CAAA /* 47.jpg in Resources */,
 				57F681712BA5AB5400FE63C6 /* falling.png in Resources */,
@@ -979,6 +982,7 @@
 				57DD5ECA2B8F23E400A6CAAA /* 46.jpg in Resources */,
 				57DD5EB92B8F23E400A6CAAA /* 7.jpg in Resources */,
 				579539E42BA8623800C4F51F /* 오버핏.png in Resources */,
+				57EAFAE62C1496A9009F2E8A /* 96.jpg in Resources */,
 				57DD5EA42B8F23E400A6CAAA /* 36.jpg in Resources */,
 				579539F72BA86EDB00C4F51F /* 집들이.png in Resources */,
 				57DD5EA72B8F23E400A6CAAA /* 37.jpg in Resources */,
