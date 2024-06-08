@@ -191,7 +191,7 @@ class OnboardingView: UIView{
             lblLongPress.trailingAnchor.constraint(equalTo: vwMain.trailingAnchor, constant: 0),
             //btnClose
             btnClose.centerXAnchor.constraint(equalTo: vwColor.centerXAnchor),
-            btnClose.topAnchor.constraint(equalTo: vwMain.bottomAnchor, constant: 0),
+            btnClose.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
         ])
     }
     
