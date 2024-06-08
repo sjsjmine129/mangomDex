@@ -150,8 +150,10 @@ extension StickerInfo{
             return "instagram://media?id=3286507627406490652&igsh=NDhsN3VzYXpuNmNl"
         case ._99,._100: //부앙단
             return "instagram://media?id=3291574031805801967&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-        case ._85, ._88: //기대기
+        case ._85: //기대기
             return "instagram://media?id=3277791722153447827&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        case ._88: //엄마 아빠
+            return "instagram://media?id=3196628115722659191&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         case ._87: //목도리
             return "instagram://media?id=3271995067710033022&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         case ._89: //파마
@@ -238,15 +240,17 @@ extension StickerInfo{
         case ._77: //도도도
             return UIImage(named: "도도도.png")
         case ._83: //직장인
-                return UIImage(named: "직장인.jpg")
+            return UIImage(named: "직장인.jpg")
         case ._84, ._86: //애칭
-                return UIImage(named: "애칭.jpg")
-        case ._85, ._88: //기대기
-                return UIImage(named: "기대기.png")
+            return UIImage(named: "애칭.jpg")
+        case ._85: //기대기
+            return UIImage(named: "기대기.png")
+        case ._88: //엄마 아빠
+            return UIImage(named: "엄마아빠.png")
         case ._87: //목도리
-                return UIImage(named: "목도리.png")
+            return UIImage(named: "목도리.png")
         case ._89: //파마
-                return UIImage(named: "파마.png")
+            return UIImage(named: "파마.png")
         case ._92, ._93: //여름
             return UIImage(named: "여름.png")
         case ._99, ._100: //부앙단
