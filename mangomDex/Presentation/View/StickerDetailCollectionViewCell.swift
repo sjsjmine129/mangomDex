@@ -6,14 +6,13 @@
 //
 
 import UIKit
-import CoreData
 
 class StickerDetailCollectionViewCell: UICollectionViewCell {
     
     static let id = "StickerDetailCollectionViewCell"
     
     // MARK: - UI
-    private lazy var vwContainer: UIView = {
+    lazy var vwContainer: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.backgroundColor = .magClothes
@@ -21,7 +20,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return vw
     }()
     
-    private lazy var stButtons: UIStackView = {
+    lazy var stButtons: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -32,7 +31,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var stTitle: UIStackView = {
+    lazy var stTitle: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -43,7 +42,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var vwid: UIView = {
+    lazy var vwid: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = 12
@@ -51,7 +50,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return vw
     }()
     
-    private lazy var lblId: UILabel = {
+    lazy var lblId: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "Helvetica Bold Condensed", size: 16)
@@ -61,7 +60,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var lblTitle: UILabel = {
+    lazy var lblTitle: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 25)
@@ -71,7 +70,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var imgVwSticker: UIImageView = {
+    lazy var imgVwSticker: UIImageView = {
         let imgVw = UIImageView()
         imgVw.translatesAutoresizingMaskIntoConstraints = false
         imgVw.contentMode = .scaleAspectFit
@@ -85,7 +84,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return imgVw
     }()
     
-    private lazy var vwLinkBox: UIView = {
+    lazy var vwLinkBox: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 10
@@ -95,7 +94,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var vwImgLink:UIView = {
+    lazy var vwImgLink:UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.shadowColor = UIColor.gray.cgColor
@@ -107,7 +106,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return vw
     }()
     
-    private lazy var imgVwLink: UIImageView = {
+    lazy var imgVwLink: UIImageView = {
         let imgVw = UIImageView()
         imgVw.translatesAutoresizingMaskIntoConstraints = false
         imgVw.contentMode = .scaleAspectFit
@@ -117,7 +116,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return imgVw
     }()
     
-    private lazy var stLinkText: UIStackView = {
+    lazy var stLinkText: UIStackView = {
         let st = UIStackView()
         st.translatesAutoresizingMaskIntoConstraints = false
         st.axis = .vertical
@@ -128,7 +127,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return st
     }()
     
-    private lazy var lblLinkText: UILabel = {
+    lazy var lblLinkText: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 20)
@@ -138,7 +137,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private let lblLinkBtnTitle: UILabel = {
+    let lblLinkBtnTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "HUDdiu150", size: 18)
@@ -146,14 +145,14 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let imgLinkBtn: UIImageView = {
+    let imgLinkBtn: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var btnLink: UIButton = {
+    lazy var btnLink: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addSubview(lblLinkBtnTitle)
@@ -175,7 +174,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
-    private lazy var stNumberChange: UIStackView = {
+    lazy var stNumberChange: UIStackView = {
         let st = UIStackView()
         st.translatesAutoresizingMaskIntoConstraints = false
         st.axis = .horizontal
@@ -186,7 +185,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return st
     }()
     
-    private lazy var lblNumber: UILabel = {
+    lazy var lblNumber: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 25)
@@ -195,14 +194,14 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var btnMinus: NumberButton = {
+    lazy var btnMinus: NumberButton = {
         let btn = NumberButton(type: .minus)
         btn.addTarget(self, action: #selector(numberBtnPress(_:)), for: .touchUpInside)
         
         return btn
     }()
     
-    private lazy var btnPlus: NumberButton = {
+    lazy var btnPlus: NumberButton = {
         let btn = NumberButton(type: .plus)
         btn.addTarget(self, action: #selector(numberBtnPress(_:)), for: .touchUpInside)
         
@@ -210,22 +209,15 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     }()
     
     var stickerViewModel : StickerViewModel?
-    var sticker : Sticker?
-    var container: NSPersistentContainer!
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.vwContainer.subviews.forEach {$0.removeFromSuperview()}
+    var index = 0
+        
+    // MARK: - make UI of cell
+    func detailCellConfigure(viewModel: StickerViewModel){
+        self.stickerViewModel = viewModel
     }
     
-    // MARK: - make UI of cell
-    func detailCellConfigure(with item: Sticker, viewModel: StickerViewModel){
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.container = appDelegate.persistentContainer
-        
-        self.stickerViewModel = viewModel
-        self.sticker = item
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         self.addSubview(vwContainer)
         
@@ -252,44 +244,14 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         stNumberChange.addArrangedSubview(lblNumber)
         stNumberChange.addArrangedSubview(btnPlus)
         
-        // set data
-        vwid.backgroundColor = item.color
-        lblId.text = viewModel.changeId(id: item.id)
-        lblTitle.text = item.name
+        // Add tap gesture recognizer to imgVwSticker
+        imgVwSticker.isUserInteractionEnabled = true
         
-        imgVwSticker.image = item.image
-        imgVwLink.image = item.linkImage
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(imgVwStickerLongPress))
+        imgVwSticker.addGestureRecognizer(longPressRecognizer)
         
-        let setting = stickerViewModel?.checkSetting()
-        if item.number == 0 && ((setting?.fadeMode) != nil) {
-            imgVwSticker.alpha = 0.5
-        }else{
-            imgVwSticker.alpha = 0.9
-        }
-            
-        lblNumber.text = "수집한 개수: \(item.number)"
-        
-        if item.number == 0{
-            self.btnMinus.backgroundColor = .lightGray
-        }
-        else if item.number == 99{
-            self.btnPlus.backgroundColor = .lightGray
-        }
-        
-        
-        if let range = item.name.range(of: "망그러진") {
-            let trimmedText = String(item.name[range.lowerBound...])
-            
-            if item.linkType == .insta {
-                lblLinkText.text = "\(trimmedText)을\n인스타툰에서 만나요!"
-                imgLinkBtn.image = UIImage(named: "Instagram.png")
-                lblLinkBtnTitle.text = "인스타툰 보기"
-            }else if item.linkType == .kakao{
-                lblLinkText.text = "\(trimmedText)을\n이모티콘으로 만나요!"
-                imgLinkBtn.image = UIImage(named: "kakao.png")
-                lblLinkBtnTitle.text = "이모티콘 보기"
-            }
-        }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgVwStickerTapped))
+        imgVwSticker.addGestureRecognizer(tapGesture)
         
         
         NSLayoutConstraint.activate([
@@ -303,8 +265,8 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             imgVwSticker.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 40),
             imgVwSticker.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -40),
             //stButtons
-            stButtons.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 35),
-            stButtons.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -35),
+            stButtons.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 30),
+            stButtons.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -30),
             stButtons.topAnchor.constraint(equalTo: imgVwSticker.bottomAnchor, constant: 30),
             //vwid
             vwid.heightAnchor.constraint(equalToConstant: 24),
@@ -340,20 +302,6 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             stNumberChange.topAnchor.constraint(equalTo: vwLinkBox.bottomAnchor),
             stNumberChange.bottomAnchor.constraint(equalTo: vwContainer.bottomAnchor),
         ])
-        
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        // Add tap gesture recognizer to imgVwSticker
-        imgVwSticker.isUserInteractionEnabled = true
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(imgVwStickerLongPress))
-        imgVwSticker.addGestureRecognizer(longPressRecognizer)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgVwStickerTapped))
-        imgVwSticker.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -366,7 +314,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
 extension StickerDetailCollectionViewCell{
     @objc private func imgVwStickerTapped() {
         UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
-            self.changeNum(changeNum: 1)
+            self.stickerViewModel?.adjustStickerNum(index: self.index, changeNum: 1, cell: self)
         }, completion: { (_) in
         })
         
@@ -375,7 +323,7 @@ extension StickerDetailCollectionViewCell{
     @objc private func imgVwStickerLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromRight], animations: {
-                self.changeNum(changeNum: -1)
+                self.stickerViewModel?.adjustStickerNum(index: self.index, changeNum: 0, cell: self)
             }, completion: { (_) in
             })
         }
@@ -384,7 +332,19 @@ extension StickerDetailCollectionViewCell{
     
     @objc func goToLink(_ button: UIButton){
         BtnAction.btnActionAll(button: button)
-        self.stickerViewModel?.openIink(url: self.sticker?.stickerLink ?? "", type: self.sticker?.linkType ?? .kakao)
+        
+        let sticker = stickerViewModel!.filteredStickers[index]
+        let url = sticker.stickerLink!
+        let type = sticker.linkType
+        
+        if let link = URL(string: url) {
+            UIApplication.shared.open(link, options: [:], completionHandler: nil)
+        } else {
+            if type == .insta{
+                let instagramWebURL = URL(string: "https://apps.apple.com/kr/app/instagram/id389801252")!
+                UIApplication.shared.open(instagramWebURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     @objc func numberBtnPress(_ button: UIButton){
@@ -392,73 +352,16 @@ extension StickerDetailCollectionViewCell{
         
         if(button.tag == 1){
             UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromLeft], animations: {
-                self.changeNum(changeNum: button.tag)
+                self.stickerViewModel?.adjustStickerNum(index: self.index, changeNum: button.tag, cell: self)
             }, completion: { (_) in
             })
         }else{
             UIView.transition(with: imgVwSticker, duration: 0.7, options: [.transitionFlipFromRight], animations: {
-                self.changeNum(changeNum: button.tag)
+                self.stickerViewModel?.adjustStickerNum(index: self.index, changeNum: button.tag, cell: self)
             }, completion: { (_) in
                 
             })
         }
     }
     
-}
-
-
-extension StickerDetailCollectionViewCell{
-    func changeNum(changeNum: Int){
-        if let nowNum = self.sticker?.number{
-            var newNum = nowNum + changeNum
-            if changeNum == -1{
-                newNum = 0
-            }
-            if newNum < 0 || newNum >= 100{
-                return
-            }
-            
-            if newNum == 0{
-                self.btnMinus.backgroundColor = .lightGray
-                let setting = stickerViewModel?.checkSetting()
-                if  ((setting?.fadeMode) != nil) {
-                    imgVwSticker.alpha = 0.5
-                }
-            }
-            else if newNum == 1{
-                self.btnMinus.backgroundColor = .magBody
-                imgVwSticker.alpha = 0.9
-
-            }
-            else if newNum == 99{
-                self.btnPlus.backgroundColor = .lightGray
-            }
-            else if newNum == 98{
-                self.btnPlus.backgroundColor = .magBody
-            }
-            
-            
-            self.stickerViewModel?.stickers[self.sticker!.id - 1].number = newNum
-            self.sticker?.number = newNum
-            self.lblNumber.text = "수집한 개수: \(newNum)"
-            
-            let fetchRequest: NSFetchRequest<StickerNumbers> = StickerNumbers.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", self.sticker!.id)
-            
-            do {
-                let results = try self.container.viewContext.fetch(fetchRequest)
-                if let entity = results.first {
-                    entity.number  = Int16(newNum)
-                    
-                    try self.container.viewContext.save()
-                } else {
-                    print("Entity with id 3 not found.")
-                }
-            } catch {
-                print("Error fetching entity: \(error)")
-            }
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadGridDataNotification"), object: nil)
-        }
-    }
 }

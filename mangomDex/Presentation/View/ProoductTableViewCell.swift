@@ -17,7 +17,7 @@ class ProoductTableViewCell: UITableViewCell {
     static let cellId = "ProductTableViewCell"
     
     // MARK: - UI
-    private lazy var containerVw: UIView = {
+    lazy var containerVw: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = 14
@@ -30,8 +30,7 @@ class ProoductTableViewCell: UITableViewCell {
         return vw
     }()
     
-    
-    private lazy var lblProductName: UILabel = {
+    lazy var lblProductName: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 20)
@@ -41,7 +40,7 @@ class ProoductTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var lblProductPrice: UILabel = {
+    lazy var lblProductPrice: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "HUDdiu150", size: 18)
@@ -51,7 +50,7 @@ class ProoductTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var imgVwProduct: UIImageView = {
+    lazy var imgVwProduct: UIImageView = {
         let imgV = UIImageView()
         imgV.translatesAutoresizingMaskIntoConstraints = false
         imgV.layer.cornerRadius = 10
@@ -59,14 +58,14 @@ class ProoductTableViewCell: UITableViewCell {
         return imgV
     }()
     
-    private lazy var vwProductInfo: UIView = {
+    lazy var vwProductInfo: UIView = {
         let stackView = UIView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
     }()
     
-    private lazy var stProductButtons: UIStackView = {
+    lazy var stProductButtons: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -77,18 +76,7 @@ class ProoductTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    //    private lazy var btnProductDetail: ProductButton = {
-    //        let btn = ProductButton(title: "상품 상세")
-    //        btn.layer.shadowColor = UIColor.gray.cgColor
-    //        btn.layer.shadowOpacity = 0.5
-    //        btn.layer.shadowRadius = 4
-    //        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
-    //        btn.layer.shadowPath = nil
-    //
-    //        return btn
-    //    }()
-    
-    private lazy var btnProductFind: ProductButton = {
+    lazy var btnProductFind: ProductButton = {
         let btn = ProductButton(title: "재고 찾기")
         btn.layer.shadowColor = UIColor.gray.cgColor
         btn.layer.shadowOpacity = 0.5
@@ -100,8 +88,7 @@ class ProoductTableViewCell: UITableViewCell {
     }()
     
     
-    private weak var delegate: ProductTableCellDelegate?
-    private var product: Product?
+    weak var delegate: ProductTableCellDelegate?
     
     // MARK: - Life Cycle
     override func layoutSubviews() {
@@ -112,54 +99,27 @@ class ProoductTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        // remove data
-        self.product = nil
         self.delegate = nil
-        
-        //delete ui of not seen
         self.containerVw.subviews.forEach {$0.removeFromSuperview()}
     }
     
     
     // MARK: - make UI of cell
-    func cellConfigure(with item: Product, delegate: ProductTableCellDelegate){
-        
-        self.product = item
+    func cellConfigure(delegate: ProductTableCellDelegate){
         self.delegate = delegate
-        
         containerVw.backgroundColor = UIColor(resource: .magBody)
         
         self.contentView.backgroundColor = .magClothes
         self.contentView.addSubview(containerVw)
         
-        btnProductFind.addTarget(self, action: #selector(didTapFind(_:)), for: .touchUpInside)
-        //        btnProductDetail.addTarget(self, action: #selector(didTapDetail(_:)), for: .touchUpInside)
-        
-        
-        imgVwProduct.image = UIImage(named: "\(item.name).jpeg")
-        lblProductName.text = item.productName
-        lblProductPrice.text = "\(item.price)원"
-        
-        btnProductFind.cuApplink = item.findLink
-        //        btnProductDetail.cuApplink = item.productLink
-        
         containerVw.addSubview(imgVwProduct)
         containerVw.addSubview(vwProductInfo)
-        
         vwProductInfo.addSubview(lblProductName)
         vwProductInfo.addSubview(lblProductPrice)
         vwProductInfo.addSubview(stProductButtons)
-        
-        //        stProductButtons.addArrangedSubview(btnProductDetail)
         stProductButtons.addArrangedSubview(btnProductFind)
         
-        if item.findLink == nil {
-            btnProductFind.isHidden = true
-        }
-        if item.productLink == nil {
-            //            btnProductDetail.isHidden = true
-        }
-        
+        btnProductFind.addTarget(self, action: #selector(didTapFind(_:)), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             //containerVw
@@ -193,19 +153,10 @@ class ProoductTableViewCell: UITableViewCell {
     }
     
     //send product data to ViewconTrollers function
-    @objc func didTapFind(_ button: UIButton){
+    @objc func didTapFind(_ button: ProductButton){
         BtnAction.btnActionAll(button: button)
-        if let product = product{
-            delegate?.didTapButton(for: product.findLink)
-        }
-    }
-    
-    //send product data to ViewconTrollers function
-    @objc func didTapDetail(_ button: UIButton){
-        BtnAction.btnActionAll(button: button)
-        if let product = product{
-            delegate?.didTapButton(for: product.productLink)
-        }
+        delegate?.didTapButton(for: button.cuApplink)
+        
     }
     
 }

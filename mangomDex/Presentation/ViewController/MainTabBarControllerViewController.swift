@@ -40,7 +40,8 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
     
     func customizeTabBar() {
         // Change background color
-        self.tabBar.backgroundColor = UIColor(resource: .hamWhite)
+        self.tabBar.backgroundColor = .hamWhite
+        self.tabBar.barTintColor = .hamWhite
         
         // Change tab bar item font and font size
         if let font = UIFont(name: "HUDdiu150", size: 12) {

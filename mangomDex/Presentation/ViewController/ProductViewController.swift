@@ -81,7 +81,11 @@ extension ProductViewController: UITableViewDataSource{
         let product = productViewModel.products[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ProoductTableViewCell.cellId , for: indexPath) as! ProoductTableViewCell
-        cell.cellConfigure(with: product, delegate: self)
+        cell.cellConfigure(delegate: self)
+        productViewModel.setProductCell(cell: cell, index: indexPath.row)
+        
+        cell.imgVwProduct.image = UIImage(named: "\(product.name).jpeg")
+        
         return cell
     }
     
@@ -95,5 +99,4 @@ extension ProductViewController: ProductTableCellDelegate{
             navigationController.pushViewController(nextPage, animated: true)
         }
     }
-    
 }
