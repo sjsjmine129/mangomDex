@@ -84,6 +84,8 @@
 		57AE195B2B8E2D4E008F1033 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AE19592B8E2D4E008F1033 /* right.png */; };
 		57AE195D2B8E2F8F008F1033 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AE195C2B8E2F8F008F1033 /* title.png */; };
 		57AECEDC2BA16FFD00C2D99B /* StickerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AECEDB2BA16FFD00C2D99B /* StickerFilter.swift */; };
+		57C44C532C40C100007D4F94 /* 망곰크림치즈호떡.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57C44C512C40C100007D4F94 /* 망곰크림치즈호떡.jpeg */; };
+		57C44C542C40C100007D4F94 /* 망곰비프포테이토.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 57C44C522C40C100007D4F94 /* 망곰비프포테이토.jpeg */; };
 		57C780E82B90D0E500C00317 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C780E72B90D0E500C00317 /* icon.png */; };
 		57C780EA2B921A9F00C00317 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */; };
 		57C780EC2B934C2D00C00317 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */; };
@@ -294,6 +296,8 @@
 		57AE19592B8E2D4E008F1033 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		57AE195C2B8E2F8F008F1033 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		57AECEDB2BA16FFD00C2D99B /* StickerFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerFilter.swift; sourceTree = "<group>"; };
+		57C44C512C40C100007D4F94 /* 망곰크림치즈호떡.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰크림치즈호떡.jpeg"; sourceTree = "<group>"; };
+		57C44C522C40C100007D4F94 /* 망곰비프포테이토.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "망곰비프포테이토.jpeg"; sourceTree = "<group>"; };
 		57C780E72B90D0E500C00317 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		57C780E92B921A9F00C00317 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		57C780EB2B934C2D00C00317 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
@@ -616,6 +620,8 @@
 		57D3F1302B95AAE00044D50A /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				57C44C522C40C100007D4F94 /* 망곰비프포테이토.jpeg */,
+				57C44C512C40C100007D4F94 /* 망곰크림치즈호떡.jpeg */,
 				5742ED132BDE386700A1650C /* 망곰이의피크닉김밥.jpeg */,
 				5742ED152BDE386700A1650C /* 망곰이의피크닉박스.jpeg */,
 				5742ED142BDE386700A1650C /* 망곰이의핫윙파스타.jpeg */,
@@ -933,6 +939,7 @@
 				57DD5EA52B8F23E400A6CAAA /* 22.jpg in Resources */,
 				57DD5EA32B8F23E400A6CAAA /* 20.jpg in Resources */,
 				57DD5E862B8F23E400A6CAAA /* 49.jpg in Resources */,
+				57C44C542C40C100007D4F94 /* 망곰비프포테이토.jpeg in Resources */,
 				57511F882C0E03AA007D2184 /* 75.jpg in Resources */,
 				57DD5E9E2B8F23E400A6CAAA /* 10.jpg in Resources */,
 				57511F942C0E08B2007D2184 /* 여름.png in Resources */,
@@ -1008,6 +1015,7 @@
 				57511FA02C0E11E1007D2184 /* 79.jpg in Resources */,
 				57CBB9072C10A9E0006A2D62 /* 88.jpg in Resources */,
 				57DD5E8C2B8F23E400A6CAAA /* 70.jpg in Resources */,
+				57C44C532C40C100007D4F94 /* 망곰크림치즈호떡.jpeg in Resources */,
 				57DD5E932B8F23E400A6CAAA /* 9.jpg in Resources */,
 				57CBB91B2C10B07F006A2D62 /* 기타.png in Resources */,
 				57DD5EBE2B8F23E400A6CAAA /* 54.jpg in Resources */,
@@ -1251,7 +1259,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1283,7 +1291,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
