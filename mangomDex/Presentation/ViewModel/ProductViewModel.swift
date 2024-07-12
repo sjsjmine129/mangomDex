@@ -10,6 +10,8 @@ import Foundation
 class ProductViewModel{
     
     private(set) var products: [Product] = [
+        Product(productName: "망그러진곰 비프 포테이토", name: "망곰비프포테이토", price: 3600, findLink: "https://www.pocketcu.co.kr/search/stock?isRecommend=Y&item_cd=8809692956150"),
+        Product(productName: "망그러진곰 크림치즈 호떡버거", name: "망곰크림치즈호떡", price: 3600, findLink: "https://www.pocketcu.co.kr/search/stock?isRecommend=Y&item_cd=8809692956181"),
         Product(productName: "망곰이의 피크닉 샐러드", name: "망곰이의피크닉샐러드", price: 5000, findLink: "https://www.pocketcu.co.kr/search/stock?isRecommend=Y&item_cd=8801771300540"),
         Product(productName: "망곰이의 김밥세트", name: "망곰이의피크닉김밥", price: 5300, findLink: "https://www.pocketcu.co.kr/search/stock?isRecommend=Y&item_cd=8809453268874"),
         Product(productName: "망곰이의 핫윙&파스타", name: "망곰이의핫윙파스타", price: 5800, findLink: "https://www.pocketcu.co.kr/search/stock?isRecommend=Y&item_cd=8801771300502"),
