@@ -26,10 +26,18 @@ class StickerViewModel{
         let numdata = coreData.getStickerNumber()
         
         for i in numdata{
-            let num =  Int(i.number)
-            let id = Int(i.id)
             
-            stickers.append(Sticker(id: id, number: num))
+            if i.id <= 100 {
+                let num =  Int(i.number)
+                let id = Int(i.id)
+                
+                stickers.append(Sticker(id: id, number: num))
+            }
+            else {
+                let num =  Int(i.number)
+                let id = Int(i.id)
+                stickers.insert(Sticker(id: id, number: num), at: id - 101)
+            }
         }
         let first = defaults.object(forKey: "first")
         
@@ -81,11 +89,13 @@ class StickerViewModel{
                 }
             }
         case .season1:
-            retStickers = Array(stickers[0...19])
+            retStickers = Array(stickers[12...31])
         case .season2:
-            retStickers = Array(stickers[20...72])
+            retStickers = Array(stickers[32...84])
         case .season3:
-            retStickers = Array(stickers[73...99])
+            retStickers = Array(stickers[85...111])
+        case .season4:
+            retStickers = Array(stickers[0...11])
         }
         
         filteredStickers = retStickers
@@ -155,6 +165,9 @@ class StickerViewModel{
             collectNum = countCollected()
         case .season3:
             totalNum = 27
+            collectNum = countCollected()
+        case .season4:
+            totalNum = 12
             collectNum = countCollected()
         default:
             collectNum = 0
@@ -242,7 +255,13 @@ class StickerViewModel{
         // set data
         cell.index = index
         cell.vwid.backgroundColor = sticker.color
-        cell.lblId.text = changeId(id: sticker.id)
+        if sticker.id > 100{
+            cell.lblId.text = changeId(id: sticker.id-100)
+        }
+        else{
+            cell.lblId.text = changeId(id: sticker.id)
+        }
+        
         cell.lblTitle.text = String(sticker.name.prefix(sticker.name.count - 1))
         
         cell.imgVwSticker.image = sticker.image

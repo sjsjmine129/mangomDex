@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Sticker{
-    static let stickeTotalNum = 100
+    static let stickeTotalNum = 112
     let id: Int
     var number: Int
     let season: Int
@@ -30,7 +30,13 @@ class Sticker{
         self.name = info.name
         self.color = info.color
         self.number = number
-        self.image = UIImage(named: "\(self.id).jpg")
+        if self.id <= 100 {
+            self.image = UIImage(named: "\(self.id).jpg")
+        }
+        else{
+            self.image = UIImage(named: "\(self.id-100).png")
+        }
+
         self.stickerLink = info.link
         self.linkType = info.type
         self.linkImage = info.linkImg
@@ -42,6 +48,8 @@ class Sticker{
             season = 2
         case 74...100:
             season = 3
+        case 101...112:
+            season = 4
         default:
             season = 0
         }
@@ -54,11 +62,11 @@ class Sticker{
 extension StickerInfo{
     var color: UIColor {
         switch self {
-        case ._01, ._11, ._15, ._20, ._21, ._32, ._35, ._40, ._41, ._47, ._51, ._58, ._59, ._66, ._68, ._72, ._75, ._80, ._85, ._90, ._95, ._100:
+        case ._01, ._11, ._15, ._20, ._21, ._32, ._35, ._40, ._41, ._47, ._51, ._58, ._59, ._66, ._68, ._72, ._75, ._80, ._85, ._90, ._95, ._100, ._102, ._104, ._106, ._108, ._110, ._112:
             return .stikerOrange
         case ._02, ._04, ._17, ._22, ._24, ._28, ._37, ._42, ._44, ._54, ._60, ._62, ._69, ._71, ._77, ._82, ._87, ._92, ._97:
             return .stickerGreen
-        case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64, ._76, ._79, ._83, ._86, ._89, ._93, ._96, ._99:
+        case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64, ._76, ._79, ._83, ._86, ._89, ._93, ._96, ._99, ._101, ._103, ._105, ._107, ._109, ._111:
             return .stickerBlue
         case ._07, ._08, ._13, ._29, ._33, ._48, ._49, ._53, ._61, ._65, ._74, ._84, ._94:
             return .stickerPink
@@ -149,25 +157,25 @@ extension StickerInfo{
         case ._84, ._86: //애칭
             return "instagram://media?id=3286507627406490652&igsh=NDhsN3VzYXpuNmNl"
         case ._99,._100: //부앙단
-            return "instagram://media?id=3291574031805801967&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3291574031805801967"
         case ._85: //기대기
-            return "instagram://media?id=3277791722153447827&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3277791722153447827"
         case ._88: //엄마 아빠
-            return "instagram://media?id=3196628115722659191&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3196628115722659191"
         case ._87: //목도리
-            return "instagram://media?id=3271995067710033022&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3271995067710033022"
         case ._89: //파마
-            return "instagram://media?id=2948022314046754751&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=2948022314046754751"
         case ._92, ._93: //여름
-            return "instagram://media?id=3164730645975881162&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3164730645975881162"
         case ._79, ._80: //청룡
-            return "instagram://media?id=3271249137494750716&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3271249137494750716"
         case ._82: //학생
-            return "instagram://media?id=3242288627017653095&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3242288627017653095"
         case ._95: //빵집
-            return "instagram://media?id=2753757637450263476&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=2753757637450263476"
         case ._97, ._98: //봄
-            return "instagram://media?id=3324778303888107978&utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            return "instagram://media?id=3324778303888107978"
         default: //기타
             return "instagram://user?username=yurang_official"
         }
@@ -263,6 +271,8 @@ extension StickerInfo{
             return UIImage(named: "빵집.png")
         case ._97, ._98: //봄
             return UIImage(named: "봄.png")
+        case ._101, ._102, ._103, ._104, ._105, ._106, ._107, ._108, ._109, ._110,._111, ._112:
+            return UIImage(named: "dusan.png")
         default: //기타
             return UIImage(named: "기타.png")
         }
@@ -371,6 +381,18 @@ enum StickerInfo: Int {
     case _98 = 98
     case _99 = 99
     case _100 = 100
+    case _101 = 101
+    case _102 = 102
+    case _103 = 103
+    case _104 = 104
+    case _105 = 105
+    case _106 = 106
+    case _107 = 107
+    case _108 = 108
+    case _109 = 109
+    case _110 = 110
+    case _111 = 111
+    case _112 = 112
 }
 
 extension StickerInfo{
@@ -576,6 +598,30 @@ extension StickerInfo{
             return "부앙단을"
         case ._100:
             return "부앙단 (일탈ver.)을"
+        case ._101:
+            return "파이어볼러 망그러진 곰을"
+        case ._102:
+            return "글러브 망그러진 곰을"
+        case ._103:
+            return "패대기 시구 망그러진 곰을"
+        case ._104:
+            return "타자 망그러진 곰을"
+        case ._105:
+            return "안타 망그러진 곰을"
+        case ._106:
+            return "피자 냠냠 망그러진 곰을"
+        case ._107:
+            return "햄버거 냠냠 망그러진 곰을"
+        case ._108:
+            return "핫도그 냠냠 망그러진 곰을"
+        case ._109:
+            return "호수비 망그러진 곰을"
+        case ._110:
+            return "인터뷰 망그러진 곰을"
+        case ._111:
+            return "브이 철웅&망그러진 곰을"
+        case ._112:
+            return "V7 철웅&망그러진 곰을"
         }
     }
 }
