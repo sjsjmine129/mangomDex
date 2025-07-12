@@ -19,9 +19,9 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let productTab = UINavigationController(rootViewController: ProductViewController())
-        let productTabBarItem = UITabBarItem(title: "상품", image: UIImage(systemName: "list.dash"), tag: 0)
-        productTab.tabBarItem = productTabBarItem
+//        let productTab = UINavigationController(rootViewController: ProductViewController())
+//        let productTabBarItem = UITabBarItem(title: "상품", image: UIImage(systemName: "list.dash"), tag: 0)
+//        productTab.tabBarItem = productTabBarItem
         
         let stickerTab =  UINavigationController(rootViewController: StickerViewController())
         let stickerTabBarItem = UITabBarItem(title: "띠부씰", image: UIImage(systemName: "square.grid.3x3"), tag: 1)
@@ -31,8 +31,9 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
         let settingTabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape"), tag: 2)
         settingTab.tabBarItem = settingTabBarItem
         
-        self.viewControllers = [productTab, stickerTab, settingTab]
-        self.selectedIndex = 1
+//        self.viewControllers = [productTab, stickerTab, settingTab]
+        self.viewControllers = [stickerTab, settingTab]
+        self.selectedIndex = 0
         
         customizeTabBar()
     }

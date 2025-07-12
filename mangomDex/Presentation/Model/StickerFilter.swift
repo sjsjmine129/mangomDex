@@ -9,6 +9,7 @@ import Foundation
 
 enum StickerFilter: String{
     case all = "전체 보기"
+    case season4 = "두산베어스"
     case collected = "모은 띠부씰"
     case noncollected = "없는 띠부씰"
     case duplicate = "중복 띠부씰"
