@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Sticker{
-    static let stickeTotalNum = 112
+    static let stickeTotalNum = 127
     let id: Int
     var number: Int
     let season: Int
@@ -33,8 +33,11 @@ class Sticker{
         if self.id <= 100 {
             self.image = UIImage(named: "\(self.id).jpg")
         }
-        else{
+        else if self.id <= 112{
             self.image = UIImage(named: "\(self.id-100).png")
+        }
+        else{
+            self.image = UIImage(named: "\(self.id-97).png")
         }
 
         self.stickerLink = info.link
@@ -48,7 +51,7 @@ class Sticker{
             season = 2
         case 74...100:
             season = 3
-        case 101...112:
+        case 101...127:
             season = 4
         default:
             season = 0
@@ -62,11 +65,11 @@ class Sticker{
 extension StickerInfo{
     var color: UIColor {
         switch self {
-        case ._01, ._11, ._15, ._20, ._21, ._32, ._35, ._40, ._41, ._47, ._51, ._58, ._59, ._66, ._68, ._72, ._75, ._80, ._85, ._90, ._95, ._100, ._102, ._104, ._106, ._108, ._110, ._112:
+        case ._01, ._11, ._15, ._20, ._21, ._32, ._35, ._40, ._41, ._47, ._51, ._58, ._59, ._66, ._68, ._72, ._75, ._80, ._85, ._90, ._95, ._100, ._102, ._104, ._106, ._108, ._110, ._112, ._113, ._115, ._117, ._119, ._121, ._123, ._125, ._127:
             return .stikerOrange
         case ._02, ._04, ._17, ._22, ._24, ._28, ._37, ._42, ._44, ._54, ._60, ._62, ._69, ._71, ._77, ._82, ._87, ._92, ._97:
             return .stickerGreen
-        case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64, ._76, ._79, ._83, ._86, ._89, ._93, ._96, ._99, ._101, ._103, ._105, ._107, ._109, ._111:
+        case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64, ._76, ._79, ._83, ._86, ._89, ._93, ._96, ._99, ._101, ._103, ._105, ._107, ._109, ._111, ._114,  ._116, ._118, ._120,  ._122,  ._124,  ._126:
             return .stickerBlue
         case ._07, ._08, ._13, ._29, ._33, ._48, ._49, ._53, ._61, ._65, ._74, ._84, ._94:
             return .stickerPink
@@ -271,7 +274,7 @@ extension StickerInfo{
             return UIImage(named: "빵집.png")
         case ._97, ._98: //봄
             return UIImage(named: "봄.png")
-        case ._101, ._102, ._103, ._104, ._105, ._106, ._107, ._108, ._109, ._110,._111, ._112:
+        case ._101, ._102, ._103, ._104, ._105, ._106, ._107, ._108, ._109, ._110, ._111, ._112, ._113, ._114, ._115, ._116, ._117, ._118, ._119, ._120, ._121, ._122, ._123, ._124, ._125, ._126, ._127:
             return UIImage(named: "dusan.png")
         default: //기타
             return UIImage(named: "기타.png")
@@ -393,6 +396,21 @@ enum StickerInfo: Int {
     case _110 = 110
     case _111 = 111
     case _112 = 112
+    case _113 = 113
+    case _114 = 114
+    case _115 = 115
+    case _116 = 116
+    case _117 = 117
+    case _118 = 118
+    case _119 = 119
+    case _120 = 120
+    case _121 = 121
+    case _122 = 122
+    case _123 = 123
+    case _124 = 124
+    case _125 = 125
+    case _126 = 126
+    case _127 = 127
 }
 
 extension StickerInfo{
@@ -622,6 +640,36 @@ extension StickerInfo{
             return "브이 철웅&망그러진 곰을"
         case ._112:
             return "V7 철웅&망그러진 곰을"
+        case ._113:
+            return "스트라이크 망그러진 곰을"
+        case ._114:
+            return "타격폼 망그러진 곰을"
+        case ._115:
+            return "포수 망그러진 곰을"
+        case ._116:
+            return "달려라 망그러진 곰을"
+        case ._117:
+            return "다이빙 캐치 망그러진 곰을"
+        case ._118:
+            return "나이스 캐치 망그러진 곰을"
+        case ._119:
+            return "헹가래 망그러진 곰을"
+        case ._120:
+            return "대깃발 망그러진 곰을"
+        case ._121:
+            return "소떡소떡 냠냠 망그러진 곰을"
+        case ._122:
+            return "홈런 부적 망그러진 곰을"
+        case ._123:
+            return "안타 부적 망그러진 곰을"
+        case ._124:
+            return "승리 부적 망그러진 곰을"
+        case ._125:
+            return "승리 요정 망그러진 곰을"
+        case ._126:
+            return "야구공 망그러진 곰을"
+        case ._127:
+            return "망곰베어스 로고를"
         }
     }
 }

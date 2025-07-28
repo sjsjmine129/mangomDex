@@ -264,6 +264,7 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
             imgVwSticker.topAnchor.constraint(equalTo:  vwContainer.topAnchor, constant: 30),
             imgVwSticker.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 40),
             imgVwSticker.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -40),
+            imgVwSticker.heightAnchor.constraint(lessThanOrEqualToConstant: 300),
             //stButtons
             stButtons.leadingAnchor.constraint(equalTo:  vwContainer.leadingAnchor, constant: 30),
             stButtons.trailingAnchor.constraint(equalTo:  vwContainer.trailingAnchor, constant: -30),

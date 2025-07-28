@@ -33,7 +33,12 @@ class StickerViewModel{
                 
                 stickers.append(Sticker(id: id, number: num))
             }
-            else {
+            else if i.id <= 112{
+                let num =  Int(i.number)
+                let id = Int(i.id)
+                stickers.insert(Sticker(id: id, number: num), at: id - 101)
+            }
+            else{
                 let num =  Int(i.number)
                 let id = Int(i.id)
                 stickers.insert(Sticker(id: id, number: num), at: id - 101)
@@ -89,13 +94,13 @@ class StickerViewModel{
                 }
             }
         case .season1:
-            retStickers = Array(stickers[12...31])
+            retStickers = Array(stickers[27...31])
         case .season2:
             retStickers = Array(stickers[32...84])
         case .season3:
             retStickers = Array(stickers[85...111])
         case .season4:
-            retStickers = Array(stickers[0...11])
+            retStickers = Array(stickers[0...26])
         }
         
         filteredStickers = retStickers
@@ -167,7 +172,7 @@ class StickerViewModel{
             totalNum = 27
             collectNum = countCollected()
         case .season4:
-            totalNum = 12
+            totalNum = 27
             collectNum = countCollected()
         default:
             collectNum = 0
@@ -255,7 +260,10 @@ class StickerViewModel{
         // set data
         cell.index = index
         cell.vwid.backgroundColor = sticker.color
-        if sticker.id > 100{
+        if sticker.id > 112{
+            cell.lblId.text = changeId(id: sticker.id-97)
+        }
+        else if sticker.id > 100{
             cell.lblId.text = changeId(id: sticker.id-100)
         }
         else{
