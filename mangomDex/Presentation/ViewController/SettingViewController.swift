@@ -58,7 +58,7 @@ private extension SettingViewController{
         NSLayoutConstraint.activate([
             // Title at top-left corner
             lblTitle.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            lblTitle.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            lblTitle.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
         ])
         
         let setting = settingViewModel.checkSetting()
