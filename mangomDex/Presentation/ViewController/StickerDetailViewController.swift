@@ -81,6 +81,13 @@ class StickerDetailViewController: UIViewController {
         self.collectionView.scrollToItem(at: IndexPath(item: self.index, section: 0), at: .centeredHorizontally, animated: false)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Show navigation bar when this screen appears
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
 }
 
 // MARK: - navigationbar
