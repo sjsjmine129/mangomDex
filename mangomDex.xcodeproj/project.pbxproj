@@ -197,6 +197,12 @@
 		57DD5EC82B8F23E400A6CAAA /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E7F2B8F23E400A6CAAA /* 1.jpg */; };
 		57DD5EC92B8F23E400A6CAAA /* 52.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E802B8F23E400A6CAAA /* 52.jpg */; };
 		57DD5ECA2B8F23E400A6CAAA /* 46.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57DD5E812B8F23E400A6CAAA /* 46.jpg */; };
+		57DF80B52F4077E200B514BD /* olive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DF80B42F4077E200B514BD /* olive.png */; };
+		57DF80BB2F42A75600B514BD /* 4_olive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DF80BA2F42A75600B514BD /* 4_olive.png */; };
+		57DF80C02F42A7AF00B514BD /* 2_olive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DF80BD2F42A7AF00B514BD /* 2_olive.png */; };
+		57DF80C12F42A7AF00B514BD /* 3_olive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DF80BE2F42A7AF00B514BD /* 3_olive.png */; };
+		57DF80C22F42A7AF00B514BD /* 1_olive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DF80BC2F42A7AF00B514BD /* 1_olive.png */; };
+		57DF80C32F42A7AF00B514BD /* 5_olive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DF80BF2F42A7AF00B514BD /* 5_olive.png */; };
 		57E51F2C2B9DE64E0089EDEB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F2B2B9DE64E0089EDEB /* SettingViewModel.swift */; };
 		57E51F2E2B9DECF00089EDEB /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F2D2B9DECF00089EDEB /* Sticker.swift */; };
 		57E51F302B9E8CA70089EDEB /* StickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51F2F2B9E8CA70089EDEB /* StickerViewModel.swift */; };
@@ -437,6 +443,12 @@
 		57DD5E7F2B8F23E400A6CAAA /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		57DD5E802B8F23E400A6CAAA /* 52.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 52.jpg; sourceTree = "<group>"; };
 		57DD5E812B8F23E400A6CAAA /* 46.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 46.jpg; sourceTree = "<group>"; };
+		57DF80B42F4077E200B514BD /* olive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = olive.png; sourceTree = "<group>"; };
+		57DF80BA2F42A75600B514BD /* 4_olive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4_olive.png; sourceTree = "<group>"; };
+		57DF80BC2F42A7AF00B514BD /* 1_olive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_olive.png; sourceTree = "<group>"; };
+		57DF80BD2F42A7AF00B514BD /* 2_olive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_olive.png; sourceTree = "<group>"; };
+		57DF80BE2F42A7AF00B514BD /* 3_olive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_olive.png; sourceTree = "<group>"; };
+		57DF80BF2F42A7AF00B514BD /* 5_olive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5_olive.png; sourceTree = "<group>"; };
 		57E51F2B2B9DE64E0089EDEB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		57E51F2D2B9DECF00089EDEB /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		57E51F2F2B9E8CA70089EDEB /* StickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerViewModel.swift; sourceTree = "<group>"; };
@@ -824,6 +836,11 @@
 				575581AD2E221AFD00B17577 /* 11.png */,
 				575581AE2E221AFD00B17577 /* 12.png */,
 				575581AF2E221AFD00B17577 /* 3.png */,
+				57DF80BA2F42A75600B514BD /* 4_olive.png */,
+				57DF80BC2F42A7AF00B514BD /* 1_olive.png */,
+				57DF80BD2F42A7AF00B514BD /* 2_olive.png */,
+				57DF80BE2F42A7AF00B514BD /* 3_olive.png */,
+				57DF80BF2F42A7AF00B514BD /* 5_olive.png */,
 			);
 			path = StickerImg;
 			sourceTree = "<group>";
@@ -857,6 +874,7 @@
 				579539E12BA861B300C4F51F /* 판다.png */,
 				579539E32BA8623800C4F51F /* 오버핏.png */,
 				579539F02BA86EDB00C4F51F /* 감자.png */,
+				57DF80B42F4077E200B514BD /* olive.png */,
 				57FC95A22C0843E200836C8A /* 직장인.jpg */,
 				579539EF2BA86EDB00C4F51F /* 곰.png */,
 				579539ED2BA86EDB00C4F51F /* 곰돌즈.png */,
@@ -911,7 +929,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					57AE19282B8E1374008F1033 = {
 						CreatedOnToolsVersion = 15.2;
@@ -1060,9 +1078,14 @@
 				57DD5EBB2B8F23E400A6CAAA /* 69.jpg in Resources */,
 				57EAFAE82C14979C009F2E8A /* 엄마아빠.png in Resources */,
 				57DD5EB12B8F23E400A6CAAA /* 19.jpg in Resources */,
+				57DF80B52F4077E200B514BD /* olive.png in Resources */,
 				57DD5EC62B8F23E400A6CAAA /* 47.jpg in Resources */,
 				57F681712BA5AB5400FE63C6 /* falling.png in Resources */,
 				57953A012BA86EDB00C4F51F /* 곰.png in Resources */,
+				57DF80C02F42A7AF00B514BD /* 2_olive.png in Resources */,
+				57DF80C12F42A7AF00B514BD /* 3_olive.png in Resources */,
+				57DF80C22F42A7AF00B514BD /* 1_olive.png in Resources */,
+				57DF80C32F42A7AF00B514BD /* 5_olive.png in Resources */,
 				57FC95BB2C08CF9F00836C8A /* 기대기.png in Resources */,
 				57DD5E8A2B8F23E400A6CAAA /* 65.jpg in Resources */,
 				57DD5E842B8F23E400A6CAAA /* 60.jpg in Resources */,
@@ -1102,6 +1125,7 @@
 				57DD5EB82B8F23E400A6CAAA /* 55.jpg in Resources */,
 				57E97F302BA5EB65009CBEEB /* Helvetica Bold Condensed.otf in Resources */,
 				57DD5EBD2B8F23E400A6CAAA /* 40.jpg in Resources */,
+				57DF80BB2F42A75600B514BD /* 4_olive.png in Resources */,
 				57DD5EAE2B8F23E400A6CAAA /* 30.jpg in Resources */,
 				57DD5E902B8F23E400A6CAAA /* 72.jpg in Resources */,
 				57DD5EC12B8F23E400A6CAAA /* 50.jpg in Resources */,
@@ -1156,9 +1180,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mangomDex/Pods-mangomDex-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mangomDex/Pods-mangomDex-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1266,6 +1294,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = B4BSCLJVA5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1289,6 +1318,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1329,6 +1359,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = B4BSCLJVA5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1345,6 +1376,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1358,7 +1390,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B4BSCLJVA5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mangomDex/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "망그러진 도감";
@@ -1371,7 +1402,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1390,7 +1421,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B4BSCLJVA5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mangomDex/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "망그러진 도감";
@@ -1403,7 +1433,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skku.sjsjmine129.mangomDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

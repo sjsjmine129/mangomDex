@@ -27,7 +27,7 @@ class DropDownBtn:UIButton{
     lazy var ddFilter = {
         var dd = DropDown()
         
-        dd.dataSource = ["전체 보기", "두산베어스", "모은 띠부씰", "없는 띠부씰", "중복 띠부씰", "띠부씰 시즌1", "띠부씰 시즌2", "띠부씰 시즌3"]
+        dd.dataSource = ["전체 보기", "올리브영", "두산베어스", "모은 띠부씰", "없는 띠부씰", "중복 띠부씰", "띠부씰 시즌1", "띠부씰 시즌2", "띠부씰 시즌3"]
         dd.anchorView = self
         dd.textFont = UIFont(name: "HUDdiu150", size: 15) ?? UIFont.systemFont(ofSize: 15)
         dd.backgroundColor = .magBody
@@ -58,6 +58,7 @@ class DropDownBtn:UIButton{
             //lblDropdownTitle
             lblDropdownTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
             lblDropdownTitle.bottomAnchor.constraint(equalTo: bottomAnchor),
+            lblDropdownTitle.heightAnchor.constraint(equalToConstant: 15),
             //imgVwDropDown
             imgVwDropDown.trailingAnchor.constraint(equalTo: lblDropdownTitle.leadingAnchor, constant: -5),
             imgVwDropDown.bottomAnchor.constraint(equalTo: bottomAnchor),

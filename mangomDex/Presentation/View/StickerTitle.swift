@@ -31,6 +31,7 @@ class StickerTitle: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+    
         
         addSubview(lblTitle)
         addSubview(lblStickerNum)
