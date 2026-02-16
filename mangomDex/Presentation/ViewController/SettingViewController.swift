@@ -11,10 +11,21 @@ class SettingViewController: UIViewController {
     
     private var settingViewModel = SettingViewModel()
     
+    // Title label at the top
+    private lazy var lblTitle: UILabel = {
+        let title = UILabel()
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.text = "망그러진 설정"
+        title.font = UIFont(name: "HUDdiu150", size: 25)
+        title.textColor = UIColor(resource: .textBlack)
+        return title
+    }()
+    
+    private var settingView: SettingView!
+    
     // MARK - LifeCycle
     override func loadView() {
         super.loadView()
-        setNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -22,31 +33,33 @@ class SettingViewController: UIViewController {
         setUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide navigation bar when this screen appears
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
 }
 
 // MARK: - init page
 private extension SettingViewController{
     
-    //set navigation Bar UI of setting tab
-    func setNavigationBar(){
-        
-        let title = UILabel()
-        title.text = "망그러진 설정"
-        title.font = UIFont(name: "HUDdiu150", size: 25)
-        title.textColor = UIColor(resource: .textBlack)
-        
-        let barButton = UIBarButtonItem(customView: title)
-        
-        navigationItem.leftBarButtonItem = barButton
-        
-        self.navigationController?.navigationBar.frame.size.height = 50
-        self.navigationController?.navigationBar.backgroundColor = .clear
-        self.navigationController?.navigationBar.barTintColor = .magClothes
-    }
-    
     func setUI(){
-        let settingView = SettingView()
+        settingView = SettingView()
         self.view = settingView
+        
+        // Add title label on top of the settingView
+        self.view.addSubview(lblTitle)
+        
+        // Bring title to front
+        self.view.bringSubviewToFront(lblTitle)
+        
+        NSLayoutConstraint.activate([
+            // Title at top-left corner
+            lblTitle.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            lblTitle.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+        ])
         
         let setting = settingViewModel.checkSetting()
         settingView.switchFade.isOn = setting.fadeMode

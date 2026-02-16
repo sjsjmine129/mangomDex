@@ -55,7 +55,6 @@ class StickerViewController: UIViewController {
         
         btnDropdown.addTarget(self, action: #selector(showDropdown(_:)), for: .touchUpInside)
         
-        setNavigationBar()
         setBindings()
     }
     
@@ -67,6 +66,13 @@ class StickerViewController: UIViewController {
         collectionView.addGestureRecognizer(pinchGestureRecognizer)
         
         self.view.backgroundColor = UIColor(resource: .magClothes)
+        
+        // Add fixed header elements
+        vwTitle.translatesAutoresizingMaskIntoConstraints = false
+        btnDropdown.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(vwTitle)
+        self.view.addSubview(btnDropdown)
         self.view.addSubview(collectionView)
         self.view.addSubview(stNoSticker)
     
@@ -95,10 +101,18 @@ class StickerViewController: UIViewController {
         }
         
         NSLayoutConstraint.activate([
+            // vwTitle - fixed at top-left corner
+            vwTitle.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            vwTitle.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            
+            // btnDropdown - fixed at top-right corner
+            btnDropdown.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            btnDropdown.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            
             //collectionView
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            self.collectionView.topAnchor.constraint(equalTo: vwTitle.bottomAnchor, constant: 12),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             //stNoSticker
             stNoSticker.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
@@ -107,6 +121,13 @@ class StickerViewController: UIViewController {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide navigation bar when this screen appears
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -167,23 +188,6 @@ extension StickerViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-// MARK: - set navigator
-private extension StickerViewController{
-    //set navigation Bar UI of sticker tab
-    func setNavigationBar(){
-        
-        let leftBarBtn = UIBarButtonItem(customView: vwTitle)
-        let rightBarBtn = UIBarButtonItem(customView: btnDropdown)
-        
-        navigationItem.leftBarButtonItem = leftBarBtn
-        navigationItem.rightBarButtonItem = rightBarBtn
-        
-        self.navigationController?.navigationBar.frame.size.height = 50
-        self.navigationController?.navigationBar.backgroundColor = .clear
-        self.navigationController?.navigationBar.barTintColor = .magClothes
-    }
-}
 
 // MARK: - objc
 extension StickerViewController{
