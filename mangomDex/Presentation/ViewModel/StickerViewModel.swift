@@ -33,10 +33,10 @@ class StickerViewModel{
                 
                 stickers.append(Sticker(id: id, number: num))
             }
-            else if i.id <= 112{
+            else if i.id > 127{
                 let num =  Int(i.number)
                 let id = Int(i.id)
-                stickers.insert(Sticker(id: id, number: num), at: id - 101)
+                stickers.insert(Sticker(id: id, number: num), at: id - 128)
             }
             else{
                 let num =  Int(i.number)
@@ -61,7 +61,7 @@ class StickerViewModel{
     }
     
     
-    // functions to reest to 0 all sticker number
+    // reset all sticker counts to 0
     func resetNumberToZero(){
         for i in stickers{
             i.number = 0
@@ -69,38 +69,30 @@ class StickerViewModel{
     }
     
     // function that filter sticker
-    func filterSticker(condition:StickerFilter){
+    // stickers layout: [0..<27] ids 101-127(두산베어스), [27..<32] ids 128-132(올리브영), [32..<132] ids 1-100(시즌1~3)
+    func filterSticker(condition: StickerFilter) {
         var retStickers: [Sticker] = []
         
-        switch condition{
-        case .all :
-            retStickers = Array(stickers)
+        switch condition {
+        case .all:
+            // 올리브영(128-132) first, then 두산베어스(101-127), then 1-100
+            retStickers = Array(stickers[27...31]) + Array(stickers[0...26]) + Array(stickers[32...131])
         case .collected:
-            for i in stickers{
-                if i.number > 0 {
-                    retStickers.append(i)
-                }
-            }
+            for i in stickers where i.number > 0 { retStickers.append(i) }
         case .noncollected:
-            for i in stickers{
-                if i.number == 0 {
-                    retStickers.append(i)
-                }
-            }
+            for i in stickers where i.number == 0 { retStickers.append(i) }
         case .duplicate:
-            for i in stickers{
-                if i.number > 1 {
-                    retStickers.append(i)
-                }
-            }
+            for i in stickers where i.number > 1 { retStickers.append(i) }
         case .season1:
-            retStickers = Array(stickers[27...31])
+            retStickers = Array(stickers[32...51])   // id 1-20
         case .season2:
-            retStickers = Array(stickers[32...84])
+            retStickers = Array(stickers[52...104])  // id 21-73
         case .season3:
-            retStickers = Array(stickers[85...111])
+            retStickers = Array(stickers[105...131]) // id 74-100
         case .season4:
-            retStickers = Array(stickers[0...26])
+            retStickers = Array(stickers[0...26])    // id 101-127 두산베어스
+        case .season5:
+            retStickers = Array(stickers[27...31])   // id 128-132 올리브영
         }
         
         filteredStickers = retStickers
@@ -174,6 +166,9 @@ class StickerViewModel{
         case .season4:
             totalNum = 27
             collectNum = countCollected()
+        case .season5:
+            totalNum = 5
+            collectNum = countCollected()
         default:
             collectNum = 0
         }
@@ -181,7 +176,7 @@ class StickerViewModel{
         numberString.value = "\(collectNum)/\(totalNum)"
     }
     
-    // count stikcer collected Num
+    // count collected stickers in current filter
     func countCollected()->Int{
         var ret = 0
         for i in filteredStickers{
@@ -209,7 +204,7 @@ class StickerViewModel{
     }
     
     // set grid cell data
-    func setGridCellUIData(cell: StickerCollectionViewCell, index: Int, colunms: Int)->Int{
+    func setGridCellUIData(cell: StickerCollectionViewCell, index: Int, columns: Int) -> Int {
         let sticker = filteredStickers[index]
         cell.btnSticker.tag = index
         cell.btnSticker.setImage(sticker.image, for: .normal)
@@ -217,7 +212,7 @@ class StickerViewModel{
         let setting = checkSetting()
         
         if setting.numMode {
-            switch colunms{
+            switch columns {
             case 2:
                 fontSize = 30
             case 3:
@@ -260,7 +255,10 @@ class StickerViewModel{
         // set data
         cell.index = index
         cell.vwid.backgroundColor = sticker.color
-        if sticker.id > 112{
+        if sticker.id >= 128 {
+            cell.lblId.text = changeId(id: sticker.id - 127)
+        }
+        else if sticker.id > 112{
             cell.lblId.text = changeId(id: sticker.id-97)
         }
         else if sticker.id > 100{

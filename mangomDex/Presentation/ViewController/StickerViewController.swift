@@ -146,7 +146,7 @@ extension StickerViewController: UICollectionViewDataSource {
         
         cell.cellConfigure(delegate: self, viewModel: stickerViewModel)
         
-        let fontSize = stickerViewModel.setGridCellUIData(cell: cell, index: indexPath.row, colunms: self.gridFlowLayout.numberOfColumns)
+        let fontSize = stickerViewModel.setGridCellUIData(cell: cell, index: indexPath.row, columns: self.gridFlowLayout.numberOfColumns)
         cell.lblCollectNum.font = UIFont(name: "HUDdiu150", size: CGFloat(fontSize))
         return cell
     }

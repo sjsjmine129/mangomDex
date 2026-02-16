@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Sticker{
-    static let stickeTotalNum = 127
+    static let stickeTotalNum = 132
     let id: Int
     var number: Int
     let season: Int
@@ -36,6 +36,9 @@ class Sticker{
         else if self.id <= 112{
             self.image = UIImage(named: "\(self.id-100).png")
         }
+        else if self.id >= 128{
+            self.image = UIImage(named: "\(self.id-127)_olive.png")
+        }
         else{
             self.image = UIImage(named: "\(self.id-97).png")
         }
@@ -53,6 +56,8 @@ class Sticker{
             season = 3
         case 101...127:
             season = 4
+        case 128...132:
+            season = 5
         default:
             season = 0
         }
@@ -71,7 +76,7 @@ extension StickerInfo{
             return .stickerGreen
         case ._03, ._06, ._09, ._10, ._12, ._18, ._23, ._27, ._30, ._31, ._36, ._38, ._43, ._46, ._50, ._52, ._56, ._64, ._76, ._79, ._83, ._86, ._89, ._93, ._96, ._99, ._101, ._103, ._105, ._107, ._109, ._111, ._114,  ._116, ._118, ._120,  ._122,  ._124,  ._126:
             return .stickerBlue
-        case ._07, ._08, ._13, ._29, ._33, ._48, ._49, ._53, ._61, ._65, ._74, ._84, ._94:
+        case ._07, ._08, ._13, ._29, ._33, ._48, ._49, ._53, ._61, ._65, ._74, ._84, ._94, ._128, ._130, ._132, ._131, ._129:
             return .stickerPink
         case ._05, ._14, ._16, ._19, ._25, ._26, ._34, ._39, ._45, ._55, ._57, ._63, ._67, ._70, ._73, ._78, ._81, ._88, ._91, ._98:
             return .stickerYellow
@@ -276,6 +281,8 @@ extension StickerInfo{
             return UIImage(named: "봄.png")
         case ._101, ._102, ._103, ._104, ._105, ._106, ._107, ._108, ._109, ._110, ._111, ._112, ._113, ._114, ._115, ._116, ._117, ._118, ._119, ._120, ._121, ._122, ._123, ._124, ._125, ._126, ._127:
             return UIImage(named: "dusan.png")
+        case ._128, ._129, ._130, ._131, ._132:
+            return UIImage(named: "olive.png")
         default: //기타
             return UIImage(named: "기타.png")
         }
@@ -411,6 +418,11 @@ enum StickerInfo: Int {
     case _125 = 125
     case _126 = 126
     case _127 = 127
+    case _128 = 128
+    case _129 = 129
+    case _130 = 130
+    case _131 = 131
+    case _132 = 132
 }
 
 extension StickerInfo{
@@ -670,6 +682,16 @@ extension StickerInfo{
             return "야구공 망그러진 곰을"
         case ._127:
             return "망곰베어스 로고를"
+        case ._128:
+            return "3번 소파 아기천사망곰을"
+        case ._129:
+            return "토너 큐피트 아기천사망곰을"
+        case ._130:
+            return "냠냠 3번 아기천사망곰을"
+        case ._131:
+            return "쿨쿨 3번 아기천사망곰을"
+        case ._132:
+            return "피부에 진심 아기천사망곰을"
         }
     }
 }
