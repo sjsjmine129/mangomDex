@@ -118,11 +118,36 @@ class OnboardingView: UIView{
     lazy var btnClose: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Glassmorphism: Apply blur effect background
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = 20
+        blurView.layer.masksToBounds = true
+        blurView.isUserInteractionEnabled = false
+        btn.insertSubview(blurView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: btn.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: btn.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: btn.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: btn.trailingAnchor)
+        ])
+        
         btn.addSubview(lblbtnClose)
-        btn.backgroundColor = .magBody
-        btn.layer.cornerRadius = 8
-        btn.layer.borderWidth = 1.5
-        btn.layer.borderColor = UIColor(resource: .magBorder).cgColor
+        
+        // Glassmorphism: Rounded corners with subtle white border
+        btn.layer.cornerRadius = 20
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        
+        // Glassmorphism: Soft shadow for floating effect
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.15
+        btn.layer.shadowRadius = 10
+        btn.layer.shadowOffset = CGSize(width: 0, height: 5)
+        btn.layer.shadowPath = nil
         
         NSLayoutConstraint.activate([
             //lblbtnClose

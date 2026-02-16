@@ -47,6 +47,10 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.layer.cornerRadius = 12
         
+        // Glassmorphism: Add subtle white border
+        vw.layer.borderWidth = 1
+        vw.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        
         return vw
     }()
     
@@ -75,10 +79,11 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         imgVw.translatesAutoresizingMaskIntoConstraints = false
         imgVw.contentMode = .scaleAspectFit
         
-        imgVw.layer.shadowColor = UIColor.gray.cgColor
-        imgVw.layer.shadowOpacity = 0.5
-        imgVw.layer.shadowRadius = 4
-        imgVw.layer.shadowOffset = CGSize(width: 4, height: 4)
+        // Glassmorphism: Softer, more diffuse shadow
+        imgVw.layer.shadowColor = UIColor.black.cgColor
+        imgVw.layer.shadowOpacity = 0.15
+        imgVw.layer.shadowRadius = 10
+        imgVw.layer.shadowOffset = CGSize(width: 0, height: 5)
         imgVw.layer.shadowPath = nil
         
         return imgVw
@@ -87,9 +92,32 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     lazy var vwLinkBox: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 20
+
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = 20
+        blurView.layer.masksToBounds = true
+
+        view.addSubview(blurView)
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+        // Glassmorphism: Subtle translucent white border
         view.layer.borderWidth = 1
-        view.layer.borderColor =  UIColor(red: 0.65, green: 0.65, blue: 0.65, alpha: 1).cgColor
+        view.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        
+        // Glassmorphism: Soft shadow for depth
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.15
+        view.layer.shadowRadius = 10
+        view.layer.shadowOffset = CGSize(width: 0, height: 5)
+        view.layer.shadowPath = nil
         
         return view
     }()
@@ -97,10 +125,12 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     lazy var vwImgLink:UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.layer.shadowColor = UIColor.gray.cgColor
-        vw.layer.shadowOpacity = 0.5
-        vw.layer.shadowRadius = 4
-        vw.layer.shadowOffset = CGSize(width: 4, height: 4)
+        
+        // Glassmorphism: Softer, more diffuse shadow
+        vw.layer.shadowColor = UIColor.black.cgColor
+        vw.layer.shadowOpacity = 0.15
+        vw.layer.shadowRadius = 10
+        vw.layer.shadowOffset = CGSize(width: 0, height: 5)
         vw.layer.shadowPath = nil
         
         return vw
@@ -110,7 +140,9 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
         let imgVw = UIImageView()
         imgVw.translatesAutoresizingMaskIntoConstraints = false
         imgVw.contentMode = .scaleAspectFit
-        imgVw.layer.cornerRadius = 10
+        
+        // Glassmorphism: Increased corner radius for smooth glass aesthetic
+        imgVw.layer.cornerRadius = 20
         imgVw.clipsToBounds = true
         
         return imgVw
@@ -155,18 +187,36 @@ class StickerDetailCollectionViewCell: UICollectionViewCell {
     lazy var btnLink: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Glassmorphism: Apply blur effect background
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = 20
+        blurView.layer.masksToBounds = true
+        blurView.isUserInteractionEnabled = false
+        btn.insertSubview(blurView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: btn.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: btn.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: btn.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: btn.trailingAnchor)
+        ])
+        
         btn.addSubview(lblLinkBtnTitle)
         btn.addSubview(imgLinkBtn)
-        btn.backgroundColor = .magBody
         
-        btn.layer.cornerRadius = 8
-        btn.layer.borderWidth = 1.5
-        btn.layer.borderColor = UIColor(resource: .magBorder).cgColor
+        // Glassmorphism: Rounded corners with subtle white border
+        btn.layer.cornerRadius = 20
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
         
-        btn.layer.shadowColor = UIColor.gray.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowRadius = 4
-        btn.layer.shadowOffset = CGSize(width: 2, height: 2)
+        // Glassmorphism: Soft shadow for floating effect
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.15
+        btn.layer.shadowRadius = 10
+        btn.layer.shadowOffset = CGSize(width: 0, height: 5)
         btn.layer.shadowPath = nil
         
         btn.addTarget(self, action: #selector(goToLink), for: .touchUpInside)

@@ -33,7 +33,21 @@ class ProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Glassmorphism: Apply background with subtle glass effect
         self.view.backgroundColor = UIColor(resource: .magClothes)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.alpha = 0.3
+        self.view.insertSubview(blurView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
     
 }
