@@ -18,16 +18,33 @@ class NumberButton: UIButton{
         super.init(frame: .zero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .magBody
         
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1.5
-        self.layer.borderColor = UIColor(resource: .magBorder).cgColor
+        // Glassmorphism: Apply blur effect background
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = 20
+        blurView.layer.masksToBounds = true
+        blurView.isUserInteractionEnabled = false
+        self.insertSubview(blurView, at: 0)
         
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 4
-        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: self.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+        
+        // Glassmorphism: Rounded corners with subtle white border
+        self.layer.cornerRadius = 20
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        
+        // Glassmorphism: Soft shadow for floating effect
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.15
+        self.layer.shadowRadius = 10
+        self.layer.shadowOffset = CGSize(width: 0, height: 5)
         self.layer.shadowPath = nil
         
         NSLayoutConstraint.activate([

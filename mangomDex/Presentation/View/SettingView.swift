@@ -14,8 +14,33 @@ class SettingView: UIView{
     lazy var VwPad: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.backgroundColor = UIColor(resource: .magBody)
-        vw.layer.cornerRadius = 10
+        
+        // Glassmorphism: Apply blur effect background
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = 20
+        blurView.layer.masksToBounds = true
+        
+        vw.addSubview(blurView)
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: vw.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: vw.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: vw.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: vw.trailingAnchor)
+        ])
+        
+        // Glassmorphism: Rounded corners with subtle white border
+        vw.layer.cornerRadius = 20
+        vw.layer.borderWidth = 1
+        vw.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        
+        // Glassmorphism: Soft shadow for depth
+        vw.layer.shadowColor = UIColor.black.cgColor
+        vw.layer.shadowOpacity = 0.15
+        vw.layer.shadowRadius = 10
+        vw.layer.shadowOffset = CGSize(width: 0, height: 5)
+        vw.layer.shadowPath = nil
         
         return vw
     }()
@@ -82,8 +107,14 @@ class SettingView: UIView{
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         img.image = UIImage(named: "icon.png")
-        img.layer.cornerRadius = 20
+        
+        // Glassmorphism: Increased corner radius for smooth glass aesthetic
+        img.layer.cornerRadius = 25
         img.layer.masksToBounds = true
+        
+        // Glassmorphism: Add subtle border
+        img.layer.borderWidth = 1
+        img.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
         
         return img
     }()

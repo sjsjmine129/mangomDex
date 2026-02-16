@@ -65,7 +65,20 @@ class StickerViewController: UIViewController {
         pinchGestureRecognizer.delegate = self
         collectionView.addGestureRecognizer(pinchGestureRecognizer)
         
+        // Glassmorphism: Apply ultra-thin material background for subtle glass effect
         self.view.backgroundColor = UIColor(resource: .magClothes)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.alpha = 0.3
+        self.view.insertSubview(blurView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
         
         // Add fixed header elements
         vwTitle.translatesAutoresizingMaskIntoConstraints = false

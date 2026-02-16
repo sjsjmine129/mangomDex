@@ -40,9 +40,15 @@ class MainTabBarControllerViewController: UITabBarController, UITabBarController
     
     
     func customizeTabBar() {
-        // Change background color
-        self.tabBar.backgroundColor = .hamWhite
-        self.tabBar.barTintColor = .hamWhite
+        // Glassmorphism: Apply blur effect to tab bar
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = self.tabBar.bounds
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        self.tabBar.insertSubview(blurView, at: 0)
+        self.tabBar.backgroundColor = .clear
+        self.tabBar.barTintColor = .clear
         
         // Change tab bar item font and font size
         if let font = UIFont(name: "HUDdiu150", size: 12) {

@@ -24,8 +24,17 @@ class ProductButton: UIButton{
         
         configuration.attributedTitle = AttributedString(title, attributes: titleContainer)
         configuration.background.backgroundColor = .magMouth
+        
+        // Glassmorphism: Rounded corners
+        configuration.cornerStyle = .fixed
+        configuration.background.cornerRadius = 20
 
         self.configuration = configuration
+        
+        // Glassmorphism: Add subtle white border
+        self.layer.cornerRadius = 20
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
     }
     
     required init?(coder: NSCoder) {
