@@ -305,6 +305,11 @@ class StickerViewModel{
                 imageName = "kakao.png"
                 cell.lblLinkBtnTitle.text = "이모티콘 보기"
             }
+        }else if let range = sticker.name.range(of: "아기천사망곰") {
+            cell.lblId.text = "numbuzin"
+            cell.lblLinkText.text = "아기천사망곰을 \n인스타툰에서 만나요!"
+            cell.lblLinkBtnTitle.text = "인스타툰 보기"
+            
         }
         
         return imageName

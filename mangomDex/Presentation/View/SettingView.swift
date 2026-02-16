@@ -158,7 +158,7 @@ class SettingView: UIView{
         
         NSLayoutConstraint.activate([
             //VwPad
-            VwPad.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            VwPad.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 56),
             VwPad.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             VwPad.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             //imgVwAppIcon
